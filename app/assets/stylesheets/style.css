@@ -228,7 +228,7 @@ section {
 /*<%= asset_path('bg-1.jpg') %>*/
 .bg-1 {
   
-  background-image: url(bg-1.jpg);
+  background-image: url("/assets/bg-1.jpg");
 }
 .bg-2 {
   background-image: url("/assets/bg-2.jpg");
@@ -1377,7 +1377,7 @@ blockquote:before {
   color: #25ab4b;
 }
 .form-search .form-field.field-date .field-input {
-  background: url("/assets/icon-calendar.png") no-repeat right center;
+  background-image: url("/assets/icon-calendar.png") no-repeat right center;
   padding-right: 20px;
 }
 .form-search .form-field.field-select .select span {
