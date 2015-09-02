@@ -44,13 +44,15 @@ class User < ActiveRecord::Base
         return registered_user
       else
         
-        user = User.create(first_name: data["first_name"],
+        user = User.new(first_name: data["first_name"],
           provider:access_token.provider,
           email: data["email"],
           uid: access_token.uid ,
           password: Devise.friendly_token[0,20],
-          confirmed_at: Time.now
+          confirmed_at: Time.now,
+
         )
+        user.add_role 'member'
       end
     end
   end
