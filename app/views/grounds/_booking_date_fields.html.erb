@@ -1,0 +1,17 @@
+<div class="nested-fields">
+   	<%= f.label :Date %><br>
+    <%= f.date_select :date_of_booking%>
+    <%= f.label 'Date available status' %>
+    <%= f.check_box :status %><br>
+    <table id="tasks">
+    <%= f.fields_for :booking_times, :wrapper => false do |booking_time| %>
+      <tr class="fields">
+        <%= render 'booking_time_fields', f: booking_time %>
+      </tr>
+    <% end %>
+    </table>
+    <p><%= link_to_add_association 'add time slot', f, :booking_times %></p>
+    </br>
+    
+    <%= link_to_remove_association "remove booking_date", f%>
+</div>

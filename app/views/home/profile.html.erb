@@ -1,0 +1,105 @@
+<section class="sub-banner">
+            <!--Background-->
+            <div class="bg-parallax bg-1"></div>
+            <!--End Background-->
+            <!-- Logo -->
+            <div class="logo-banner text-center">
+               
+                <%= link_to root_path do %>
+                    <%= image_tag "logo-banner.png", class: "" %>
+                <% end %>
+            </div>
+            <!-- Logo -->
+        </section>
+        <!--End Banner-->
+
+        <!-- Main -->
+        <div class="main">
+            <div class="container">
+                <div class="main-cn element-page bg-white clearfix">
+                    <!--Breakcrumb-->
+                    <section class="breakcrumb-sc">
+                        <ul class="breadcrumb arrow">
+                            <li><a href="index.html"><i class="fa fa-home"></i></a></li>
+                            <li>My Profile</li>
+                        </ul>
+                    </section>
+                    <!--End Breakcrumb-->
+                    
+                    <section class="user-profile">
+                        <div class="row">
+                            <div class="col-md-3">
+                                <div class="user-profile__header">
+                                    <h4>Vinay sharma</h4>
+                                    <span>Member Since September 2015</span>
+                                    <p>
+                                        <%= image_tag('vinay.jpg') %>
+                                    </p>
+                                </div>
+                                <ul class="user-profile__navigation">
+                                    <li><a href="user-booking.html">My Bookings<%= image_tag('icon-cart.png') %></a></li>
+                                    <li class="current">
+                                      <%= link_to profile_path, :class => 'navbar-link' do %>
+                                        My profile <%= image_tag('icon-user.png') %>
+                                      <% end %>
+                                    </li>
+                                    <li><a href="user-review.html">My reviews<%= image_tag('icon-review.png') %></a></li>
+                                    <li>
+                                      <%= link_to edit_user_registration_path do %>
+                                        Setting <%= image_tag('icon-setting.png') %>
+                                      <% end %>
+                                    </li>
+                                    
+                                    <li>
+                                      <%= link_to destroy_user_session_path, method: :delete do %>
+                                        logout <%= image_tag('icon-back.png') %>
+                                      <% end %>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="col-md-9">
+                                <h2 class="user-profile__title">Settings</h2>
+
+                                <div class="my-profile">
+
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <h4 class="my-profile__title">Personal Information</h4> 
+                                            <ul>
+                                                <li><span>First Name</span><%= current_user.first_name %></li>
+                                                <li><span>Last Name</span><%= current_user.last_name %></li>
+                                                <li><span>Email</span><%= current_user.email %></li>
+                                                <li><span>Phone number</span>+91<%= current_user.mobile %></li>
+                                                <li><span>Age</span><%= current_user.age %></li>
+
+                                                
+                                            </ul>   
+                                        </div>
+
+                                        <div class="col-md-6">
+                                            <h4 class="my-profile__title">Location</h4> 
+                                            <ul>
+                                                <li><span>City</span>+91<%= current_user.city %></li>
+                                                <li><span>Address</span>+91<%= current_user.address %></li>
+                                                
+                                            </ul>   
+                                        </div>
+                                    </div>
+                                    
+                                    <p>
+                                        Sign up now for our regular promotional emails packed with special offers and exclusive deals. You can personalise the offers you receive from us by selecting your favorite cities
+                                    </p>
+
+                                    <div class="check-box">
+                                        <input type="checkbox" id="my-profile__checkbox">
+                                        <label for="my-profile__checkbox">Yes, I would like to receive Special Offers &amp; Promotions from Agoda</label>
+                                    </div>
+                                    <%= link_to "Edit profile", edit_user_registration_path , class: "btn" %>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+            </div>
+        </div>
+        <!-- End Main -->

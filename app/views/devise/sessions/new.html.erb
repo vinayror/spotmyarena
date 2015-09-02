@@ -1,0 +1,79 @@
+
+<section class="sub-banner">
+            <!--Background-->
+            <div class="bg-parallax bg-1"></div>
+            <!--End Background-->
+            <!-- Logo -->
+            <div class="logo-banner text-center">
+                <%= link_to root_path do %>
+                    <%= image_tag "logo-banner.png", class: "" %>
+                <% end %>
+            </div>
+            <!-- Logo -->
+        </section>
+        <!--End Banner-->
+
+        <!-- Main -->
+        <div class="main">
+            <div class="container">
+                <div class="main-cn element-page bg-white clearfix">
+                    <!--Breakcrumb-->
+                    <section class="breakcrumb-sc">
+                        <ul class="breadcrumb arrow">
+                            <li><a href="index.html"><i class="fa fa-home"></i></a></li>
+                            <li>Login</li>
+                        </ul>
+                        <div class="support float-right">
+                            <small>Call us</small> 123-123-1234
+                        </div>
+                    </section>
+                    <!--End Breakcrumb-->
+                    
+                    <section class="user-profile">
+                        <div class="user-form user-signup">
+                            <div class="row">
+                                <div class="col-md-5">
+                                  <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+
+                                  <h2 class="user-profile__title">Sign in</h2>
+
+                                    <p>Access your account information and manage your bookings.</p>
+                                    <div class="field-input">
+                                      <%= f.label :email %><br />
+                                      <%= f.email_field :email, autofocus: true, class: "input-text" %>
+                                    </div>
+                                    <div class="field-input">
+                                        <%= f.label :password %><br />
+                                        <%= f.password_field :password, autocomplete: "off", class: "input-text" %>
+                                    </div>
+                                    <div class="field-input">
+                                        <div class="check-box">
+                                            <% if devise_mapping.rememberable? -%>
+                                            <div class="field">
+                                              <%= f.check_box :remember_me %>
+                                              <%= f.label "Keep me logged in" %>
+                                            </div>
+                                          <% end %>
+                                        </div>
+                                        <%= link_to "Get a new password", new_user_password_path %>
+                                        
+                                    </div>
+                                    <div class="field-input">
+                                        <%= f.submit "Sign in", class: "awe-btn awe-btn-1 awe-btn-medium" %>
+                                    </div>
+                                   <% end %>
+                                  <div><br><br><br>
+                                    <%= image_tag "fb button.png", class: "" %>
+                                    
+                                  </div>     
+                                </div>
+                                <div class="col-md-5 col-md-offset-2">
+                                  
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+            </div>
+        </div>
+        <!-- End Main -->

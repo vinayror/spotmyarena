@@ -1,0 +1,35 @@
+<% if @grounds.present? %>
+    <div class="table-responsive">          
+    <table class="table">
+      <h3>grounds</h3>
+      <thead>
+        <tr>
+          <th>name</th>
+          <th>category</th>
+          <th>city</th>
+          <th>area</th>
+          <th>address</th>
+          <th>pincode</th>
+          <th>status</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @grounds.each do |ground| %>
+          <tr>
+            <td><%= ground.name %></td>
+              <td><%= ground.category %></td>
+              <td><%= ground.city %></td>
+              <td><%= ground.area %></td>
+              <td><%= ground.address %></td>
+              <td><%= ground.pincode %></td>
+              <td><%= ground.status %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+    </div>
+<% else %>
+  <h3> result not found !!!</h3>
+<% end %>
+<br>
+<%= link_to 'go back', root_path, :class => 'navbar-link' %>

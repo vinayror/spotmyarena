@@ -1,0 +1,130 @@
+<section class="banner">
+            <!--Background-->
+    <div class="bg-parallax bg-1"></div>
+    <!--End Background-->
+    <div class="container">
+        <!-- Banner Content -->
+        <div class="banner-cn">
+            <!-- Logo -->
+            <div class="logo-banner text-center">
+              <%= link_to root_path do %>
+                 <%= image_tag "logo-banner.png", class: "" %>
+              <% end %>
+            </div>
+            <!-- Logo -->
+            <!-- Category Singer -->
+            <div class="category-singer clearfix">
+                <div class="cate-singer-icon float-left">
+                    <h2>GROUND</h2>
+                    <img src="assets/icon-cruise.png" alt="">
+                </div>
+                <p>Choose from more than <span>5,000</span> Grounds in india</p>
+            </div>
+            <!-- End Category Singer -->
+            <!-- Form Search -->
+            <div class="form-cn form-cruise">
+                <h2>Book Your Ground In 30 Seconds</h2>
+                
+                <div class="form-search clearfix">
+                  <%= form_tag search_grounds_path, :method => 'get' do %>
+                    <div class="form-field field-select field-lenght">
+                      <div class="select">
+                        <span>Ground Type</span>
+                        <%= select_tag :category, options_for_select(Ground::CATEGORY, params[:category]), include_blank: false%>
+                      </div>
+                    </div>
+                    <div class="form-field field-select field-lenght">
+                      <div class="select">
+                        <span>Select City</span>
+                        <%= select_tag :city, options_for_select(Ground::CITY, params[:city]), include_blank: false %>
+                      </div>
+                    </div>
+                    <div class="form-field field-select field-lenght">
+                      <div class="select">
+                        <span>Location</span>
+                        <%= select_tag :area, options_for_select(Ground::AREA, params[:area]), include_blank: false%>
+                      </div>
+                    </div>
+                    
+                    <div class="form-field field-date">
+                      <%= text_field_tag :date,(params[:date] or Date.today), class: 'field-input calendar-input', placeholder: "Check in" %>               
+                    </div>
+
+                    <div class="form-submit">
+                      <%= submit_tag "Search", :name => 'search_grounds', class: "awe-btn awe-btn-medium awe-search" %>
+                    </div>
+                  <% end %>
+                </div>
+            </div>
+            <!-- End Form Search -->
+        </div>
+        <!-- End Banner Content -->
+    </div>
+
+</section>
+<!--End Banner-->
+<section class="confidence-subscribe">
+            <!-- Background -->
+            <div class="bg-parallax bg-3"></div>
+            <!-- End Background -->
+            <div class="container">
+                <div class="row cs-sb-cn">
+
+                    <!-- Confidence -->
+                    <div class="col-md-6">
+                        <div class="confidence">
+                            <h3>Book with confidence</h3>
+                            <ul>
+                                <li>
+                                    <span class="label-nb">01</span>
+                                    <h5>No booking charges</h5>
+                                    <p>We don't charge you an extra fee for booking a hotel room with us</p>
+                                </li>
+                                <li>
+                                    <span class="label-nb">02</span>
+                                    <h5>No cancellation fees</h5>
+                                    <p>We don't charge you a cancellation or modification fee in case plans change</p>
+                                </li>
+                                <li>
+                                    <span class="label-nb">03</span>
+                                    <h5>Instant confirmation</h5>
+                                    <p>Instant booking confirmation whether booking online or via the telephone</p>
+                                </li>
+                                <li>
+                                    <span class="label-nb">04</span>
+                                    <h5>Flexible booking</h5>
+                                    <p>You can book up to a whole year in advance until the moment of your stay</p>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <!-- End Confidence -->
+                    <!-- Subscribe -->
+                    <div class="col-md-6">
+                        <div class="subscribe">
+                            <h3>Subscribe to our newsletter</h3>
+                            <p>Enter your email address and we’ll send you our regular promotional emails, packed with special offers, great deals, and huge discounts</p>
+                            <!-- Subscribe Form -->
+                            <div class="subscribe-form">
+                                <form action="#" method="get">
+                                    <input type="text" name="" value="" placeholder="Your email" class="subscribe-input">
+                                    <button type="submit" class="awe-btn awe-btn-5 arrow-right text-uppercase awe-btn-lager">subcrible</button>
+                                </form>
+                            </div>
+                            <!-- End Subscribe Form -->
+                            <!-- Follow us -->
+                            <div class="follow-us">
+                                <h4>Follow us</h4>
+                                <div class="follow-group">
+                                    <a href="" title=""><i class="fa fa-facebook"></i></a>
+                                    <a href="" title=""><i class="fa fa-google-plus"></i></a>
+                                </div>
+                            </div>
+                            <!-- Follow us -->
+                        </div>
+                    </div>
+                    <!-- End Subscribe -->
+
+                </div>
+            </div>
+        </section>

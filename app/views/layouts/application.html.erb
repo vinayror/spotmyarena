@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>SpotMyArena</title>
+  <%= stylesheet_link_tag    'application', media: 'all' %>
+  <link href='http://fonts.googleapis.com/css?family=Lato:300,400%7COpen+Sans:300,400,600' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,700' rel='stylesheet' type='text/css'>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+
+  <div id="preloader">
+    <div class="tb-cell">
+      <div id="page-loading">
+        <div></div>
+        <p>Loading</p>
+      </div>
+    </div>
+  </div>
+    
+ <!-- Wrap -->
+  <div id="wrap">
+  <!-- Header -->
+    <header id="header" class="header">
+      <div class="container">   
+        <!-- Logo -->
+        <div class="logo float-left">
+          <%= link_to root_path do %>
+             <%= image_tag "logo-header.png", class: "some css class here" %>
+          <% end %>
+            
+        </div>
+        <!-- End Logo -->
+        <!-- Bars -->
+        <div class="bars" id="bars"></div>
+        <!-- End Bars -->
+
+          <!--Navigation-->
+          <nav class="navigation nav-c" id="navigation" data-menu-type="1200">
+            <div class="nav-inner">
+              <a href="#" class="bars-close" id="bars-close">Close</a>
+              <div class="tb">
+                <div class="tb-cell">
+                  <ul class="menu-list text-uppercase">
+                    <li class="current-menu-parent">
+                      <%= link_to 'Home', root_path %>
+                      </li>
+                    <li>
+                      <a href="#">button2</a>
+                    </li>
+                    <li>
+                      <a href="#" title="">button3</a>
+                    </li>
+                    <li>
+                      <a href="#" title="">button4</a>
+                    </li>
+                    <li>
+                      <a href="#" title="">button5</a>
+                    </li>
+                    <li>
+                      <li><%= link_to "Facebook", user_omniauth_authorize_path(:facebook) %></li>
+                    </li>
+                    <% if user_signed_in? %>
+                      <li>
+                        <%= link_to "Dashboard", edit_user_registration_path %>
+                      </li>
+                    <% else %>
+                      <li>
+                      <%= link_to "Sign up", new_user_registration_path %>
+                      </li>
+                      <li>
+                      <%= link_to "Login", new_user_session_path %>
+                      </li>
+                    <% end %>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </nav>
+          <!--End Navigation-->
+      </div>
+    </header>
+
+
+    <% if notice %>
+      <p class="alert alert-success"><%= notice %></p>
+    <% end %>
+    <% if alert %>
+      <p class="alert alert-danger"><%= alert %></p>
+    <% end %>
+    <%= yield %>
+    <footer>
+            <div class="container">
+                <div class="row">
+                    <!-- Logo -->
+                    <div class="col-md-4">
+                        <div class="logo-foter">
+                          <%= link_to root_path do %>
+                             <%= image_tag "logo-footer.png", class: "some css class here" %>
+                          <% end %>
+                        </div>
+                    </div>
+                    <!-- End Logo -->
+                    <!-- Navigation Footer -->
+                    <div class="col-xs-6 col-sm-3 col-md-2">
+                        
+                    </div>
+                    <!-- End Navigation Footer -->
+                    <!-- Navigation Footer -->
+                    <div class="col-xs-6 col-sm-3 col-md-2">
+                        
+                    </div>
+                    <!-- End Navigation Footer -->
+                    <!-- Footer Currency, Language -->
+                    <div class="col-sm-6 col-md-4">
+                        <!-- Language -->
+                        <div class="currency-lang-bottom dropdown-cn float-left">
+                          <%= link_to '' do %>
+                             <%= image_tag "fpic.png", class: "some css class here" %>
+                          <% end %>
+                            
+
+                        </div>
+                        <!-- End Language -->
+                        <!-- Currency -->
+                        <div class="currency-lang-bottom dropdown-cn float-left">
+                            <%= link_to '' do %>
+                               <%= image_tag "fpic2.png", class: "some css class here" %>
+                            <% end %>
+                             
+
+                        </div>
+                        <!-- End Currency -->
+                        <!--CopyRight-->
+                        <p class="copyright">
+                            © 2015 spotmyarena All rights reserved.
+                        </p>
+                        <!--CopyRight-->
+                    </div>
+                    <!-- End Footer Currency, Language -->
+                </div>
+            </div>
+        </footer>
+    <!-- End Header -->
+  </div>
+<%= javascript_include_tag 'application' %>
+</body>
+</html>
+
+<script>
+    setTimeout("$('.alert').fadeOut('slow')", 5000)
+    setTimeout("$('.alert-success').fadeOut('slow')", 5000)
+    setTimeout("$('.alert-danger').fadeOut('slow')", 5000)
+</script>

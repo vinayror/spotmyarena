@@ -1,0 +1,51 @@
+ 
+<%= form_for @ground do |f| %>
+  <div class="field">
+    <%= f.label :name %><br />
+    <%= f.text_field :name, :placeholder => "Enter name of ground"%>
+  </div>
+
+  <div class="field">
+    <%= f.label :category %><br />
+    <%= f.select :category, options_for_select(Ground::CATEGORY), :placeholder => "select category"%>
+  </div>
+
+  <div class="field">
+    <%= f.label :city %><br />
+    <%= f.select :city, options_for_select(Ground::CITY), :placeholder => "Enter city name"%>
+  </div>
+
+  <div class="field">
+    <%= f.label :area %><br />
+    <%= f.select :area, options_for_select(Ground::AREA), :placeholder => "Enter area details" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :pincode %><br />
+    <%= f.text_field :pincode,  :placeholder => "Enter pincode" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :address %><br />
+    <%= f.text_field :address, :placeholder => "Enter address"%>
+  </div>
+
+  <div class="field">
+    <%= f.label :available %> <br />
+    <%= f.check_box :status %> <br />
+  </div>
+  <table id="tasks">
+    <%= f.fields_for :booking_dates, :wrapper => false do |booking_date| %>
+      <tr class="fields">
+        <%= render 'booking_date_fields', f: booking_date %>
+      </tr>
+    <% end %>
+  </table>
+  <p><%= link_to_add_association 'add dates', f, :booking_dates %></p>
+  </br>
+  <div class="actions">
+    <%= f.submit "submit" %>
+  </div>       
+<% end %>
+ 
+<%= link_to 'go back', grounds_path, :class => 'navbar-link' %>
