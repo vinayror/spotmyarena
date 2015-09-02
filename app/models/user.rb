@@ -53,6 +53,7 @@ class User < ActiveRecord::Base
 
         )
         user.add_role 'member'
+        user.save
       end
     end
   end
