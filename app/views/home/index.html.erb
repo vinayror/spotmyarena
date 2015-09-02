@@ -116,8 +116,13 @@
                             <div class="follow-us">
                                 <h4>Follow us</h4>
                                 <div class="follow-group">
-                                    <a href="" title=""><i class="fa fa-facebook"></i></a>
-                                    <a href="" title=""><i class="fa fa-google-plus"></i></a>
+
+                                    <%= link_to user_omniauth_authorize_path(:facebook) do %>
+                                      <i class="fa fa-facebook"></i>
+                                    <% end %>
+                                    <%= link_to user_omniauth_authorize_path(:google_oauth2) do %>
+                                      <i class="fa fa-google-plus"></i>
+                                    <% end %>
                                 </div>
                             </div>
                             <!-- Follow us -->

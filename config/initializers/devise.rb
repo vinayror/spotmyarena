@@ -1,6 +1,7 @@
 # Use this hook to configure devise mailer, warden hooks and so forth.
 # Many of these configuration options can be set straight in your model.
 Devise.setup do |config|
+  require 'omniauth-google-oauth2'
   # The secret key used by Devise. Devise uses this key to generate
   # random tokens. Changing this key will render invalid all existing
   # confirmation, reset password and unlock tokens in the database.
@@ -14,6 +15,8 @@ Devise.setup do |config|
   # with default "from" parameter.
   config.mailer_sender = 'please-change-me-at-config-initializers-devise@example.com'
   config.omniauth :facebook, "920397554697540", "dcc7179fc6a6eccc5ad0518b92c6132b", scope: 'email', info_fields: 'email, name',  :strategy_class => OmniAuth::Strategies::Facebook,  :display => 'popup'
+  
+  config.omniauth :google_oauth2, "718604841377-b577j78thfsbur146ijgg9clb8cnu2vu.apps.googleusercontent.com", "2Ee4i-MfA3tfiaMTycWvUWLk", { access_type: "offline", approval_prompt: "" }
   # Configure the class responsible to send e-mails.
   # config.mailer = 'Devise::Mailer'
 
@@ -107,7 +110,7 @@ Devise.setup do |config|
   # able to access the website for two days without confirming their account,
   # access will be blocked just in the third day. Default is 0.days, meaning
   # the user cannot access the website without confirming their account.
-  # config.allow_unconfirmed_access_for = 2.days
+  config.allow_unconfirmed_access_for = 15.days
 
   # A period that the user is allowed to confirm their account before their
   # token becomes invalid. For example, if set to 3.days, the user can confirm
