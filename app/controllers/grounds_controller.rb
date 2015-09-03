@@ -1,5 +1,6 @@
 class GroundsController < ApplicationController
   before_action :authenticate_user! , except: [:search]
+  load_resource only: [:show, :update, :destroy, :edit]
   PER_PAGE = 5
   def search
   	category = params[:category]
@@ -11,7 +12,8 @@ class GroundsController < ApplicationController
   end
 
   def index
-    @grounds = current_user.grounds if current_user.present? #&& current_user.has_role? "ground_owner" 
+    @grounds = current_user.grounds if current_user.present? #&& current_user.has_role? "ground_owner"
+
   end
 
   def show
@@ -20,6 +22,7 @@ class GroundsController < ApplicationController
   # GET /grounds/new
   def new
     @ground = Ground.new
+    @ground_attachment = @ground.ground_attachments.build
   end
 
   # GET /grounds/1/edit
@@ -33,8 +36,12 @@ class GroundsController < ApplicationController
     @ground = Ground.new(ground_params)
     @ground.user = current_user if current_user.has_role? :ground_owner
 
+
     respond_to do |format|
       if @ground.save
+        params[:ground_attachments]['photo'].each do |p|
+          @ground_attachment = @ground.ground_attachments.create!(:photo => p)
+        end
         format.html { redirect_to @ground, notice: 'ground was successfully added.' }
         format.json { render :show, status: :created, location: @ground }
       else
@@ -80,7 +87,7 @@ class GroundsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def ground_params
-      params.require(:ground).permit(:name, :city, :area, :pincode, :address, :status, :category , booking_dates_attributes: [:id, :date_of_booking, :status, :ground_id, :_destroy, booking_times_attributes: [:id, :time_of_booking, :status, :booking_date_id, :_destroy]])
+      params.require(:ground).permit(:name, :city, :area, :pincode, :address, :status, :category , booking_dates_attributes: [:id, :date_of_booking, :status, :ground_id, :_destroy, booking_times_attributes: [:id, :time_of_booking, :status, :booking_date_id, :_destroy]], ground_attachments_attributes: [:id, :ground_id, :photo])
     end
 
 end

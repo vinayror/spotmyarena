@@ -11,7 +11,7 @@ RailsAdmin.config do |config|
   #config.attr_accessible_role { _current_user.role.to_sym }
   ## == Cancan ==
   # config.authorize_with :cancan
-
+  config.authorize_with :cancan
   ## == PaperTrail ==
   # config.audit_with :paper_trail, 'User', 'PaperTrail::Version' # PaperTrail >= 3.0.0
 

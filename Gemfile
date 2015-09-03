@@ -11,12 +11,14 @@ gem "rolify"
 gem "cocoon"
 gem 'kaminari'
 gem 'paperclip'
+gem 'carrierwave'
 gem 'aws-sdk'
 gem 'omniauth'
 gem 'omniauth-facebook'
 gem 'omniauth-google-oauth2' 
 gem 'rails_admin', '~> 0.7.0'
-
+gem 'cancancan'
+gem 'bootstrap-datepicker-rails'
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'
 # Use Uglifier as compressor for JavaScript assets

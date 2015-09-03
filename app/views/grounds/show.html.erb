@@ -1,0 +1,18 @@
+<h3>ground</h3>
+<p>Name: <%= @ground.name if @ground.name %></p>
+<br>
+<p>ground: <%= @ground.category if @ground.category %></p>
+<br>
+<p>city: <%= @ground.city if @ground.city %></p>
+<br>
+<p>area: <%= @ground.area if @ground.area %></p>
+<br>
+<p>address: <%= @ground.address if @ground.address %></p>
+<br>
+<p>status: <%= @ground.ground_status if @ground.status %></p>
+<br>
+<p>Dats: <%= @ground.booking_dates.map(&:date) if @ground.booking_dates %></p>
+<br>
+
+
+<%= link_to "back", grounds_path %>

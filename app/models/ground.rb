@@ -5,6 +5,8 @@ AREA =['Connaught Place', 'Chanakyapuri', 'Delhi Cantonment', 'Vasant Vihar', 'N
 
   belongs_to :user
   has_many :booking_dates
+  has_many :ground_attachments
+  accepts_nested_attributes_for :ground_attachments
   accepts_nested_attributes_for :booking_dates, reject_if: :all_blank, allow_destroy: true
 
   def self.search(category, city, area, date)
@@ -13,6 +15,14 @@ AREA =['Connaught Place', 'Chanakyapuri', 'Delhi Cantonment', 'Vasant Vihar', 'N
       self.joins(:booking_dates).where('grounds.category = ? AND city = ? AND area = ? AND booking_dates.date_of_booking = ?', category, city, area, date)
     else
       all
+    end
+  end
+
+  def ground_status
+    if self.status == true
+      "Available"
+    else
+      "Not-available"
     end
   end
 end

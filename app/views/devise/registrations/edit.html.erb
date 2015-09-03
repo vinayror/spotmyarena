@@ -37,12 +37,16 @@
                                 </div>
                                 <ul class="user-profile__navigation">
                                     <% if current_user.has_role? :ground_owner %>
-                                      <li><a href="user-booking.html">My grounds<%= image_tag('icon-cart.png') %></a></li>
+                                      <li>
+                                        <%= link_to grounds_path do %>
+                                            My grounds<%= image_tag('icon-cart.png') %>
+                                        <% end %>
+                                      </li>
                                     <% else %>
                                       <li><a href="user-booking.html">My Bookings<%= image_tag('icon-cart.png') %></a></li>
                                     <% end %>  
                                       <li >
-                                      <%= link_to profile_path, :class => 'navbar-link' do %>
+                                      <%= link_to profile_path do %>
                                         My profile <%= image_tag('icon-user.png') %>
                                       <% end %>
                                     </li>

@@ -3,7 +3,7 @@ class Users::SessionsController < Devise::SessionsController
 
   def create
     if request.xhr?
-      return sign_in_and_render resource_name, warden.authenticate!(:scope => resource_name, :recall => "users/sessions#failure")
+      return  root_path #sign_in_and_render resource_name, warden.authenticate!(:scope => resource_name, :recall => "users/sessions#failure")
     else
       super
     end
