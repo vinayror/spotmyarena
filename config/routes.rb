@@ -21,6 +21,8 @@ Rails.application.routes.draw do
       get 'search'
     end
   end
+
+  resources :bookings
   get 'profile' => 'home#profile'
   #get 'search' => 'grounds#search'
   # The priority is based upon order of creation: first created -> highest priority.

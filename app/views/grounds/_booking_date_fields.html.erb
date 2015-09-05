@@ -1,8 +1,8 @@
 <div class="nested-fields">
    	<%= f.label :Date %><br>
-    <%= f.text_field :date_of_booking, class: 'field-input field-date datepicker', placeholder: "Date of booking"%>
+    <%= f.text_field :date_of_booking, class: 'field-input-calendar field-date datepicker', placeholder: "Booking date"%>
     
-    <%= f.check_box :status %>&nbsp;&nbsp;<%= f.label 'Date available' %><br>
+    <%= f.check_box :status %>&nbsp;&nbsp;<%= f.label 'available' %><br>
     <div class="field-input">
       <table id="tasks">
       <%= f.fields_for :booking_times, :wrapper => false do |booking_time| %>
@@ -13,45 +13,18 @@
       </table>
     <%= link_to_add_association 'Add time slot', f, :booking_times, class: "btn time-slot" %>
   </div>
-    <%= link_to_remove_association "Remove date", f, class: "btn-remove"%>
+    <%= link_to_remove_association "Remove date", f, class: "btn-remove rmv"%>
+    <!-- <div class="clearfix"></div> -->
 </div>
 
 
-<style type="text/css">
 
-
-.btn-remove {
-  -webkit-border-radius: 0;
-  -moz-border-radius: 0;
-  border-radius: 0px;
-  /*text-shadow: 1px 1px 3px #666666;*/
-  font-family: Courier New;
-  color: #ffffff !important;
-  font-size: 15px;
-  background: #f23535;
-  padding: 3px 5px 3px 5px;
-  text-decoration: none !important;
-  float: right;
-}
-
-.btn-remove:hover {
-  background: #fce93c;
-  text-decoration: none;
-}
-
-
-.field-date  {
-    background: rgba(0, 0, 0, 0) url("/assets/icon-calendar.png") no-repeat scroll right center;
-    padding-right: 20px;
-}
-
-.time-slot
-{}
-  </style>
-
-
-  <script type="text/javascript">
+<script type="text/javascript">
   $(document).ready(function(){
-    $('.datepicker').datepicker();
+    $('.datepicker').datepicker({
+      dateFormat: "dd/mm/yy",
+      showOtherMonths: true,
+      selectOtherMonths: true
+    });
   });
 </script>

@@ -6,6 +6,7 @@ AREA =['Connaught Place', 'Chanakyapuri', 'Delhi Cantonment', 'Vasant Vihar', 'N
   belongs_to :user
   has_many :booking_dates
   has_many :ground_attachments
+  
   accepts_nested_attributes_for :ground_attachments
   accepts_nested_attributes_for :booking_dates, reject_if: :all_blank, allow_destroy: true
 
@@ -21,7 +22,7 @@ AREA =['Connaught Place', 'Chanakyapuri', 'Delhi Cantonment', 'Vasant Vihar', 'N
   def ground_status
     if self.status == true
       "Available"
-    else
+    elsif self.status == false
       "Not-available"
     end
   end

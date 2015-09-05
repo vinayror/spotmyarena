@@ -786,11 +786,11 @@ body.menu-active {
 }
 .ui-datepicker .ui-datepicker-header .ui-datepicker-prev {
   left: 0;
-  background-image: url("/assets/icon-arrow-left-blue.png") no-repeat 50% 50%;
+  background: url("/assets/icon-arrow-left-blue.png") no-repeat 50% 50%;
 }
 .ui-datepicker .ui-datepicker-header .ui-datepicker-next {
   right: 0;
-  background-image: url("/assets/icon-arrow-blue.png") no-repeat 50% 50%;
+  background: url("/assets/icon-arrow-blue.png") no-repeat 50% 50%;
 }
 .ui-datepicker .ui-datepicker-header .ui-datepicker-title {
   color: #333333;
@@ -8889,6 +8889,24 @@ blockquote:before {
   color: #333333;
   font-family: 'Open sans'
 }
+.input-select-time
+{
+  border: 1px solid #dedede;
+  background-color: transparent;
+  padding:14px 10px;
+  width: 32%;
+  color: #333333;
+  font-family: 'Open sans'
+}
+.field-input-calendar
+{
+  border: 1px solid #dedede;
+  background-color: transparent;
+  padding:14px 10px;
+  width: 32%;
+  color: #333333;
+  font-family: 'Open sans'
+}
 .user-form .field-input .awe-btn {
   padding-left: 20px;
   padding-right: 20px;
@@ -11820,4 +11838,68 @@ footer .copyright {
   footer .copyright {
     font-size: 13px;
   }
+}
+
+.btn {
+  -webkit-border-radius: 0;
+  -moz-border-radius: 0;
+  border-radius: 0px;
+  /*text-shadow: 1px 1px 3px #666666;*/
+  font-family: Courier New;
+  color: #ffffff !important;
+  font-size: 12px;
+  background: #65d934;
+  padding: 2px 5px 2px 5px;
+  text-decoration: none !important;
+  margin-top: 6px;
+}
+
+.btn:hover {
+  background: #fce93c;
+  text-decoration: none;
+}
+
+.cancle{
+  background: CaptionText !important;
+  text-decoration: none !important;
+}
+
+.time select:nth-child(1) {
+  width: 130px;
+  text-indent: 15px; 
+}
+
+.btn-remove {
+  -webkit-border-radius: 0;
+  -moz-border-radius: 0;
+  border-radius: 0px;
+  /*text-shadow: 1px 1px 3px #666666;*/
+  font-family: Courier New;
+  color: #ffffff !important;
+  font-size: 12px;
+  background: #f23535;
+  padding: 3px 5px 3px 5px;
+  text-decoration: none !important;
+  float: right;
+  margin-top: 14px;
+}
+
+.btn-remove:hover {
+  background: #fce93c;
+  text-decoration: none;
+}
+
+
+.field-date  {
+    background: rgba(0, 0, 0, 0) url("/assets/icon-calendar.png") no-repeat scroll right center;
+    padding-right: 20px;
+}
+
+.rmv
+{
+   margin-top: -24px;
+}
+.clrfix {
+  clear: both;
+  min-height: 1px;
 }

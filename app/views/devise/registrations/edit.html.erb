@@ -29,28 +29,31 @@
                         <div class="row">
                             <div class="col-md-3">
                                 <div class="user-profile__header">
-                                    <h4>Vinay sharma</h4>
+                                    <h4><%= current_user.name %></h4>
                                     <span>Member Since September 2015</span>
                                     <p>
                                         <%= image_tag('vinay.jpg') %>
                                     </p>
                                 </div>
                                 <ul class="user-profile__navigation">
-                                    <% if current_user.has_role? :ground_owner %>
+                                    <% if current_user.has_role? :ground_owner || :admin%>
                                       <li>
                                         <%= link_to grounds_path do %>
                                             My grounds<%= image_tag('icon-cart.png') %>
                                         <% end %>
                                       </li>
                                     <% else %>
-                                      <li><a href="user-booking.html">My Bookings<%= image_tag('icon-cart.png') %></a></li>
+                                      <li>
+                                        <%= link_to bookings_path do %>
+                                            My bookings<%= image_tag('icon-cart.png') %>
+                                        <% end %>
+                                        </li>
                                     <% end %>  
                                       <li >
                                       <%= link_to profile_path do %>
                                         My profile <%= image_tag('icon-user.png') %>
                                       <% end %>
                                     </li>
-                                    <li><a href="user-review.html">My reviews<%= image_tag('icon-review.png') %></a></li>
                                     <li class="current">
                                       <%= link_to edit_user_registration_path do %>
                                         Setting <%= image_tag('icon-setting.png') %>

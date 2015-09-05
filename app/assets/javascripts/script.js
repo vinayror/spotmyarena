@@ -360,7 +360,7 @@ $(document).ready(function () {
 
     /*===== Calendar =====*/
     function Calendar() {
-        $('.calendar-input,.caneldar').datepicker({
+        $('.calendar-input,.caneldar, .ground_date').datepicker({
             dateFormat: "dd/mm/yy",
             showOtherMonths: true,
             selectOtherMonths: true,

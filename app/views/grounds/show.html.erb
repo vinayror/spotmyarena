@@ -9,9 +9,11 @@
 <br>
 <p>address: <%= @ground.address if @ground.address %></p>
 <br>
-<p>status: <%= @ground.ground_status if @ground.status %></p>
+
+<p>status: <%= @ground.ground_status %></p>
 <br>
-<p>Dats: <%= @ground.booking_dates.map(&:date) if @ground.booking_dates %></p>
+
+<p>Dats: <%=  @ground.booking_dates.map{|e| [e.date_of_booking , e.booking_times.map{|ee| ee.timeslot.slot}]}.flatten %></p>
 <br>
 
 

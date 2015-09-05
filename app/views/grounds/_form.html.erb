@@ -1,133 +1,145 @@
 
-<section class="sub-banner">
+  <section class="sub-banner">
             <!--Background-->
-  <div class="bg-parallax bg-1"></div>
-  <!--End Background-->
-  <!-- Logo -->
-  <div class="logo-banner text-center">
-    <%= link_to root_path do %>
-      <%= image_tag "logo-banner.png", class: "" %>
-    <% end %>
-  </div>
-  <!-- Logo -->
-</section>
-  <!--End Banner-->
-
-  <!-- Main -->
-  <div class="main">
-    <div class="container">
-      <div class="main-cn element-page bg-white clearfix">
-        <!--Breakcrumb-->
-        <section class="breakcrumb-sc">
-          <ul class="breadcrumb arrow">
-            <li><a href="index.html"><i class="fa fa-home"></i></a></li>
-            <li>Ground section</li>
-          </ul>
-          <div class="support float-right">
-            <small>Call us</small> 123-123-1234
-          </div>
-        </section>
-              <!--End Breakcrumb-->
-                    
-        <section class="user-profile">
-          <div class="user-form user-signup">
-            <div class="row">
-            <%= form_for @ground do |f| %>
-              <div class="col-md-5">
-                <h2 class="user-profile__title">Add New ground here</h2>
-
-                <p>Create entry for ground</p>
-                <div class="field-input">
-                  <%= f.label :name %><br />
-                  <%= f.text_field :name, :placeholder => "Enter name of ground" , class: "input-text" %>
-                  
-                </div>
-                <div class="field-input">
-                    <%= f.label :category %><br />
-                    <%= f.select :category, options_for_select(Ground::CATEGORY), { :placeholder => "Enter area details"}, {class: 'input-select'}%>
-                </div>
-                <div class="field-input">
-                  <%= f.label :city %><br />
-                  <%= f.select :city, options_for_select(Ground::CITY), { :placeholder => "Enter area details"}, {class: 'input-select'}%>                   
-                </div>
-                <div class="field-input">
-                    <%= f.label :area %><br />
-                    <%= f.select :area, options_for_select(Ground::AREA), { :placeholder => "Enter area details"}, {class: 'input-select'} %>
-                </div>
-                <div class="field-input">
-                  <%= f.label :pincode %><br />
-                  <%= f.text_field :pincode,  :placeholder => "Enter pincode" , class: "input-text" %>
-                </div>                  
-                <div class="field-input">
-                  <%= f.label :address %><br />
-                  <%= f.text_field :address, :placeholder => "Enter address", class: "input-text" %>
-                </div>
-                <div class="field-input">
-                    <%= f.check_box :status %>&nbsp;&nbsp;<%= f.label "Availability status" %>
-                </div>          
-                       
-              </div>
-                <div class="col-md-5 col-md-offset-2">
-                  <div class="field-input">  
-                    <%= f.fields_for :ground_attachments do |p| %>
-                       <div class="field-input">
-                         <%= p.label :photo %><br>
-                         <%= p.file_field :photo, :multiple => true, name: "ground_attachments[photo][]", class: "input-text" %>
-                       </div>
-                     <% end %>
-                  </div>
-                  <div class="field-input">
-                      <table id="tasks">
-                        <%= f.fields_for :booking_dates, :wrapper => false do |booking_date| %>
-                          <tr class="fields">
-                            <%= render 'booking_date_fields', f: booking_date %>
-                          </tr>
-                        <% end %>
-                      </table>
-                      <%= link_to_add_association 'add dates', f, :booking_dates, class: 'btn' %>
-                  </div>
-                          
-                  
-                  <div class="field-input">
-                    <%= f.submit "Create", class: "awe-btn awe-btn-1 awe-btn-medium"%> <%= link_to 'Cancle and go back', grounds_path, :class => 'awe-btn awe-btn-1 awe-btn-medium cancle' %>
-                  </div>
-
-                </div>
-              </div>
-            <% end %>
+            <div class="bg-parallax bg-1"></div>
+            <!--End Background-->
+            <!-- Logo -->
+            <div class="logo-banner text-center">
+                <%= link_to root_path do %>
+                    <%= image_tag "logo-banner.png", class: "" %>
+                <% end %>
             </div>
-          </div>
+            <!-- Logo -->
         </section>
-      </div>
-    </div>
-  </div>
-  <!-- End Main -->
+        <!--End Banner-->
 
-  <style type="text/css">
+        <!-- Main -->
+        <div class="main">
+            <div class="container">
+                <div class="main-cn element-page bg-white clearfix">
+                    <!--Breakcrumb-->
+                    <section class="breakcrumb-sc">
+                        <ul class="breadcrumb arrow">
+                            <li><a href="index.html"><i class="fa fa-home"></i></a></li>
+                            <li>Ground section</li>
+                        </ul>
+                    </section>
+                    <!--End Breakcrumb-->
+                    
+                    <section class="user-profile">
+                        <div class="row">
+                            <div class="col-md-3">
+                                <div class="user-profile__header">
+                                    <h4><%= current_user.name %></h4>
+                                    <span>Member Since September 2015</span>
+                                    <p>
+                                        <%= image_tag('vinay.jpg') %>
+                                    </p>
+                                </div>
+                                <ul class="user-profile__navigation">
+                                    <% if current_user.has_role? :ground_owner %>
+                                      <li class="current">
+                                        <%= link_to grounds_path do %>
+                                            My grounds<%= image_tag('icon-cart.png') %>
+                                        <% end %>
+                                      </li>
+                                    <% else %>
+                                      <li class="current">
+                                        <%= link_to bookings_path do %>
+                                            My bookings<%= image_tag('icon-cart.png') %>
+                                        <% end %>
+                                      </li>
+                                    <% end %>  
+                                      <li >
+                                      <%= link_to profile_path do %>
+                                        My profile <%= image_tag('icon-user.png') %>
+                                      <% end %>
+                                    </li>
+                                    <li>
+                                      <%= link_to edit_user_registration_path do %>
+                                        Setting <%= image_tag('icon-setting.png') %>
+                                      <% end %>
+                                    </li>
+                                    
+                                    <li>
+                                      <%= link_to destroy_user_session_path, method: :delete do %>
+                                        logout <%= image_tag('icon-back.png') %>
+                                      <% end %>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="col-md-9">
+                                <h2 class="user-profile__title">Ground page</h2>
+                                <div class="user-form">
+                                    <div class="row">
+                                    <%= form_for @ground do |f| %>
+                                        <div class="col-md-6">
+                                        
+                                            
+                                            <h3>New ground entry</h3>
+                                            <div class="field-input">
+                                              <%= f.label :name %><br />
+                                              <%= f.text_field :name, :placeholder => "Enter name of ground" , class: "input-text" %>
+                                              
+                                            </div>
+                                            <div class="field-input">
+                                                <%= f.label :category %><br />
+                                                <%= f.select :category, options_for_select(Ground::CATEGORY), { :placeholder => "Enter area details"}, {class: 'input-select'}%>
+                                            </div>
+                                            <div class="field-input">
+                                              <%= f.label :city %><br />
+                                              <%= f.select :city, options_for_select(Ground::CITY), { :placeholder => "Enter area details"}, {class: 'input-select'}%>                   
+                                            </div>
+                                            <div class="field-input">
+                                                <%= f.label :area %><br />
+                                                <%= f.select :area, options_for_select(Ground::AREA), { :placeholder => "Enter area details"}, {class: 'input-select'} %>
+                                            </div>
+                                            <div class="field-input">
+                                              <%= f.label :pincode %><br />
+                                              <%= f.text_field :pincode,  :placeholder => "Enter pincode" , class: "input-text" %>
+                                            </div>                  
+                                            <div class="field-input">
+                                              <%= f.label :address %><br />
+                                              <%= f.text_field :address, :placeholder => "Enter address", class: "input-text" %>
+                                            </div>
+                                            <div class="field-input">
+                                                <%= f.check_box :status %>&nbsp;&nbsp;<%= f.label "Availability status" %>
+                                            </div>          
+                                                                        
+                                        </div>
 
-
-.btn {
-  -webkit-border-radius: 0;
-  -moz-border-radius: 0;
-  border-radius: 0px;
-  /*text-shadow: 1px 1px 3px #666666;*/
-  font-family: Courier New;
-  color: #ffffff !important;
-  font-size: 15px;
-  background: #65d934;
-  padding: 2px 5px 2px 5px;
-  text-decoration: none !important;
-  margin-top: 6px;
-}
-
-.btn:hover {
-  background: #fce93c;
-  text-decoration: none;
-}
-
-.cancle{
-  background: CaptionText !important;
-  text-decoration: none !important;
-}
-
-  </style>
+                                        <div class="col-md-6">
+                                            <div class="field-input">  
+                                              <%= f.fields_for :ground_attachments do |p| %>
+                                                 <div class="field-input">
+                                                   <%= p.label :photo %><br>
+                                                   <%= p.file_field :photo, :multiple => true, name: "ground_attachments[photo][]", class: "input-text" %>
+                                                 </div>
+                                               <% end %>
+                                            </div>
+                                            <div class="field-input">
+                                                <table id="tasks">
+                                                  <%= f.fields_for :booking_dates, :wrapper => false do |booking_date| %>
+                                                    <tr class="fields">
+                                                      <%= render 'booking_date_fields', f: booking_date %>
+                                                    </tr>
+                                                  <% end %>
+                                                </table>
+                                                <%= link_to_add_association 'add dates', f, :booking_dates, class: 'btn' %>
+                                            </div>
+                                                    
+                                            
+                                            <div class="field-input">
+                                              <%= f.submit "Create", class: "awe-btn awe-btn-1 awe-btn-medium"%> <%= link_to 'Cancle and go back', grounds_path, :class => 'awe-btn awe-btn-1 awe-btn-medium cancle' %>
+                                            </div>
+                                        </div>
+                                      <% end %>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+            </div>
+        </div>
+        <!-- End Main -->

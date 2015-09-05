@@ -6,6 +6,7 @@ class User < ActiveRecord::Base
   after_create :set_role
 
   has_many :grounds
+  has_many :bookings
   
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
@@ -58,6 +59,9 @@ class User < ActiveRecord::Base
     end
   end
 
+  def name
+    [self.first_name, self.last_name].join(' ')
+  end
   private
   
   def set_role

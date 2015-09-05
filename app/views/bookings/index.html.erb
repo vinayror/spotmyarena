@@ -21,7 +21,7 @@
                     <section class="breakcrumb-sc">
                         <ul class="breadcrumb arrow">
                             <li><a href="index.html"><i class="fa fa-home"></i></a></li>
-                            <li>My Profile</li>
+                            <li>My Bookings</li>
                         </ul>
                     </section>
                     <!--End Breakcrumb-->
@@ -38,13 +38,13 @@
                                 </div>
                                 <ul class="user-profile__navigation">
                                     <% if current_user.has_role? :ground_owner || :admin%>
-                                      <li>
+                                      <li class="current">
                                         <%= link_to grounds_path do %>
                                             My grounds<%= image_tag('icon-cart.png') %>
                                         <% end %>
                                       </li>
                                     <% else %>
-                                      <li>
+                                      <li class="current">
                                         <%= link_to bookings_path do %>
                                             My bookings<%= image_tag('icon-cart.png') %>
                                         <% end %>
@@ -69,43 +69,33 @@
                                 </ul>
                             </div>
                             <div class="col-md-9">
-                                <h2 class="user-profile__title">Settings</h2>
+                                <h2 class="user-profile__title">My bookings</h2>
 
                                 <div class="my-profile">
 
                                     <div class="row">
                                         <div class="col-md-6">
-                                            <h4 class="my-profile__title">Personal Information</h4> 
+                                            <h4 class="my-profile__title"></h4> 
                                             <ul>
-                                                <li><span>First Name</span><%= current_user.first_name %></li>
-                                                <li><span>Last Name</span><%= current_user.last_name %></li>
-                                                <li><span>Email</span><%= current_user.email %></li>
-                                                <li><span>Phone number</span>+91<%= current_user.mobile %></li>
-                                                <li><span>Age</span><%= current_user.age %></li>
-
+                                                
                                                 
                                             </ul>   
                                         </div>
 
                                         <div class="col-md-6">
-                                            <h4 class="my-profile__title">Location</h4> 
+                                            <h4 class="my-profile__title"></h4> 
                                             <ul>
-                                                <li><span>City</span>+91<%= current_user.city %></li>
-                                                <li><span>Address</span>+91<%= current_user.address %></li>
                                                 
                                             </ul>   
                                         </div>
                                     </div>
                                     
                                     <p>
-                                        Sign up now for our regular promotional emails packed with special offers and exclusive deals. You can personalise the offers you receive from us by selecting your favorite cities
+                                        
                                     </p>
 
-                                    <div class="check-box">
-                                        <input type="checkbox" id="my-profile__checkbox">
-                                        <label for="my-profile__checkbox">Yes, I would like to receive Special Offers &amp; Promotions from Agoda</label>
-                                    </div>
-                                    <%= link_to "Edit profile", edit_user_registration_path , class: "btn" %>
+                                    
+                                    <%= link_to "go to home page", root_path ,  :class => 'awe-btn awe-btn-1 awe-btn-medium cancle' %>
                                 </div>
                             </div>
                         </div>
