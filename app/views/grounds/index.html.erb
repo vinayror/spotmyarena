@@ -26,10 +26,10 @@
       <!-- Breakcrumb -->
           <section class="breakcrumb-sc">
             <ul class="breadcrumb arrow">
-              <li><a href="index.html"><i class="fa fa-home"></i></a></li>
-              <li><a href="hotel.html" title="">Grounds</a></li>
+              <li><a href="#"><i class="fa fa-home"></i></a></li>
+              <li><a href="#" title="">Grounds</a></li>
               <li><%= link_to 'New ground add', new_ground_path , :class => 'awe-btn awe-btn-1 awe-btn-medium'%></li>
-              <li></li>
+              <li><%= link_to 'Go to back', edit_user_registration_path , :class => 'awe-btn awe-btn-1 awe-btn-medium'%></li>
             </ul>
           </section>
         <!-- End Breakcrumb -->
@@ -98,17 +98,16 @@
                   <div class="hotel-name">
                     <%= link_to ground_path(ground) do %>
                       <%= ground.name %>
-                    <% end %>
-                    
-                    
+                    <% end %>                    
                   </div>
                   <div class="hotel-star-address">
                     <span class="hotel-star">
                       <%= rating_for ground, "visual_effects" %>
                     </span>
                     <span class="rating">
-                      Good <br>
-                      <ins>7.5</ins>
+                      Score <br>
+                      <ins><%= rating_for ground, "original_score", disable_after_rate: true, imdb_avg: true %></ins>
+
                     </span>
                     <address class="hotel-address">
                       <%= ground.area %>

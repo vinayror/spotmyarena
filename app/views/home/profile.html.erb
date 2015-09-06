@@ -78,7 +78,9 @@
                                             <h4 class="my-profile__title">Personal Information</h4> 
                                             <ul>
                                                 <li><span>First Name</span><%= current_user.first_name %></li>
-                                                <li><span>Last Name</span><%= current_user.last_name %></li>
+                                                <li><span>Last Name</span>
+                                                    <%= current_user.last_name.present? ? current_user.last_name : "NOT PRESENT" %>
+                                                </li>
                                                 <li><span>Email</span><%= current_user.email %></li>
                                                 <li><span>Phone number</span>+91<%= current_user.mobile %></li>
                                                 <li><span>Age</span><%= current_user.age %></li>
@@ -90,8 +92,8 @@
                                         <div class="col-md-6">
                                             <h4 class="my-profile__title">Location</h4> 
                                             <ul>
-                                                <li><span>City</span>+91<%= current_user.city %></li>
-                                                <li><span>Address</span>+91<%= current_user.address %></li>
+                                                <li><span>City</span><%= current_user.city %></li>
+                                                <li><span>Address</span><%= current_user.address %></li>
                                                 
                                             </ul>   
                                         </div>

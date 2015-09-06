@@ -1589,6 +1589,7 @@ blockquote:before {
     padding-left: 15px;
     padding-right: 15px;
     line-height: 35px;
+    font-style: normal;
   }
   .awe-btn.awe-btn-small {
     font-size: 15px;
