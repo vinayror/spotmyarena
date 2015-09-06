@@ -25,6 +25,10 @@
 
     resources :bookings
     get 'profile' => 'home#profile'
+    get 'about_us' => 'home#about'
+    get 'contact_us' => 'home#contact'
+    get 'terms_of_service' => 'home#terms_of_service'
+    get 'faq' => 'home#faq'
 
 
     mount Commontator::Engine => '/commontator'

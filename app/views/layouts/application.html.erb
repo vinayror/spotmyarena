@@ -100,12 +100,26 @@
                       <!-- End Logo -->
                       <!-- Navigation Footer -->
                       <div class="col-xs-6 col-sm-3 col-md-2">
+                          <div class="ul-ft">
+                            <ul>
+                                
+                                
+                            </ul>
+                        </div>
                           
                       </div>
                       <!-- End Navigation Footer -->
                       <!-- Navigation Footer -->
                       <div class="col-xs-6 col-sm-3 col-md-2">
-                          
+                          <div class="ul-ft">
+                            <ul>
+                                <li><%= link_to 'Contact Us', contact_us_path%></li>
+                                <li><%= link_to 'About Us', about_us_path%></li>
+                                <li><%= link_to 'Terms_of_service', terms_of_service_path%></li>
+                                <li><%= link_to 'FAQ', faq_path%></li>
+                                
+                            </ul>
+                        </div>
                       </div>
                       <!-- End Navigation Footer -->
                       <!-- Footer Currency, Language -->
@@ -149,3 +163,10 @@
       setTimeout("$('.alert-success').fadeOut('slow')", 5000)
       setTimeout("$('.alert-danger').fadeOut('slow')", 5000)
   </script>
+
+  <style type="text/css">
+    html, body {
+    height: 100%;
+ }
+
+  </style>
