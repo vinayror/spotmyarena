@@ -21,7 +21,7 @@ gem 'cancancan'
 gem 'bootstrap-datepicker-rails'
 
 gem 'rails-simple-search'
-
+gem 'commontator'
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'
 # Use Uglifier as compressor for JavaScript assets

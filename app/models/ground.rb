@@ -7,6 +7,8 @@ class Ground < ActiveRecord::Base
   has_many :booking_dates
   has_many :ground_attachments
   
+  acts_as_commontable
+
   accepts_nested_attributes_for :ground_attachments
   accepts_nested_attributes_for :booking_dates, reject_if: :all_blank, allow_destroy: true
 

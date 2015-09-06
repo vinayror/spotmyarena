@@ -1,7 +1,7 @@
   class User < ActiveRecord::Base
     rolify
     #enum roles: [:member, :ground_owner, :admin]
-   
+    acts_as_commontator
     attr_accessor :role 
     after_create :set_role
 
