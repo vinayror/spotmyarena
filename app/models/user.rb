@@ -25,7 +25,7 @@
         if registered_user
           return registered_user
         else
-          user = User.create(
+          user = User.new(
             first_name: auth.extra.raw_info.first_name,
             last_name: auth.extra.raw_info.last_name,
             provider: auth.provider,
@@ -33,10 +33,12 @@
             oauth_token: auth.credentials.token,
             oauth_expires_at:  Time.at(auth.credentials.expires_at),
             email:auth.info.email,
-            password:Devise.friendly_token[0,20],
-                            )
-
+            password:Devise.friendly_token[0,20]
+          )
+          user.add_role 'member'
           user.skip_confirmation!
+          user.save
+          user
         end    
       end
     end
@@ -52,7 +54,7 @@
           return registered_user
         else
           
-          user = User.create(first_name: data["first_name"],
+          user = User.new(first_name: data["first_name"],
             provider:access_token.provider,
             email: data["email"],
             uid: access_token.uid ,
@@ -61,7 +63,7 @@
 
           )
           user.add_role 'member'
-          #user.skip_confirmation!
+          user.skip_confirmation!
           user
         end
       end
