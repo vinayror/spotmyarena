@@ -8,6 +8,8 @@ class Ground < ActiveRecord::Base
   has_many :ground_attachments
   
   acts_as_commontable
+  
+  ratyrate_rateable 'visual_effects', 'original_score', 'director', 'custome_design'
 
   accepts_nested_attributes_for :ground_attachments
   accepts_nested_attributes_for :booking_dates, reject_if: :all_blank, allow_destroy: true

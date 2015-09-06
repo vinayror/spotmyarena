@@ -96,16 +96,15 @@
                 </figure>
                 <div class="hotel-text">
                   <div class="hotel-name">
-                    <a href="hotel-detail.html" title=""><%= ground.name %></a>
+                    <%= link_to ground_path(ground) do %>
+                      <%= ground.name %>
+                    <% end %>
+                    
                     
                   </div>
                   <div class="hotel-star-address">
                     <span class="hotel-star">
-                      <i class="glyphicon glyphicon-star"></i>
-                      <i class="glyphicon glyphicon-star"></i>
-                      <i class="glyphicon glyphicon-star"></i>
-                      <i class="glyphicon glyphicon-star"></i>
-                      <i class="glyphicon glyphicon-star"></i>
+                      <%= rating_for ground, "visual_effects" %>
                     </span>
                     <span class="rating">
                       Good <br>
