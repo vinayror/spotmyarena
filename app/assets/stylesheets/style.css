@@ -1069,7 +1069,7 @@ blockquote:before {
   color: #fff;
   font-size: 14px;
   line-height: 35px;
-  font-family: 'Georgia';
+  font-family: 'open sans';
   font-style: italic;
 }
 .search-result p ins {
@@ -11890,7 +11890,7 @@ footer .copyright {
 }
 
 
-.field-date  {
+.field-date-ground  {
     background: rgba(0, 0, 0, 0) url("/assets/icon-calendar.png") no-repeat scroll right center;
     padding-right: 20px;
 }
