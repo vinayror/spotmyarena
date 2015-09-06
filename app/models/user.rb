@@ -27,6 +27,7 @@
         else
           user = User.create(
             first_name: auth.extra.raw_info.first_name,
+            last_name: auth.extra.raw_info.last_name,
             provider: auth.provider,
             uid: auth.uid,
             oauth_token: auth.credentials.token,
@@ -49,7 +50,7 @@
           return registered_user
         else
           
-          user = User.new(first_name: data["first_name"],
+          user = User.create(first_name: data["first_name"],
             provider:access_token.provider,
             email: data["email"],
             uid: access_token.uid ,
@@ -58,7 +59,8 @@
 
           )
           user.add_role 'member'
-          user.save
+          #user.skip_confirmation!
+          user
         end
       end
     end
@@ -73,6 +75,10 @@
     end
 
     def confirmation_required?
-      false
+      true
+    end
+
+    def send_confirmation_notification?
+      true
     end
   end

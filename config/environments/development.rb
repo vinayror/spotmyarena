@@ -38,4 +38,27 @@ Rails.application.configure do
 
   # Raises error for missing translations
   # config.action_view.raise_on_missing_translations = true
+
+  # config.action_mailer.default_url_options = { :host => 'localhost:3000' }
+  # config.action_mailer.delivery_method = :smtp
+  # config.action_mailer.smtp_settings = {:address => "localhost", :port => 1025}
+  # config.action_mailer.perform_deliveries = true
+  # ActionMailer Config
+  config.action_mailer.default_url_options = { :host => 'localhost:3000' }
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.smtp_settings = { address: '127.0.0.1', :port => 1025 }
+  # change to true to allow email to be sent during development
+  config.action_mailer.perform_deliveries = true
+  config.action_mailer.raise_delivery_errors = true
+  config.action_mailer.default :charset => "utf-8"
+
+  # config.action_mailer.smtp_settings = {
+  # address: "smtp.gmail.com", #this is you remote mail server, if you do not specify it rails will use mail server installed in your localhost
+  # port: 587, # the port at which mail server is running, for local host it is at 25
+  # domain: "spotmyarena.herokuapp.com", # just giving a domain name to you smtp server, you can use any name
+  # authentication: "plain", # If your mail server requires authentication, you need to specify the authentication type here.This is a symbol and one of :plain, :login, :cram_md5.
+  # enable_starttls_auto: true,
+  # user_name: "vnysharma11@gmail.com",
+  # password:  "balajikikripahai"
+  # }
 end

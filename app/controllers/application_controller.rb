@@ -15,6 +15,9 @@ class ApplicationController < ActionController::Base
 
   protected
 
+  # def after_sign_in_path_for(resource) 
+  #   edit_user_registration_path
+  # end 
 
   def configure_permitted_parameters
   	devise_parameter_sanitizer.for(:sign_in) { |u| u.permit(:username, :password) }
