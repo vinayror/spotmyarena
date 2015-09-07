@@ -36,7 +36,7 @@
             password:Devise.friendly_token[0,20]
           )
           user.add_role 'member'
-          user.skip_confirmation!
+          #user.skip_confirmation!
           user.save
           user
         end    
@@ -63,7 +63,7 @@
 
           )
           user.add_role 'member'
-          user.skip_confirmation!
+          #user.skip_confirmation!
           user
         end
       end
