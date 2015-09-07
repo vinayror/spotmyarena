@@ -107,7 +107,8 @@ Rails.application.configure do
     :authentication => :plain,
     :user_name => "vnysharma22@gmail.com",
     :password => "balajikikripahai22"
+    
   }
-
+  config.action_mailer.default :charset => "utf-8"
   
 end
