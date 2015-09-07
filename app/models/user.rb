@@ -14,7 +14,7 @@
     
     # Include default devise modules. Others available are:
     # :confirmable, :lockable, :timeoutable and :omniauthable
-    devise :database_authenticatable, :registerable, :recoverable, :rememberable, :trackable, :validatable, :omniauthable#, :confirmable
+    devise :database_authenticatable, :registerable, :recoverable, :rememberable, :trackable, :validatable, :omniauthable, :confirmable
 
     def self.find_for_facebook_oauth(auth, signed_in_resource=nil)
       user = User.where(:provider => auth.provider, :uid => auth.uid).first
@@ -36,7 +36,7 @@
             password:Devise.friendly_token[0,20]
           )
           user.add_role 'member'
-          #user.skip_confirmation!
+          user.skip_confirmation!
           user.save
           user
         end    
@@ -63,7 +63,7 @@
 
           )
           user.add_role 'member'
-          #user.skip_confirmation!
+          user.skip_confirmation!
           user.save
           user
         end
