@@ -106,7 +106,7 @@ Rails.application.configure do
     :domain => "gmail.com",
     :authentication => :plain,
     :user_name => "vnysharma22@gmail.com",
-    :password => "balajikikripahai"
+    :password => "balajikikripahai22"
   }
 
   
