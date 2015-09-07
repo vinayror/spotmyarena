@@ -64,6 +64,7 @@
           )
           user.add_role 'member'
           #user.skip_confirmation!
+          user.save
           user
         end
       end
