@@ -40,7 +40,7 @@
       respond_to do |format|
         if @ground.save
           # params[:ground_attachments]['photo'].each do |p|
-          #   @ground_attachment = @ground.ground_attachments.create!(:photo => p)
+          #   @ground_attachment = @ground.ground_attachments.create!(:photo => p) if p.present
           # end
           format.html { redirect_to @ground, notice: 'ground was successfully added.' }
           format.json { render :show, status: :created, location: @ground }
@@ -87,7 +87,7 @@
 
       # Never trust parameters from the scary internet, only allow the white list through.
       def ground_params
-        params.require(:ground).permit(:name, :city, :area, :pincode, :address, :status, :category , booking_dates_attributes: [:id, :date_of_booking, :status, :ground_id, :_destroy, booking_times_attributes: [:id, :time_of_booking, :status, :booking_date_id, :timeslot_id, :_destroy]], ground_attachments_attributes: [:id, :ground_id, :photo])
+        params.require(:ground).permit(:name, :city, :area, :pincode, :address, :status, :category , booking_dates_attributes: [:id, :date_of_booking, :status, :ground_id, :_destroy, booking_times_attributes: [:id, :time_of_booking, :status, :booking_date_id, :timeslot_id, :_destroy]], ground_attachments_attributes: [:id, :ground_id, :photo, :_destroy])
       end
 
   end

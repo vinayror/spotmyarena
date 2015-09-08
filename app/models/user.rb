@@ -9,8 +9,8 @@
     attr_accessor :role 
     after_create :set_role
 
-    has_many :grounds
-    has_many :bookings
+    has_many :grounds, :dependent => :destroy
+    has_many :bookings, :dependent => :destroy
     
     # Include default devise modules. Others available are:
     # :confirmable, :lockable, :timeoutable and :omniauthable

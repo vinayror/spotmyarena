@@ -109,14 +109,20 @@
                                         </div>
 
                                         <div class="col-md-6">
-                                            <div class="field-input">  
-                                              <%= f.fields_for :ground_attachments do |p| %>
-                                                 <div class="field-input">
-                                                   <%= p.label :photo %><br>
-                                                   <%= p.file_field :photo, :multiple => true, name: "ground_attachments[photo][]", class: "input-text" %>
-                                                 </div>
-                                               <% end %>
+                                            <div class="field-input"> 
+                                            <table id="tasks">
+                                                  <%= f.fields_for :ground_attachments, :wrapper => false do |ground_attachment| %>
+                                                    <tr class="fields">
+                                                      <%= render "ground_attachments/form", f: ground_attachment %>
+                                                    </tr>
+                                                  <% end %>
+                                                </table>
+                                                <%= link_to_add_association 'add photo', f, :ground_attachments, partial: 'ground_attachments/form', class: 'btn'%>
+                                              
+                                      
+                                              
                                             </div>
+                                      
                                             <div class="field-input">
                                                 <table id="tasks">
                                                   <%= f.fields_for :booking_dates, :wrapper => false do |booking_date| %>

@@ -1,0 +1,12 @@
+
+
+<div class="nested-fields">
+    <% if !f.object.new_record? %>
+    
+      <%= image_tag f.object.photo.url%>
+    <% end %>
+    <%= f.label 'Ground picture' %><br>
+    <%= f.file_field :photo, class: '', placeholder: "images"%>
+    <%= link_to_remove_association "Remove photo", f, class: "btn-remove rmv"%>
+    <!-- <div class="clearfix"></div> -->
+</div>
