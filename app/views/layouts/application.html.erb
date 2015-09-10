@@ -3,6 +3,9 @@
   <head>
     <title>SpotMyArena</title>
     <%= stylesheet_link_tag    'application', media: 'all' %>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
     <link href='http://fonts.googleapis.com/css?family=Lato:300,400%7COpen+Sans:300,400,600' rel='stylesheet' type='text/css'>
     <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,700' rel='stylesheet' type='text/css'>
     <%= csrf_meta_tags %>
@@ -44,21 +47,21 @@
                     <ul class="menu-list text-uppercase">
                       <li class="current-menu-parent">
                         <%= link_to 'Home', root_path %>
-                        </li>
-                      <li>
-                        <a href="#">button2</a>
                       </li>
                       <li>
-                        <a href="#" title="">button3</a>
+                        <a class="smoothscroll" href="#sales">Services </a>
                       </li>
                       <li>
-                        <a href="#" title="">button4</a>
+                        <a class="smoothscroll" href="#destinations" title="">About  </a>
                       </li>
                       <li>
-                        <a href="#" title="">button5</a>
+                        <a class="smoothscroll" href="#magazine" title="">BUTTON4</a>
                       </li>
                       <li>
-                        <a href="#" title="">button6</a>
+                        <a class="smoothscroll" href="#faq" title="">F&Q</a>
+                      </li>
+                      <li>
+                        <a class="smoothscroll" href="#contact-maps" title="">Contact Us</a>
                       </li>
                       <% if user_signed_in? %>
                         <li>
@@ -74,6 +77,8 @@
                 </div>
               </div>
             </nav>
+     
+            
             <!--End Navigation-->
         </div>
       </header>
@@ -113,11 +118,10 @@
                       <div class="col-xs-6 col-sm-3 col-md-2">
                           <div class="ul-ft">
                             <ul>
-                                <li><%= link_to 'Contact Us', contact_us_path%></li>
-                                <li><%= link_to 'About Us', about_us_path%></li>
-                                <li><%= link_to 'Terms_of_service', terms_of_service_path%></li>
-                                <li><%= link_to 'FAQ', faq_path%></li>
-                                
+                                <li><a href="#contact-maps" title="">Contact Us</a></li>
+                                <li><a href="#destinations" title="">About Us</a></li>
+                                <li><a href="#sales" title="">Services</a></li>
+                                <li><a href="#faq" title="">FAQ</a></li>
                             </ul>
                         </div>
                       </div>
@@ -154,19 +158,48 @@
           </footer>
       <!-- End Header -->
     </div>
+
   <%= javascript_include_tag 'application' %>
+  <script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false"></script>
+
   </body>
   </html>
 
   <script>
-      setTimeout("$('.alert').fadeOut('slow')", 5000)
-      setTimeout("$('.alert-success').fadeOut('slow')", 5000)
-      setTimeout("$('.alert-danger').fadeOut('slow')", 5000)
+      setTimeout("$('.alert').fadeOut('slow')", 5000);
+      setTimeout("$('.alert-success').fadeOut('slow')", 5000);
+      setTimeout("$('.alert-danger').fadeOut('slow')", 5000);
+
+      $(function() {
+        $('a.smoothscroll[href*=#]:not([href=#])').click(function() {
+          if (location.pathname.replace(/^\//,'') == this.pathname.replace(/^\//,'') && location.hostname == this.hostname) {
+            var target = $(this.hash);
+            target = target.length ? target : $('[name=' + this.hash.slice(1) +']');
+            if (target.length) {
+              $('html,body').animate({
+                scrollTop: target.offset().top - 100
+              }, 1000);
+              return false;
+            }
+          }
+        });
+      });
+
+      $(document).ready(fnReadyIndex());
+      function fnReadyIndex () {
+        $(".menu-list>li>a").on("click", function() {
+         $(".menu-list>li").removeClass("current-menu-parent");
+         $(this).parent().addClass("current-menu-parent");
+        });
+      }
   </script>
+
 
   <style type="text/css">
     html, body {
-    height: 100%;
- }
+      height: 100%;
+    }
 
   </style>
+
+

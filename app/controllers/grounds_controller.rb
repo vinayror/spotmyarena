@@ -17,12 +17,14 @@
     end
 
     def show
+      #binding.pry
+      @slot = @ground.booking_dates.first.booking_times.map{|e| e.slot}
     end
 
     # GET /grounds/new
     def new
       @ground = Ground.new
-      @ground_attachment = @ground.ground_attachments.build
+      #@ground_attachment = @ground.ground_attachments.build
     end
 
     # GET /grounds/1/edit
