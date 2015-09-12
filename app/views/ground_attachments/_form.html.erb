@@ -6,7 +6,13 @@
       <%= image_tag f.object.photo.url%>
     <% end %>
     <%= f.label 'Ground picture' %><br>
-    <%= f.file_field :photo, class: '', placeholder: "images"%>
+    <%= f.file_field :photo, class: 'input-select', placeholder: "images"%>
     <%= link_to_remove_association "Remove photo", f, class: "btn-remove rmv"%>
     <!-- <div class="clearfix"></div> -->
 </div>
+
+<style type="text/css">
+  .style_image {
+  border-right: 1px solid #000;
+}
+</style>

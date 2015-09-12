@@ -31,16 +31,25 @@
                             <div class="col-md-3">
                                 <div class="user-profile__header">
                                     <h4><%= current_user.name %></h4>
-                                    <span>Member Since September 2015</span>
+                                    <span>Member Since <%= current_user.created_at.strftime("%b %Y")%></span>
                                     <p>
-                                        <%= image_tag('vinay.jpg') %>
+                                      <% if current_user.avatar.present? %>
+                                        <%= image_tag current_user.avatar_url %>
+                                      <% else %>
+                                        <%= image_tag('avatar.png') %>
+                                      <% end %>
                                     </p>
                                 </div>
                                 <ul class="user-profile__navigation">
-                                    <% if current_user.has_role? :ground_owner || :admin%>
+                                    <% if current_user.has_role? :ground_owner %>
                                       <li>
                                         <%= link_to grounds_path do %>
                                             My grounds<%= image_tag('icon-cart.png') %>
+                                        <% end %>
+                                      </li>
+                                      <li >
+                                        <%= link_to new_ground_path do %>
+                                          new ground entry<%= image_tag('icon-hotel.png') %>
                                         <% end %>
                                       </li>
                                     <% else %>
@@ -48,14 +57,14 @@
                                         <%= link_to bookings_path do %>
                                             My bookings<%= image_tag('icon-cart.png') %>
                                         <% end %>
-                                        </li>
-                                    <% end %> 
-                                    <li >
-                                      <%= link_to profile_path, :class => 'navbar-link' do %>
+                                      </li>
+                                    <% end %>  
+                                      <li class="current">
+                                      <%= link_to profile_path do %>
                                         My profile <%= image_tag('icon-user.png') %>
                                       <% end %>
                                     </li>
-                                    <li>
+                                    <li >
                                       <%= link_to edit_user_registration_path do %>
                                         Setting <%= image_tag('icon-setting.png') %>
                                       <% end %>
@@ -107,7 +116,7 @@
                                         <input type="checkbox" id="my-profile__checkbox">
                                         <label for="my-profile__checkbox">Yes, I would like to receive Special Offers &amp; Promotions from Agoda</label>
                                     </div>
-                                    <%= link_to "Edit profile", edit_user_registration_path , class: "btn" %>
+                                    <%= link_to "Edit profile", edit_user_registration_path , class: "awe-btn awe-btn-1 awe-btn-medium" %>
                                 </div>
                             </div>
                         </div>

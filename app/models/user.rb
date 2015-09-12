@@ -12,6 +12,8 @@
     has_many :grounds, :dependent => :destroy
     has_many :bookings, :dependent => :destroy
     
+    mount_uploader :avatar, AvatarUploader
+
     # Include default devise modules. Others available are:
     # :confirmable, :lockable, :timeoutable and :omniauthable
     devise :database_authenticatable, :registerable, :recoverable, :rememberable, :trackable, :validatable, :omniauthable#, :confirmable
@@ -36,7 +38,7 @@
             password:Devise.friendly_token[0,20]
           )
           user.add_role 'member'
-          user.skip_confirmation!
+          #user.skip_confirmation!
           user.save
           user
         end    
@@ -63,7 +65,7 @@
 
           )
           user.add_role 'member'
-          user.skip_confirmation!
+          #user.skip_confirmation!
           user.save
           user
         end
@@ -79,11 +81,11 @@
       self.add_role role
     end
 
-    def confirmation_required?
-      true
-    end
+    # def confirmation_required?
+    #   true
+    # end
 
-    def send_confirmation_notification?
-      true
-    end
+    # def send_confirmation_notification?
+    #   true
+    # end
   end

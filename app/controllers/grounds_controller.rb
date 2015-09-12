@@ -3,6 +3,8 @@
     load_resource only: [:show, :create ,:update, :destroy, :edit]
     PER_PAGE = 5
     def search
+      @test = ""
+      @test2 = ""
     	category = params[:category]
     	city = params[:city]
     	area = params[:area]
@@ -89,7 +91,7 @@
 
       # Never trust parameters from the scary internet, only allow the white list through.
       def ground_params
-        params.require(:ground).permit(:name, :city, :area, :pincode, :address, :status, :category , booking_dates_attributes: [:id, :date_of_booking, :status, :ground_id, :_destroy, booking_times_attributes: [:id, :time_of_booking, :status, :booking_date_id, :timeslot_id, :_destroy]], ground_attachments_attributes: [:id, :ground_id, :photo, :_destroy])
+        params.require(:ground).permit(:name, :city, :area, :pincode, :address, :status, :category, :weekend_price, :weekday_price, :court, :phone, :attention_message , booking_dates_attributes: [:id, :date_of_booking, :status, :ground_id, :_destroy, booking_times_attributes: [:id, :time_of_booking, :status, :booking_date_id, :timeslot_id, :_destroy]], ground_attachments_attributes: [:id, :ground_id, :photo, :_destroy])
       end
 
   end

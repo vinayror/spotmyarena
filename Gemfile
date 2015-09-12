@@ -20,6 +20,7 @@ gem 'rails_admin', '~> 0.7.0'
 gem 'cancancan'
 gem 'bootstrap-datepicker-rails'
 
+gem 'icheck-rails'
 gem 'rails-simple-search'
 gem 'commontator'
 gem 'ratyrate'

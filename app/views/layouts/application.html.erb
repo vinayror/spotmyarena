@@ -2,13 +2,15 @@
   <html>
   <head>
     <title>SpotMyArena</title>
-    <%= stylesheet_link_tag    'application', media: 'all' %>
+    <%= stylesheet_link_tag  'application', media: 'all' %>
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <meta name="format-detection" content="telephone=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <link href='http://fonts.googleapis.com/css?family=Lato:300,400%7COpen+Sans:300,400,600' rel='stylesheet' type='text/css'>
     <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,700' rel='stylesheet' type='text/css'>
     <%= csrf_meta_tags %>
+
+   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
   </head>
   <body>
 
@@ -158,9 +160,11 @@
           </footer>
       <!-- End Header -->
     </div>
+<script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
+<script src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
 
-  <%= javascript_include_tag 'application' %>
-  <script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false"></script>
+   <%= javascript_include_tag 'application' %>
+    <script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false"></script>
 
   </body>
   </html>
@@ -192,6 +196,8 @@
          $(this).parent().addClass("current-menu-parent");
         });
       }
+
+
   </script>
 
 
