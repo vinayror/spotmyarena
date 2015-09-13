@@ -63,7 +63,6 @@
           format.html { redirect_to @ground, notice: 'ground was successfully updated.' }
           format.json { render :show, status: :ok, location: @ground }
         else
-          binding.pry
           format.html { render :edit }
           format.json { render json: @ground.errors.messages, status: :unprocessable_entity }
         end

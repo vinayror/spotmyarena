@@ -51,7 +51,6 @@ class BookingsController < ApplicationController
         format.html { redirect_to @booking, notice: 'booking was successfully updated.' }
         format.json { render :show, status: :ok, location: @booking }
       else
-        binding.pry
         format.html { render :edit }
         format.json { render json: @booking.errors.messages, status: :unprocessable_entity }
       end
