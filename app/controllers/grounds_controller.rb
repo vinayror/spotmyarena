@@ -19,7 +19,6 @@
     end
 
     def show
-      #binding.pry
       @slot = @ground.booking_dates.first.booking_times.map{|e| e.slot}
     end
 

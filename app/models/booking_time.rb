@@ -3,14 +3,9 @@
 	  belongs_to :booking_date
 	  belongs_to :booking
 	  belongs_to :timeslot
-	  before_save :remain_time
 	  #validates_uniqueness_of :time_of_booking
 
 	  def ground_details
 	  	self.booking_date.ground
-	  end
-
-	  def remain_time
-	  	binding.pry
 	  end
 	end
