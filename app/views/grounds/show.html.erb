@@ -79,7 +79,8 @@
             </div>
             <% if current_user.has_role? "ground_owner"%>
               <div class="row">
-                <div class="col-md-4 col-xs-12"><%= link_to 'Click to edit', edit_ground_path(@ground), class: 'btn btn-primary' %></div>
+                <div class="col-md-4 col-xs-12"><%= link_to 'Click to edit', edit_ground_path(@ground), class: 'btn btn-primary' %> <%= link_to 'Click to delete', ground_path(@ground), method: :delete, class: 'btn btn-danger' %></div>
+
               </div>
             <% end %>
 
