@@ -69,7 +69,8 @@
           </div>
           <div class="col-md-9">
             <h2 class="user-profile__title">My bookings</h2>
-
+            <hr>
+          <% if @bookings.present? %>
             <div class="my-profile">
 
               <div class="row">
@@ -92,7 +93,12 @@
               <p>
                 
               </p>
+        <% else %>
 
+        <h4>Currently you don't have any booking...!!!!</h4>
+        <% end %>
+        <hr>
+        <br>
               
               <%= link_to "go to home page", root_path ,  :class => 'awe-btn awe-btn-1 awe-btn-medium cancle' %>
             </div>

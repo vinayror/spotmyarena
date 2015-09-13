@@ -90,23 +90,23 @@
                                           <% @grounds.each do |ground| %>
                                             <div class="hotel-list-item">
                                               <figure class="hotel-img float-left">
-                                                <a href="hotel-detail.html" title="">
-                                                <% if ground.ground_attachments.present? %>
-                                                  <%= image_tag ground.ground_attachments.last.photo_url %>
-                                                <% else %>
-                                                  <%= image_tag 'logo-banner.png' %>
-                                                <%end%>
-                                                </a>
+                                                <a href="#" title="">
+                                                <%= link_to ground_path(ground) do %>
+                                                  <% if ground.ground_attachments.present? %>
+                                                    <%= image_tag ground.ground_attachments.last.photo_url %>
+                                                  <% else %>
+                                                    <%= image_tag 'logo-banner.png' %>
+                                                  <%end%>
+                                                <% end %>
                                               </figure>
                                               <div class="hotel-text">
                                                 <div class="hotel-name">
                                                   <%= link_to ground_path(ground) do %>
                                                     <%= ground.name %>
-                                                     <span>
-                                                    <%= link_to '  edit', edit_ground_path(ground), :class => 'awe-btn awe-btn-medium'%>
-                                                </span> 
                                                   <% end %>
-
+                                                  <span>
+                                                    <%= link_to '  edit', edit_ground_path(ground), :class => 'awe-btn awe-btn-medium'%>
+                                                  </span> 
                                                 </div>
                                                 
                                                 <div class="hotel-star-address">

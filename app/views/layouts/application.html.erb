@@ -50,21 +50,44 @@
                       <li class="current-menu-parent">
                         <%= link_to 'Home', root_path %>
                       </li>
-                      <li>
-                        <a class="smoothscroll" href="#sales">Services </a>
-                      </li>
-                      <li>
-                        <a class="smoothscroll" href="#destinations" title="">About  </a>
-                      </li>
-                      <li>
-                        <a class="smoothscroll" href="#magazine" title="">BUTTON4</a>
-                      </li>
-                      <li>
-                        <a class="smoothscroll" href="#faq" title="">F&Q</a>
-                      </li>
-                      <li>
-                        <a class="smoothscroll" href="#contact-maps" title="">Contact Us</a>
-                      </li>
+                      <% if current_page?(root_path) %>
+                        <li>
+                          <a class="smoothscroll" href="#sales">Services </a>
+                        </li>
+                        <li>
+                          <a class="smoothscroll" href="#destinations" title="">About  </a>
+                        </li>
+                        <li>
+                          <a class="smoothscroll" href="#magazine" title="">BUTTON4</a>
+                        </li>
+                        <li>
+                          <a class="smoothscroll" href="#faq" title="">F&Q</a>
+                        </li>
+                        <li>
+                          <a class="smoothscroll" href="#contact-maps" title="">Contact Us</a>
+                        </li>
+                      <% else %>
+                        <li>
+                          <%= link_to 'Services', root_path %>
+                          <!-- <a class="smoothscroll" href="#sales">Services </a> -->
+                        </li>
+                        <li>
+                          <%= link_to 'About', root_path %>
+                          <!-- <a class="smoothscroll" href="#destinations" title="">About  </a> -->
+                        </li>
+                        <li>
+                          <%= link_to 'Button', root_path %>
+                          <!-- <a class="smoothscroll" href="#magazine" title="">BUTTON4</a> -->
+                        </li>
+                        <li>
+                          <%= link_to 'FAQ', root_path %>
+                          <!-- <a class="smoothscroll" href="#faq" title="">F&Q</a> -->
+                        </li>
+                        <li>
+                          <%= link_to 'Contact us', root_path %>
+                          <!-- <a class="smoothscroll" href="#contact-maps" title="">Contact Us</a> -->
+                        </li>
+                      <% end %>
                       <% if user_signed_in? %>
                         <li>
                           <%= link_to "Dashboard", edit_user_registration_path %>

@@ -11,6 +11,9 @@ class Ability
         can :manage, :all
       elsif user.has_role? :ground_owner
         can :manage, Ground                   # allow everyone to read everything
+      elsif user.has_role? :member
+        cannot :create, Ground
+        cannot :edit, Ground
       end
     end
     # Define abilities for the passed in user here. For example:

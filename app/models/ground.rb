@@ -8,7 +8,11 @@ class Ground < ActiveRecord::Base
   has_many :ground_attachments, :dependent => :destroy
 
   validates :weekday_price, :format => { :with => /\A\d+(?:\.\d{0,2})?\z/ }, :numericality => {:greater_than => 0, :message => "only allow digits"} 
+  validates :weekend_price, :format => { :with => /\A\d+(?:\.\d{0,2})?\z/ }, :numericality => {:greater_than => 0, :message => "only allow digits"} 
 
+  validates_presence_of :address
+  validates_presence_of :city
+  validates_presence_of :area
   #validates_numericality_of :value, :on => :create
   acts_as_commontable
   

@@ -11841,7 +11841,7 @@ footer .copyright {
   }
 }
 
-.btn {
+.btn1 {
   -webkit-border-radius: 0;
   -moz-border-radius: 0;
   border-radius: 0px;
@@ -11904,3 +11904,10 @@ footer .copyright {
   clear: both;
   min-height: 1px;
 }
+.price {
+    color: teal;
+}
+
+.search-top{
+    margin-bottom: 20px;
+  }
