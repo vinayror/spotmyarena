@@ -11911,3 +11911,29 @@ footer .copyright {
 .search-top{
     margin-bottom: 20px;
   }
+  .ui-state-highlight > a {background-color: #FF0000;}
+  .ui-datepicker td.ui-state-disabled span {
+    margin: 5px 0;
+    background-color: #ccc;
+    display: inline-block;
+    border: 1px solid #aeaeb3;
+    width: 37px;
+    height: 37px;
+    padding: 0;
+    line-height: 35px;
+    text-align: center;
+    color: #333333;
+    font-size: 14px;
+    font-weight: 300;
+    font-family: 'Open sans';
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    border-radius: 50%;
+    -moz-background-clip: padding;
+    -webkit-background-clip: padding-box;
+    background-clip: padding-box;
+    -webkit-transition: all 0.2s linear;
+    -moz-transition: all 0.2s linear;
+    -ms-transition: all 0.2s linear;
+    -o-transition: all 0.2s linear;
+  }

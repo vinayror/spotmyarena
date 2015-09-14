@@ -20,6 +20,7 @@
 
     def show
       @slot = @ground.booking_dates.first.booking_times.map{|e| e.slot}
+      @booking = Booking.new
     end
 
     # GET /grounds/new
@@ -42,6 +43,8 @@
 
       respond_to do |format|
         if @ground.save
+          @ground.set_date_and_time(ground_params[:start_date], ground_params[:end_date])
+          
           # params[:ground_attachments]['photo'].each do |p|
           #   @ground_attachment = @ground.ground_attachments.create!(:photo => p) if p.present
           # end
@@ -89,7 +92,7 @@
 
       # Never trust parameters from the scary internet, only allow the white list through.
       def ground_params
-        params.require(:ground).permit(:name, :city, :area, :pincode, :address, :status, :category, :weekend_price, :weekday_price, :court, :phone, :attention_message , booking_dates_attributes: [:id, :date_of_booking, :status, :ground_id, :_destroy, booking_times_attributes: [:id, :time_of_booking, :status, :booking_date_id, :timeslot_id, :_destroy]], ground_attachments_attributes: [:id, :ground_id, :photo, :_destroy])
+        params.require(:ground).permit(:start_date, :end_date, :name, :city, :area, :pincode, :address, :status, :category, :weekend_price, :weekday_price, :court, :phone, :attention_message , booking_dates_attributes: [:id, :date_of_booking, :status, :ground_id, :_destroy, booking_times_attributes: [:id, :time_of_booking, :status, :booking_date_id, :timeslot_id, :_destroy]], ground_attachments_attributes: [:id, :ground_id, :photo, :_destroy])
       end
 
   end

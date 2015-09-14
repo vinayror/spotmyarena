@@ -31,6 +31,7 @@ class BookingsController < ApplicationController
 
     respond_to do |format|
       if @booking.save
+
         # params[:ground_attachments]['photo'].each do |p|
         #   @booking_attachment = @booking.ground_attachments.create!(:photo => p)
         # end

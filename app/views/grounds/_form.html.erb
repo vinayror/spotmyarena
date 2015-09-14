@@ -139,14 +139,13 @@
 
                                             <h3>Date & timing schedule</h3>
                                             <div class="field-input">
-                                                <table id="tasks">
-                                                  <%= f.fields_for :booking_dates, :wrapper => false do |booking_date| %>
-                                                    <tr class="fields">
-                                                      <%= render 'booking_date_fields', f: booking_date %>
-                                                    </tr>
-                                                  <% end %>
-                                                </table>
-                                                <%= link_to_add_association 'add dates', f, :booking_dates, class: 'btn1' %>
+                                                <%= f.label :start_date %><br>
+                                                <%= f.text_field :start_date, class: 'field-input-calendar field-date-ground datepicker', placeholder: "Booking start_date date"%>
+                                            </div>
+                                            <div class="field-input">
+                                                <%= f.label :end_date %><br>
+                                                <%= f.text_field :end_date, class: 'field-input-calendar field-date-ground datepicker', placeholder: "Booking end date"%>
+
                                             </div>                         
                                         </div>
 
@@ -173,7 +172,10 @@
                                                 <%= f.check_box :status , {checked: true}%>&nbsp;&nbsp;<%= f.label "Availability status" %>
                                             </div> 
                                             
-                                           
+                                           <!--  <div class="field-input">
+                                                <%#= f.label :end_date %><br>
+                                                <%#= f.text_field :end_date, class: 'field-input-calendar field-date-ground', id: "dates_field", placeholder: "Booking end date"%>
+                                            </div> --> 
                                                     
                                             
                                             <div class="field-input">
@@ -190,3 +192,19 @@
             </div>
         </div>
         <!-- End Main -->
+
+
+<script type="text/javascript">
+  $(document).ready(function(){
+    $('.datepicker').datepicker({
+      dateFormat: "dd/mm/yy",
+      showOtherMonths: true,
+      selectOtherMonths: true,
+      minDate: 0
+    });
+    
+  });
+
+
+
+</script>

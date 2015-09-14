@@ -1073,3 +1073,5 @@ $(document).ready(function () {
 });
 
 })(jQuery);
+
+// $("#dates_field").multiDatesPicker({minDate: 0});
