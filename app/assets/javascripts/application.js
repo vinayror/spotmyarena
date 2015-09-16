@@ -16,3 +16,5 @@
 
 //= require cocoon
 //= require_tree .
+//= require jquery-ui.multidatespicker
+//= require select2

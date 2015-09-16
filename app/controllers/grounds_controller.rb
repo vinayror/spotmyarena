@@ -19,7 +19,7 @@
     end
 
     def show
-      @slot = @ground.booking_dates.first.booking_times.map{|e| e.slot}
+      #@slot = @ground.booking_dates.first.booking_times.map{|e| e.slot}
       @booking = Booking.new
     end
 
@@ -31,7 +31,8 @@
 
     # GET /grounds/1/edit
     def edit
-        
+      @added_dates = @ground.booking_dates.map{|e| e.date_of_booking}
+      @closing_times = ["12:00 AM","01:00 AM", "02:00 AM", "03:00 AM", "04:00 AM", "05:00 AM", "06:00 AM", "07:00 AM", "08:00 AM", "09:00 AM", "10:00 AM", "11:00 AM", "12:00 PM", "01:00 PM", "02:00 PM", "03:00 PM", "04:00 PM", "05:00 PM", "06:00 PM", "07:00 PM", "08:00 PM", "09:00 PM", "10:00 PM", "11:00 PM"]
     end
 
     # POST /grounds
@@ -43,11 +44,7 @@
 
       respond_to do |format|
         if @ground.save
-          @ground.set_date_and_time(ground_params[:start_date], ground_params[:end_date])
-          
-          # params[:ground_attachments]['photo'].each do |p|
-          #   @ground_attachment = @ground.ground_attachments.create!(:photo => p) if p.present
-          # end
+          @ground.set_date_and_time(params[:ground][:add_booking_dates])
           format.html { redirect_to @ground, notice: 'ground was successfully added.' }
           format.json { render :show, status: :created, location: @ground }
         else
@@ -62,6 +59,8 @@
     def update
       respond_to do |format|
         if @ground.update(ground_params)
+          @ground.update_date_and_time(params[:ground][:add_booking_dates], params[:ground][:add_closing_dates], params[:ground][:closing_times])
+          #@ground.update_date_and_time(ground_params[:start_date], ground_params[:end_date])
           format.html { redirect_to @ground, notice: 'ground was successfully updated.' }
           format.json { render :show, status: :ok, location: @ground }
         else

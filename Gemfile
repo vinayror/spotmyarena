@@ -19,6 +19,8 @@ gem 'omniauth-google-oauth2'
 gem 'rails_admin', '~> 0.7.0'
 gem 'cancancan'
 gem 'bootstrap-datepicker-rails'
+gem 'multi-dates-picker-rails'
+gem "select2-rails"
 
 gem 'icheck-rails'
 gem 'rails-simple-search'

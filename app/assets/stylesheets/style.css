@@ -8904,7 +8904,7 @@ blockquote:before {
   border: 1px solid #dedede;
   background-color: transparent;
   padding:14px 10px;
-  width: 32%;
+  width: 100%;
   color: #333333;
   font-family: 'Open sans'
 }
@@ -11911,7 +11911,7 @@ footer .copyright {
 .search-top{
     margin-bottom: 20px;
   }
-  .ui-state-highlight > a {background-color: #FF0000;}
+  .ui-state-highlight > a {background-color: yellow;}
   .ui-datepicker td.ui-state-disabled span {
     margin: 5px 0;
     background-color: #ccc;
@@ -11937,3 +11937,24 @@ footer .copyright {
     -ms-transition: all 0.2s linear;
     -o-transition: all 0.2s linear;
   }
+
+
+  .date_button{
+    -moz-user-select: none;
+    background-image: none;
+    border: 1px solid transparent;
+    border-radius: 4px;
+    color: gray !important;
+    cursor: pointer;
+    display: inline-block;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 1.42857;
+    margin: 2px;
+    padding: 6px 12px;
+    text-align: center;
+    text-decoration: none !important;
+    vertical-align: middle;
+    white-space: nowrap;
+    background: palegreen;
+}

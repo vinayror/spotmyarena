@@ -8,4 +8,10 @@
 	  def ground_details
 	  	self.booking_date.ground
 	  end
+
+	  def update_slot(closing_times)
+	  	closing_times.each do |c|
+          self.update(status: false) if self.slot == c
+      	end
+	  end
 	end
