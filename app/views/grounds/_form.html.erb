@@ -146,13 +146,13 @@
                                               <span>(Please do not select above dates they were already added)</span><br>
                                               <div class="field-input">
                                                   <%= f.label "Add_more dates_for_booking" %><br>
-                                                  <%= f.text_field :add_booking_dates, class: 'field-input-calendar field-date-ground dates_field', id: "dates_field", placeholder: "Booking start_date date"%>
+                                                  <%= f.text_field :add_booking_dates, class: 'field-input-calendar field-date-ground dates_field', id: "dates_field", placeholder: "add more dates here"%>
                                               </div>
                                               
-                                              <span>(If you wants to close any dates from above dates please added here)</span><br>
+                                              <span>(If you wants to close any date from above dates please added here)</span><br>
                                               <div class="field-input">
                                                   <%= f.label "Closing_dates" %><br>
-                                                  <%= f.text_field :add_closing_dates, class: 'field-input-calendar field-date-ground', id: "dates_field1", placeholder: "Booking end date"%>
+                                                  <%= f.text_field :add_closing_dates, class: 'field-input-calendar field-date-ground', id: "dates_field1", placeholder: "add closing date here"%>
                                               </div><br>
 
                                               
@@ -160,7 +160,7 @@
                                                 <%= f.label "Closing time" %><br>
                                                 <%= f.select :closing_times, @closing_times, {}, {multiple: true, class: "select-multiple field-input-calendar form-control" , id: "closing_times"} %>
                                               </div>
-                                              <span>(If you were added closing time then added closing time will be deleted from all added dates)</span><br>
+                                              <span>(If you were added closing time then added closing time will be delete from all added dates)</span><br>
                                             <% else %>
                                               <div class="field-input">
                                                   <%= f.label "Add_dates_for_booking" %><br>
