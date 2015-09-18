@@ -11958,3 +11958,14 @@ footer .copyright {
     white-space: nowrap;
     background: palegreen;
 }
+.select2-selection__choice {
+    background-color: palegreen !important;
+    border: 1px solid #aaa;
+    border-radius: 0 !important;
+    cursor: default;
+    float: left;
+    font-family: cursive !important;
+    margin-right: 5px;
+    margin-top: 5px;
+    padding: 0 5px;
+}

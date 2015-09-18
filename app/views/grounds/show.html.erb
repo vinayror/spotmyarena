@@ -164,19 +164,28 @@
                                       <td nowrap>
                                         <%= d.date_of_booking if d.status == true %> 
                                       </td>
-                                          <% d.booking_times.each do |t| %>
+                                      <% Timeslot.all.each do |e| %>
+                                        <% @test=0 %>                                  
+                                        <% d.booking_times.each do |t| %>
+                                          <% if e.slot == t.slot%>
                                             <% if t.status == true %>
                                               <td>
                                                 <%= check_box_tag(t.id, value = "", checked = false, data: { "price" => t.booking_date.weekend_day? ? t.booking_date.ground.end_price : t.booking_date.ground.day_price}, class: "ts") %>
-                                                <!-- <input type="checkbox" unchecked> -->
                                               </td>
                                             <% else %>
                                               <td>
                                                 <input type="checkbox" disabled>
                                               </td>
-                                            <%end%>  
-                                          <%end%>
-                                        <%# end %>
+                                            <%end%> 
+                                            <% @test=1 %>
+                                          <%end%>                                      
+                                        <%end%>
+                                        <% if @test==0%>
+                                          <td>
+                                            <input type="checkbox" disabled>
+                                          </td>
+                                        <% end %>
+                                      <% end %>
                                     </tr>
                                   <%end%>
                               </tbody>

@@ -12,11 +12,4 @@ class BookingDate < ActiveRecord::Base
     	weekends.include?(day)
   	end	
 
-
-  	def set_time_of_date(closing_times)
-  		times = self.booking_times
-  		times.each do |t|
-  			t.update_slot(closing_times)
-  		end
-  	end
 end

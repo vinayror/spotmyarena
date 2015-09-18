@@ -154,13 +154,24 @@
                                                   <%= f.label "Closing_dates" %><br>
                                                   <%= f.text_field :add_closing_dates, class: 'field-input-calendar field-date-ground', id: "dates_field1", placeholder: "add closing date here"%>
                                               </div><br>
-
-                                              
                                               <div class="field-input">
                                                 <%= f.label "Closing time" %><br>
                                                 <%= f.select :closing_times, @closing_times, {}, {multiple: true, class: "select-multiple field-input-calendar form-control" , id: "closing_times"} %>
                                               </div>
                                               <span>(If you were added closing time then added closing time will be delete from all added dates)</span><br>
+                                              <h3>Special closing time</h3>
+                                                
+                                                <div class="field-input">
+                                                  <%= f.label "Select date for special closing_times" %><br>
+                                                  <%= f.text_field :special_closing_date, class: 'field-input-calendar field-date-ground datepicker', id: "dates_field4", placeholder: "add closing date here"%>
+                                                </div>
+                                                <span>(please select date from added dates for off special closing time, only added times off for this date)</span>
+                                                <div class="field-input">
+                                                <%= f.label "special closing hours" %><br>
+                                                <%= f.select :special_closing_times, @closing_times, {}, {multiple: true, class: "form-control select-multiple field-input-calendar" , id: "closing_times1"} %>
+                                                </div>
+                                                <span>(add special closing hours)</span><br>
+
                                             <% else %>
                                               <div class="field-input">
                                                   <%= f.label "Add_dates_for_booking" %><br>
@@ -243,8 +254,12 @@
     allowClear: true,
     placeholder: "select multiple closing times"
   });  
+
+
+  $('#closing_times1').select2({
+    allowClear: true,
+    placeholder: "select multiple special closing times"
+  });  
   });
-
-
 
 </script>

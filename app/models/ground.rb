@@ -21,7 +21,7 @@ class Ground < ActiveRecord::Base
   accepts_nested_attributes_for :ground_attachments, reject_if: :all_blank, allow_destroy: true
   accepts_nested_attributes_for :booking_dates, reject_if: :all_blank, allow_destroy: true
 
-  attr_accessor :add_booking_dates, :add_closing_dates, :closing_times
+  attr_accessor :add_booking_dates, :add_closing_dates, :closing_times, :special_closing_date, :special_closing_times
   def self.search(category, city, area, date)
     if category.present? || city.present? || area.present? || date.present?
       self.joins(:booking_dates).where('grounds.category = ? OR city = ? OR area = ? OR booking_dates.date_of_booking = ?', category, city, area, date)
@@ -54,13 +54,13 @@ class Ground < ActiveRecord::Base
     add_booking_dates = add_booking_dates.split(",").map{|e| e.to_date} if add_booking_dates.present?
     add_closing_dates = add_closing_dates.split(",").map{|e| e.to_date} if add_closing_dates.present?
     closing_times = closing_times.reject(&:empty?) if closing_times.present?
-    timeslots = ["12:00 AM","01:00 AM", "02:00 AM", "03:00 AM", "04:00 AM", "05:00 AM", "06:00 AM", "07:00 AM", "08:00 AM", "09:00 AM", "10:00 AM", "11:00 AM", "12:00 PM", "01:00 PM", "02:00 PM", "03:00 PM", "04:00 PM", "05:00 PM", "06:00 PM", "07:00 PM", "08:00 PM", "09:00 PM", "10:00 PM", "11:00 PM"]
-
+    timeslots = ["12:00 AM", "01:00 AM", "02:00 AM", "03:00 AM", "04:00 AM", "05:00 AM", "06:00 AM", "07:00 AM", "08:00 AM", "09:00 AM", "10:00 AM", "11:00 AM", "12:00 PM", "01:00 PM", "02:00 PM", "03:00 PM", "04:00 PM", "05:00 PM", "06:00 PM", "07:00 PM", "08:00 PM", "09:00 PM", "10:00 PM", "11:00 PM"]
+    ground_dates = self.booking_dates
     if add_closing_dates.present?
       add_closing_dates.each do |cd|
-        close_date = BookingDate.find_by(date_of_booking: cd)
-        close_date_slots = close_date.booking_times.destroy_all if close_date.booking_times.present?
-        close_date.destroy
+        ground_dates.each do |d|
+          d.destroy if d.date_of_booking == cd
+        end
       end
     end
     if add_booking_dates.present?
@@ -73,13 +73,30 @@ class Ground < ActiveRecord::Base
     end
 
     if closing_times.present?
-      dates = self.booking_dates
-      dates.each do |date|
-        date.set_time_of_date(closing_times)
+      closing_times.each do |ct|
+        self.booking_dates.each do |date|
+          date.booking_times.each do |time|
+            time.update(status: false) if time.slot == ct
+          end
+        end
       end
     end    
   end
   
+  def update_special_closing_time(special_closing_date, special_closing_times)
+    special_closing_date = special_closing_date.to_date
+    special_closing_times = special_closing_times.reject(&:empty?)
+    current_booking_dates = self.booking_dates
+    select_date = current_booking_dates.where(date_of_booking: special_closing_date).first
+    if special_closing_date.present?
+      special_closing_times.each do |sc|
+        select_date.booking_times.each do |ct|
+          ct.destroy if ct.slot == sc && ct.booked == false
+        end
+      end
+    end
+  end
+
   def ground_status
     if self.status == true
       "Available"

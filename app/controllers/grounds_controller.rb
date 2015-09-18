@@ -22,7 +22,7 @@
       #@slot = @ground.booking_dates.first.booking_times.map{|e| e.slot}
       @booking = Booking.new
     end
-
+    
     # GET /grounds/new
     def new
       @ground = Ground.new
@@ -60,6 +60,7 @@
       respond_to do |format|
         if @ground.update(ground_params)
           @ground.update_date_and_time(params[:ground][:add_booking_dates], params[:ground][:add_closing_dates], params[:ground][:closing_times])
+          @ground.update_special_closing_time(params[:ground][:special_closing_date], params[:ground][:special_closing_times])
           #@ground.update_date_and_time(ground_params[:start_date], ground_params[:end_date])
           format.html { redirect_to @ground, notice: 'ground was successfully updated.' }
           format.json { render :show, status: :ok, location: @ground }
