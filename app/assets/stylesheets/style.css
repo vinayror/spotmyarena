@@ -8928,8 +8928,8 @@ blockquote:before {
   margin-top: 0;
 }
 .user-form a {
-  color: #26aa44;
-  text-decoration: underline;
+  /*color: #26aa44;*/
+  text-decoration: none !important;
 }
 .user-form > .row > [class*="col-"]:last-child {
   padding-left: 40px;
@@ -11856,7 +11856,7 @@ footer .copyright {
 }
 
 .btn:hover {
-  background: #fce93c;
+  background: lightgreen;
   text-decoration: none;
 }
 

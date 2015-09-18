@@ -23,8 +23,10 @@ class Ground < ActiveRecord::Base
 
   attr_accessor :add_booking_dates, :add_closing_dates, :closing_times, :special_closing_date, :special_closing_times
   def self.search(category, city, area, date)
+    
     if category.present? || city.present? || area.present? || date.present?
-      self.joins(:booking_dates).where('grounds.category = ? OR city = ? OR area = ? OR booking_dates.date_of_booking = ?', category, city, area, date)
+      self.joins(:booking_dates).where('category LIKE ? AND city LIKE ? AND area LIKE ? AND booking_dates.date_of_booking = ?', "%#{category}%", "%#{city}%", "%#{area}%","%#{date}%")
+      #self.joins(:booking_dates).where('grounds.category = ? OR city = ? OR area = ? OR booking_dates.date_of_booking = ?', category, city, area, date)
       #self.joins(:booking_dates).where('grounds.category = ? AND city = ? AND area = ? AND booking_dates.date_of_booking = ?', category, city, area, date)
     else
       all

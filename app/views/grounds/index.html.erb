@@ -93,7 +93,7 @@
                                                 <a href="#" title="">
                                                 <%= link_to ground_path(ground) do %>
                                                   <% if ground.ground_attachments.present? %>
-                                                    <%= image_tag ground.ground_attachments.last.photo_url %>
+                                                    <%= image_tag ground.ground_attachments.last.photo_url, size: "200" %>
                                                   <% else %>
                                                     <%= image_tag 'logo-banner.png' %>
                                                   <%end%>
@@ -104,39 +104,28 @@
                                                   <%= link_to ground_path(ground) do %>
                                                     <%= ground.name %>
                                                   <% end %>
-                                                  <span>
-                                                    <%= link_to '  edit', edit_ground_path(ground), :class => 'awe-btn awe-btn-medium'%>
-                                                  </span> 
                                                 </div>
-                                                
+                                                <hr>
+                                                <div class="">
+                                                  <a class= "btn btn-default btn-sm"><%= ground.category%></a>
+                                                  <%= link_to 'Click to edit info', edit_ground_path(ground), :class => 'btn btn-info pull-right'%>
+                                                </div>
+                                                <hr>
                                                 <div class="hotel-star-address">
-                                                  <span class="hotel-star">
-                                                    <%= rating_for ground, "visual_effects" %>
-                                                  </span>
-                                                  <span class="rating">
-                                                    Score <br>
-                                                    <ins><%= rating_for ground, "original_score", disable_after_rate: true, imdb_avg: true %></ins>
-
-                                                  </span>
-                                                 
                                                   <address class="hotel-address">
                                                     <%= ground.area %>
                                                   </address>
                                                 </div>
+                                                <hr>
                                                 <p>
                                                   <%= ground.attention_message %>
                                                 </p>
-                                                <hr class="hr">
-                                                <div class="price-box float-left">
+                                                <!-- <hr class="hr"> -->
+                                                <div class="">
                                                   <span class="price old-price"></span>
-                                                  <span class="price special-price">$<%= ground.weekday_price%><small>/Slot</small></span>
+                                                  <span class="price special-price"><h4>Rs. <%= ground.weekend_price %>/<%= ground.weekday_price %><h6>(Weekend/Weekday)</h6></h4></span>
                                                 </div>
-                                                <div class="hotel-service float-right">
-                                                  <%= ground.category%>
-                                                </div>
-
                                               </div>
-                                              <div class=''><%= commontator_thread(ground)%></div>
                                               <hr>
                                             </div>
                                             <% end %>

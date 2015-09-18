@@ -36,7 +36,7 @@
                     <div class="form-field field-select field-lenght">
                       <div class="select">
                         <span>Select City</span>
-                        <%= select_tag :city, options_for_select(Ground::CITY, params[:city]), include_blank: false %>
+                        <%= select_tag :city, options_for_select(Ground::CITY, params[:city]), include_blank: true %>
                       </div>
                     </div>
                     <div class="form-field field-select field-lenght">

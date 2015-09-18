@@ -32,40 +32,48 @@
             </div>
             <div class="row">
               <div class="col-md-2 col-xs-6"><h4>Ground Type:</h4></div>
-              <div class="col-md-2 col-xs-6"><h4><%= @ground.category %></h4></div>
-              <div class="col-md-2 col-xs-6"><h4>Address:</h4></div>
-              <div class="col-md-2 col-xs-6"><h4><%= @ground.address %></h4></div>
-              <div class="col-md-2 col-xs-6"><h4>city:</h4></div>
-              <div class="col-md-2 col-xs-6"><h4><%= @ground.city %></h4></div>
+              <div class="col-md-4 col-xs-6"><h4><%= @ground.category %></h4></div>
             </div>
-            <br>
-            <hr>
+            
+            <div class="row">  
+              <div class="col-md-2 col-xs-6"><h4>Rating:</h4></div>
+              <div class="col-md-4 col-xs-6"><h4><%= rating_for @ground, "visual_effects" %></h4></div>
+            </div>
+            
+            <div class="row">
+              <div class="col-md-2 col-xs-6"><h4>Address:</h4></div>
+              <div class="col-md-4 col-xs-6"><h4><%= @ground.address %></h4></div>
+            </div>
+            
+            <div class="row">
+              <div class="col-md-2 col-xs-6"><h4>city:</h4></div>
+              <div class="col-md-4 col-xs-6"><h4><%= @ground.city %></h4></div>
+            </div>
             
             <div class="row">
               <div class="col-md-2 col-xs-6"><h4>area:</h4></div>
-              <div class="col-md-2 col-xs-6"><h4><%= @ground.area %></h4></div>
-              <div class="col-md-2 col-xs-6"><h4>Contact</h4></div>
-              <div class="col-md-2 col-xs-6 contact"><h4><%= @ground.phone.present? ? @ground.phone : 'NOT-AVAILABLE' %></h4></div>
-              <div class="col-md-2 col-xs-6"><h4>Price:</h4></div>
-              <div class="col-md-2 col-xs-6 price"><h4>Rs. <%= @ground.weekend_price %>/<%= @ground.weekday_price %><h6>(Weekend/Weekday)</h6></h4></div>
+              <div class="col-md-4 col-xs-6"><h4><%= @ground.area %></h4></div>
             </div>
-            <hr>
+
             <div class="row">
               <div class="col-md-2 col-xs-6"><h4>Message:</h4></div>
-              <div class="col-md-8 col-xs-6"><h4>this is my message</h4></div>
+              <div class="col-md-4 col-xs-6"><h4>this is my message</h4></div>
             </div>
-            <br>
-            <hr>
+
+            <div class="row">
+              <div class="col-md-2 col-xs-6"><h4>Price:</h4></div>
+              <div class="col-md-4 col-xs-6 price"><h4>Rs. <%= @ground.weekend_price %>/<%= @ground.weekday_price %><h6>(Weekend/Weekday)</h6></h4></div>
+            </div>
             <% if current_user.has_role? "ground_owner"%>
               <div class="row">
                 <div class="col-md-4 col-xs-12"><%= link_to 'Click to edit', edit_ground_path(@ground), class: 'btn btn-primary' %> <%= link_to 'Click to delete', ground_path(@ground), method: :delete, class: 'btn btn-danger' %></div>
 
               </div>
             <% end %>
-            <br>
-            <hr>
+
             <!--Accordion-->
             <div class="element-cn">
+              <h2>Slots</h2>
               <div class="row">
                 <div class="col-md-12">
                   <div class="panel-group no-margin" id="accordion">
@@ -73,7 +81,7 @@
                       <div class="panel-heading" id="headingOne">
                         <h4 class="panel-title">
                           <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#collapseOne">
-                            <small>Hide or Show</small>Slots Status
+                            <small>Hide or Show</small>Slots
                             <span class="icon fa fa-angle-down"></span>
                           </a>
                         </h4>
@@ -89,7 +97,7 @@
                           </div>
                           <div class="col-md-12">
                             <div class="alert-box alert-attention">
-                              <h6>Attention  message<small>(if you wants to change attention message to ground edit page)</small></h6>
+                              <h6>Attention  message</h6>
                               <span><i class="fa fa-angle-right"></i> Note: <%= @ground.attention_message%></span>
                             </div>
                           </div>
@@ -104,7 +112,7 @@
                               </div>
                               <p><span class="bl_available"><input type="checkbox"></span> Available Slots</p>
                               <p><span class="bl_booked"><input type="checkbox" disabled></span> Booked/Unallocated Slots</p>
-                              <!-- <p><span class="bl_selected"><input type="checkbox" checked></span> Selected Slots</p> -->
+                              <p><span class="bl_selected"><input type="checkbox" checked></span> Selected Slots</p>
                               
                               <!-- <div class="divider-wrapper ">
                                   <div class="divider"></div>
@@ -112,13 +120,13 @@
                               
                               <p><strong>Slots: </strong><span id="selected_slots"><span class="dlabel labels213">31-Aug-2015 12pm(1)</span></span></p>
                               <p><strong>Base Fare : </strong>Rs.<span id="base_price">100</span></p> -->
-                              <!-- <p><strong>Service Charge : </strong>Rs.<span id="service_charge">0</span></p>
+                              <p><strong>Service Charge : </strong>Rs.<span id="service_charge">0</span></p>
                               <p><strong>Total Cost: </strong>Rs.<span id="total">0</span></p>
                               <p><strong>Total Fare : </strong>Rs.<span id="total_price">100</span></p>
-                              <div><a href="#" class="btn btn-primary">Book</a></div> -->
+                              <div><a href="#" class="btn btn-primary">Book</a><!-- <button class="btn btn-primary">Book</button> --></div>
                           </div>
                     
-                          <div class="col-md-9 col-xs-12 col-md-pull-3 no-click">
+                          <div class="col-md-9 col-xs-12 col-md-pull-3">
                             
                             <table id="slot-view" class="responsive" cellspacing="0">
                               <tbody>
@@ -162,7 +170,7 @@
                                           <% if e.slot == t.slot%>
                                             <% if t.status == true %>
                                               <td>
-                                                <%= check_box_tag(t.id, value = "", checked = false, data: { "price" => t.booking_date.weekend_day? ? t.booking_date.ground.end_price : t.booking_date.ground.day_price}, class: "ts") %>
+                                                <%= check_box_tag(t.id, value = "", checked = false, data: { "price" => t.booking_date.weekend_day? ? t.booking_date.ground.end_price : t.booking_date.ground.day_price, "timeslot" => t.slot}, class: "ts") %>
                                               </td>
                                             <% else %>
                                               <td>
@@ -202,29 +210,124 @@
 
 
     <!-- End Main -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
+<script type="text/javascript">
+  $(document).ready(function(){
+      var $total = 0;
+
+
+      $('input[type=checkbox]').on("ifChanged", function() {
+          if (this.checked)
+              $total += +$(this).attr('data-price');
+          else
+              $total -= +$(this).attr('data-price');
+
+          $('#total').html($total);
+      });    
+  });
+</script>
 
 <script type="text/javascript">
 
  jQuery(document).ready(function(){
     jQuery('input[type=checkbox]').iCheck({
-       checkboxClass: 'icheckbox_square-green',
-      // radioClass: 'iradio_square-green',
-      // increaseArea: '20%' // optional
+      checkboxClass: 'icheckbox_square-green',
+      radioClass: 'iradio_square-green',
+      increaseArea: '20%' // optional
     });
   });
 </script>
 
-<style type="text/css">
-  .no-click{
-    pointer-events: none;
-   cursor: default;
-  }
+<script type="text/javascript">
 
-  .contact{
-    color: blue;
-  }
 
-  .green{
-    margin-bottom: 15px;
-  }
-</style>
+//Adds new uniqueArr values to temp array
+    function uniqueArr(a) {
+     temp = new Array();
+     for(i=0;i<a.length;i++){
+      if(!contains(temp, a[i])){
+       temp.length+=1;
+       temp[temp.length-1]=a[i];
+      }
+     }
+     return temp;
+    }
+
+
+    //Will check for the Uniqueness
+    function contains(a, e) {
+     for(j=0;j<a.length;j++)if(a[j]==e)return true;
+     return false;
+    }
+
+ jQuery(document).ready(function($){
+    $("input[type=checkbox]").each(function () {
+      $(this).change(updateCount);
+    });
+
+    updateCount();
+
+
+
+    function updateCount () {
+
+      var val;
+      var my_cookie="";
+      var new_my_cookie="";
+      var cookie_array;
+      var new_cookie_array;
+      var new_cookie_string="";
+      var number=0;
+      var temp_cookie="";
+
+      my_cookie=jQuery.cookie("chosen_ones");
+
+    $(':checkbox:checked').each(function(){
+      val= $(this).attr('data-timeslot');
+      
+      if((val!=null)&&(val!="")){
+        my_cookie=val+","+my_cookie;
+      }
+
+
+    });
+
+    new_cookie_array=uniqueArr(my_cookie.split(","));
+
+    $.each(new_cookie_array, function(index, values) {
+            if((values!="")&&(values!="null")&&(values!=null)){
+                temp_cookie=values+","+temp_cookie;
+            }
+        });
+
+    $.cookie("chosen_ones", null);
+    $.cookie("chosen_ones", temp_cookie);
+
+    var cookie_array=$.cookie("chosen_ones").split("|");
+
+    $(':checkbox:not(:checked)').each(function(){
+      val= $(this).attr('data-timeslot');
+      $.each(cookie_array, function(index, values) {
+               if((values==val)&&(values!=null)&&(values!="")&&(values!="null")&&(values!="")){
+                cookie_array[index]="";
+            }
+        });
+    });
+
+      new_cookie_array=uniqueArr(cookie_array);
+
+      $.each(new_cookie_array, function(index, values) {
+            if((values!="")&&(values!=null)&&(values!="null")){
+                new_cookie_string=new_cookie_string+","+values;
+            }
+        });
+
+      $.cookie("chosen_ones", null);
+      $.cookie("chosen_ones", new_cookie_string);
+      //alert($.cookie("chosen_ones"));
+      var temping_string=$.cookie("chosen_ones");
+      $("#count").text(temping_string.split(",").length-1);
+      $("#status").toggle(temping_string.split(",").length-1 >= 0);
+    };
+  });
+</script>

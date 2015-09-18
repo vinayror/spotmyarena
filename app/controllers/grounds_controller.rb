@@ -3,8 +3,6 @@
     load_resource only: [:show, :create ,:update, :destroy, :edit]
     PER_PAGE = 5
     def search
-      @test = ""
-      @test2 = ""
     	category = params[:category]
     	city = params[:city]
     	area = params[:area]
@@ -19,10 +17,13 @@
     end
 
     def show
-      #@slot = @ground.booking_dates.first.booking_times.map{|e| e.slot}
       @booking = Booking.new
     end
     
+    def ground_details
+      @ground = Ground.find(params[:id])
+    end
+
     # GET /grounds/new
     def new
       @ground = Ground.new

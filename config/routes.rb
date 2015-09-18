@@ -21,6 +21,9 @@
       collection do
         get 'search'
       end
+      member do
+        get 'ground_details'
+      end
     end
 
     resources :bookings
