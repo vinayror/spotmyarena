@@ -108,11 +108,13 @@
                                             <h3>Pricing</h3>
                                             <div class="field-input">
                                               <%= f.label :weekday_price %><br />
-                                              <%= f.text_field :weekday_price, :placeholder => "Enter weekday_price", class: "input-text" %>
+                                              <%= f.select :weekday_price, Ground::WEEKDAY, {:placeholder => "Enter weekday_price"}, {class: 'input-select'} %>
+                                              <%#= f.text_field :weekday_price, :placeholder => "Enter weekday_price", class: "input-text" %>
                                             </div>
                                             <div class="field-input">
                                               <%= f.label :weekend_price %><br />
-                                              <%= f.text_field :weekend_price, :placeholder => "Enter weekend_price", class: "input-text" %>
+                                              <%= f.select :weekend_price, Ground::WEEKEND, {:placeholder => "Enter weekend_price"}, {class: 'input-select'} %>
+                                              <%#= f.text_field :weekend_price, :placeholder => "Enter weekend_price", class: "input-text" %>
                                             </div>
                                             <!-- <h3>Contact & availability</h3> -->
                                             

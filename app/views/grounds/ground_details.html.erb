@@ -23,6 +23,9 @@
               <li><a href="index.html"><i class="fa fa-home"></i></a></li>
               <li>Ground details</li>
             </ul>
+        
+        <!-- form tag start -->
+        <%= form_tag booking_initialize_grounds_path(:ground => @ground.id) , {method: :post, :class => 'booking_form' } do |f| %>
           </section>
           <!--End Breakcrumb-->
           <section class="element-sc">
@@ -32,44 +35,35 @@
             </div>
             <div class="row">
               <div class="col-md-2 col-xs-6"><h4>Ground Type:</h4></div>
-              <div class="col-md-4 col-xs-6"><h4><%= @ground.category %></h4></div>
+              <div class="col-md-2 col-xs-6"><h4><%= @ground.category %></h4></div>
+              <div class="col-md-2 col-xs-6"><h4>Address:</h4></div>
+              <div class="col-md-2 col-xs-6"><h4><%= @ground.address %></h4></div>
+              <div class="col-md-2 col-xs-6"><h4>city:</h4></div>
+              <div class="col-md-2 col-xs-6"><h4><%= @ground.city %></h4></div>
             </div>
+            <br>
+            <hr>
             
+            <div class="row">
+              <div class="col-md-2 col-xs-6"><h4>area:</h4></div>
+              <div class="col-md-2 col-xs-6"><h4><%= @ground.area %></h4></div>
+              <div class="col-md-2 col-xs-6"><h4>Contact</h4></div>
+              <div class="col-md-2 col-xs-6 contact"><h4><%= @ground.phone.present? ? @ground.phone : 'NOT-AVAILABLE' %></h4></div>
+              <div class="col-md-2 col-xs-6"><h4>Price:</h4></div>
+              <div class="col-md-2 col-xs-6 price"><h4>Rs. <%= @ground.weekend_price %>/<%= @ground.weekday_price %><h6>(Weekend/Weekday)</h6></h4></div>
+            </div>
+            <hr>
+            <div class="row">
+              <div class="col-md-2 col-xs-6"><h4>Message:</h4></div>
+              <div class="col-md-8 col-xs-6"><h4>this is my message</h4></div>
+            </div>
+            <br>
+            <hr>
             <div class="row">  
               <div class="col-md-2 col-xs-6"><h4>Rating:</h4></div>
               <div class="col-md-4 col-xs-6"><h4><%= rating_for @ground, "visual_effects" %></h4></div>
             </div>
-            
-            <div class="row">
-              <div class="col-md-2 col-xs-6"><h4>Address:</h4></div>
-              <div class="col-md-4 col-xs-6"><h4><%= @ground.address %></h4></div>
-            </div>
-            
-            <div class="row">
-              <div class="col-md-2 col-xs-6"><h4>city:</h4></div>
-              <div class="col-md-4 col-xs-6"><h4><%= @ground.city %></h4></div>
-            </div>
-            
-            <div class="row">
-              <div class="col-md-2 col-xs-6"><h4>area:</h4></div>
-              <div class="col-md-4 col-xs-6"><h4><%= @ground.area %></h4></div>
-            </div>
-
-            <div class="row">
-              <div class="col-md-2 col-xs-6"><h4>Message:</h4></div>
-              <div class="col-md-4 col-xs-6"><h4>this is my message</h4></div>
-            </div>
-
-            <div class="row">
-              <div class="col-md-2 col-xs-6"><h4>Price:</h4></div>
-              <div class="col-md-4 col-xs-6 price"><h4>Rs. <%= @ground.weekend_price %>/<%= @ground.weekday_price %><h6>(Weekend/Weekday)</h6></h4></div>
-            </div>
-            <% if current_user.has_role? "ground_owner"%>
-              <div class="row">
-                <div class="col-md-4 col-xs-12"><%= link_to 'Click to edit', edit_ground_path(@ground), class: 'btn btn-primary' %> <%= link_to 'Click to delete', ground_path(@ground), method: :delete, class: 'btn btn-danger' %></div>
-
-              </div>
-            <% end %>
+            <hr>
 
             <!--Accordion-->
             <div class="element-cn">
@@ -113,7 +107,7 @@
                               <p><span class="bl_available"><input type="checkbox"></span> Available Slots</p>
                               <p><span class="bl_booked"><input type="checkbox" disabled></span> Booked/Unallocated Slots</p>
                               <p><span class="bl_selected"><input type="checkbox" checked></span> Selected Slots</p>
-                              
+                              <%=hidden_field_tag "book_a", value: ""%>
                               <!-- <div class="divider-wrapper ">
                                   <div class="divider"></div>
                               </div>
@@ -122,8 +116,9 @@
                               <p><strong>Base Fare : </strong>Rs.<span id="base_price">100</span></p> -->
                               <p><strong>Service Charge : </strong>Rs.<span id="service_charge">0</span></p>
                               <p><strong>Total Cost: </strong>Rs.<span id="total">0</span></p>
+                              <span id="status"></span>
                               <p><strong>Total Fare : </strong>Rs.<span id="total_price">100</span></p>
-                              <div><a href="#" class="btn btn-primary">Book</a><!-- <button class="btn btn-primary">Book</button> --></div>
+                              <div><a href="#" class="btn btn-primary book-button">Book</a><!-- <button class="btn btn-primary">Book</button> --></div>
                           </div>
                     
                           <div class="col-md-9 col-xs-12 col-md-pull-3">
@@ -158,7 +153,9 @@
                                   <th>10 pm</th>
                                   <th>11 pm</th>
                                 </tr>
+                                <%=hidden_field_tag "slot_ids", value: ""%>
                                 
+
                                   <% @ground.booking_dates.each do |d| %>
                                     <tr>
                                       <td nowrap>
@@ -169,8 +166,8 @@
                                         <% d.booking_times.each do |t| %>
                                           <% if e.slot == t.slot%>
                                             <% if t.status == true %>
-                                              <td>
-                                                <%= check_box_tag(t.id, value = "", checked = false, data: { "price" => t.booking_date.weekend_day? ? t.booking_date.ground.end_price : t.booking_date.ground.day_price, "timeslot" => t.slot}, class: "ts") %>
+                                              <td>                                             
+                                                <%= check_box_tag(t.id, value = "", checked = false, data: { "a" => t.booking_date.weekend_day? ? t.booking_date.ground.end_price : t.booking_date.ground.day_price, "timeslot" => t.slot, "id"=> t.id}, class: "ts") %>
                                               </td>
                                             <% else %>
                                               <td>
@@ -204,6 +201,9 @@
             </div>
             <!--End Accordion-->
           </section>
+          <%= submit_tag 'submit' %>
+          <% end %>
+          <!-- form tag end -->
         </div>
       </div>
     </div>
@@ -213,16 +213,17 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
 <script type="text/javascript">
   $(document).ready(function(){
-      var $total = 0;
+      var $a = 0;
 
 
       $('input[type=checkbox]').on("ifChanged", function() {
           if (this.checked)
-              $total += +$(this).attr('data-price');
+              $a += +$(this).attr('data-a');
           else
-              $total -= +$(this).attr('data-price');
+              $a -= +$(this).attr('data-a');
 
-          $('#total').html($total);
+          $('#total').html($a);
+          $('[name="book_a"]').attr({value: $a});
       });    
   });
 </script>
@@ -235,99 +236,112 @@
       radioClass: 'iradio_square-green',
       increaseArea: '20%' // optional
     });
+
+    jQuery(".book-button").on("click", function(){
+      $(".booking_form").submit();
+    });
   });
 </script>
 
 <script type="text/javascript">
-
+$(function() {
+    $('input[type=checkbox]').on("ifChanged", function() {
+        var values = [];
+        $('input:checked').each(function() {
+            values.push($(this).attr('data-id'));
+        });
+        $('[name="slot_ids"]').attr({value: values.join(',')});
+    });
+});
 
 //Adds new uniqueArr values to temp array
-    function uniqueArr(a) {
-     temp = new Array();
-     for(i=0;i<a.length;i++){
-      if(!contains(temp, a[i])){
-       temp.length+=1;
-       temp[temp.length-1]=a[i];
-      }
-     }
-     return temp;
-    }
+ //    function uniqueArr(a) {
+ //     temp = new Array();
+ //     for(i=0;i<a.length;i++){
+ //      if(!contains(temp, a[i])){
+ //       temp.length+=1;
+ //       temp[temp.length-1]=a[i];
+ //      }
+ //     }
+ //     return temp;
+ //    }
 
 
-    //Will check for the Uniqueness
-    function contains(a, e) {
-     for(j=0;j<a.length;j++)if(a[j]==e)return true;
-     return false;
-    }
+ //    //Will check for the Uniqueness
+ //    function contains(a, e) {
+ //     for(j=0;j<a.length;j++)if(a[j]==e)return true;
+ //     return false;
+ //    }
 
- jQuery(document).ready(function($){
-    $("input[type=checkbox]").each(function () {
-      $(this).change(updateCount);
-    });
+ // jQuery(document).ready(function($){
+ //    $("input[type=checkbox]").each(function () {
+ //      $(this).change(updateCount);
+ //    });
 
-    updateCount();
+ //    updateCount();
 
 
 
-    function updateCount () {
+ //    function updateCount () {
 
-      var val;
-      var my_cookie="";
-      var new_my_cookie="";
-      var cookie_array;
-      var new_cookie_array;
-      var new_cookie_string="";
-      var number=0;
-      var temp_cookie="";
+ //      var val;
+ //      var my_cookie="";
+ //      var new_my_cookie="";
+ //      var cookie_array;
+ //      var new_cookie_array;
+ //      var new_cookie_string="";
+ //      var number=0;
+ //      var temp_cookie="";
 
-      my_cookie=jQuery.cookie("chosen_ones");
+ //      my_cookie=jQuery.cookie("chosen_ones");
 
-    $(':checkbox:checked').each(function(){
-      val= $(this).attr('data-timeslot');
+ //    $(':checkbox:checked').each(function(){
+ //      val= $(this).attr('data-timeslot');
       
-      if((val!=null)&&(val!="")){
-        my_cookie=val+","+my_cookie;
-      }
+ //      if((val!=null)&&(val!="")){
+ //        my_cookie=val+","+my_cookie;
+ //      }
 
 
-    });
+ //    });
 
-    new_cookie_array=uniqueArr(my_cookie.split(","));
+ //    new_cookie_array=uniqueArr(my_cookie.split(","));
 
-    $.each(new_cookie_array, function(index, values) {
-            if((values!="")&&(values!="null")&&(values!=null)){
-                temp_cookie=values+","+temp_cookie;
-            }
-        });
+ //    $.each(new_cookie_array, function(index, values) {
+ //            if((values!="")&&(values!="null")&&(values!=null)){
+ //                temp_cookie=values+","+temp_cookie;
+ //            }
+ //        });
 
-    $.cookie("chosen_ones", null);
-    $.cookie("chosen_ones", temp_cookie);
+ //    $.cookie("chosen_ones", null);
+ //    $.cookie("chosen_ones", temp_cookie);
 
-    var cookie_array=$.cookie("chosen_ones").split("|");
+ //    var cookie_array=$.cookie("chosen_ones").split("|");
 
-    $(':checkbox:not(:checked)').each(function(){
-      val= $(this).attr('data-timeslot');
-      $.each(cookie_array, function(index, values) {
-               if((values==val)&&(values!=null)&&(values!="")&&(values!="null")&&(values!="")){
-                cookie_array[index]="";
-            }
-        });
-    });
+ //    $(':checkbox:not(:checked)').each(function(){
+ //      val= $(this).attr('data-timeslot');
+ //      $.each(cookie_array, function(index, values) {
+ //               if((values==val)&&(values!=null)&&(values!="")&&(values!="null")&&(values!="")){
+ //                cookie_array[index]="";
+ //            }
+ //        });
+ //    });
 
-      new_cookie_array=uniqueArr(cookie_array);
+ //      new_cookie_array=uniqueArr(cookie_array);
 
-      $.each(new_cookie_array, function(index, values) {
-            if((values!="")&&(values!=null)&&(values!="null")){
-                new_cookie_string=new_cookie_string+","+values;
-            }
-        });
+ //      $.each(new_cookie_array, function(index, values) {
+ //            if((values!="")&&(values!=null)&&(values!="null")){
+ //                new_cookie_string=new_cookie_string+","+values;
+ //            }
+ //        });
 
-      $.cookie("chosen_ones", null);
-      $.cookie("chosen_ones", new_cookie_string);
-      //alert($.cookie("chosen_ones"));
-      var temping_string=$.cookie("chosen_ones");
-      $("#count").text(temping_string.split(",").length-1);
-      $("#status").toggle(temping_string.split(",").length-1 >= 0);
-    };
-  });
+ //      $.cookie("chosen_ones", null);
+ //      $.cookie("chosen_ones", new_cookie_string);
+ //      // alert($.cookie("chosen_ones"));
+ //      var temping_string=$.cookie("chosen_ones");
+ //      $(".test").text(temping_string.split(",").length-1);
+ //      $("#status").toggle(temping_string.split(",").length-1 >= 0);
+ //    };
+ //  });
 </script>
+

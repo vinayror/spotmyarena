@@ -84,6 +84,22 @@
     end
 
     
+    def booking_initialize
+      unless params[:slot_ids].split("{:value=>\"\"}").reject(&:empty?).blank?
+        @price = params[:book_a].to_i
+        ids =  params[:slot_ids].split(',').reject(&:empty?)
+        @booked_event = []
+        ids.each do |i|
+          slot = BookingTime.find_by(id: i.to_i)
+          @booked_event << slot
+        end
+        @Total_price = @booked_event.map{|t| t.booking_date.weekend_day? ? t.booking_date.ground.end_price : t.booking_date.ground.day_price}.inject(:+)
+        @booked_event
+      else
+        @ground = Ground.find(params[:ground])
+        redirect_to ground_details_ground_path(@ground), notice: "please select slots"
+      end
+    end
 
     private
       # Use callbacks to share common setup or constraints between actions.

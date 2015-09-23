@@ -1,8 +1,9 @@
 class Ground < ActiveRecord::Base
   CATEGORY = ["Tabel Tennis", "BadMinton", "Cricket Nets",  "Snooker", "Tennis"]
-  CITY =['Delhi']
+  CITY =['Delhi', 'Channei']
   AREA =['Connaught Place', 'Chanakyapuri', 'Delhi Cantonment', 'Vasant Vihar', 'North Delhi', 'Narela' ,'Model Town', 'Narela', 'Alipur', 'North West Delhi', 'Kanjhawala', 'Rohini', 'Kanjhawala', 'Saraswati Vihar', 'West Delhi', 'Rajouri Garden', 'Patel Nagar', 'Punjabi Bagh', 'South West Delhi', 'Dwarka', 'Najafgarh', 'Kapashera', 'South Delhi', 'Saket', 'Hauz Khas', 'Mehrauli', 'South East Delhi', 'Defence Colony', 'Lajpat Nagar', 'Kalkaji', 'Sarita Vihar', 'Central Delhi', 'Daryaganj', 'Karol Bagh', 'Kotwali', 'Civil Lines', 'North East Delhi', 'Seelampur', 'Yamuna Vihar', 'Karawal Nagar', 'Shahdara',  'Seemapuri', 'Vivek Vihar', 'East Delhi', 'Preet Vihar', 'Gandhi Nagar', 'Mayur Vihar']
-
+  WEEKDAY = [["Rs. 100", 100.to_f], ["Rs. 150", 150.to_f], ["Rs. 170", 170.to_f], ["Rs. 200", 200.to_f], ["Rs. 220", 220.to_f], ["Rs. 230", 230.to_f], ["Rs. 240", 240.to_f], ["Rs. 250", 250.to_f], ["Rs. 260", 260.to_f], ["Rs. 270", 270.to_f], ["Rs. 280", 280.to_f], ["Rs. 300", 300.to_f], ["Rs. 320", 320.to_f], ["Rs. 330", 330.to_f], ["Rs. 340", 340.to_f], ["Rs. 350", 350.to_f], ["Rs. 360", 360.to_f], ["Rs. 370", 370.to_f], ["Rs. 380", 380.to_f], ["Rs. 400", 400.to_f]]
+  WEEKEND = [["Rs. 100", 100.to_f], ["Rs. 150", 150.to_f], ["Rs. 170", 170.to_f], ["Rs. 200", 200.to_f], ["Rs. 220", 220.to_f], ["Rs. 230", 230.to_f], ["Rs. 240", 240.to_f], ["Rs. 250", 250.to_f], ["Rs. 260", 260.to_f], ["Rs. 270", 270.to_f], ["Rs. 280", 280.to_f], ["Rs. 300", 300.to_f], ["Rs. 320", 320.to_f], ["Rs. 330", 330.to_f], ["Rs. 340", 340.to_f], ["Rs. 350", 350.to_f], ["Rs. 360", 360.to_f], ["Rs. 370", 370.to_f], ["Rs. 380", 380.to_f], ["Rs. 400", 400.to_f]]
   belongs_to :user
   has_many :booking_dates, :dependent => :destroy
   has_many :ground_attachments, :dependent => :destroy
@@ -21,7 +22,7 @@ class Ground < ActiveRecord::Base
   accepts_nested_attributes_for :ground_attachments, reject_if: :all_blank, allow_destroy: true
   accepts_nested_attributes_for :booking_dates, reject_if: :all_blank, allow_destroy: true
 
-  attr_accessor :add_booking_dates, :add_closing_dates, :closing_times, :special_closing_date, :special_closing_times
+  attr_accessor :add_booking_dates, :add_closing_dates, :closing_times, :special_closing_date, :special_closing_times, :slot_ids
   def self.search(category, city, area, date)
     
     if category.present? || city.present? || area.present? || date.present?

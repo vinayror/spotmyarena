@@ -11969,3 +11969,16 @@ footer .copyright {
     margin-top: 5px;
     padding: 0 5px;
 }
+
+.no-click{
+ pointer-events: none;
+ cursor: default;
+}
+
+.contact{
+  color: blue;
+}
+
+.green{
+  margin-bottom: 15px;
+}

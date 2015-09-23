@@ -20,13 +20,20 @@
     resources :grounds do
       collection do
         get 'search'
+        post 'booking_initialize'
       end
       member do
         get 'ground_details'
       end
     end
 
-    resources :bookings
+    resources :bookings do
+        collection do
+
+        end
+    end
+
+
     get 'profile' => 'home#profile'
 
 
