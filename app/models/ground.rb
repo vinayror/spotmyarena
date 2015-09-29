@@ -112,11 +112,13 @@ class Ground < ActiveRecord::Base
 
 
   def day_price
-    (self.weekday_price * 10)/100
+    # (self.weekday_price * 10)/100
+    self.weekday_price
   end
 
   def end_price
-    (self.weekend_price * 10)/100
+    # (self.weekend_price * 10)/100
+    self.weekend_price
   end
 
   def set_merchant_id
