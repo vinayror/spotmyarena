@@ -22,6 +22,8 @@ class Ground < ActiveRecord::Base
   accepts_nested_attributes_for :ground_attachments, reject_if: :all_blank, allow_destroy: true
   accepts_nested_attributes_for :booking_dates, reject_if: :all_blank, allow_destroy: true
 
+  after_create :set_merchant_id
+
   attr_accessor :add_booking_dates, :add_closing_dates, :closing_times, :special_closing_date, :special_closing_times, :slot_ids
   def self.search(category, city, area, date)
     
@@ -115,5 +117,10 @@ class Ground < ActiveRecord::Base
 
   def end_price
     (self.weekend_price * 10)/100
+  end
+
+  def set_merchant_id
+    id = generate_unique_id
+    self.update(merchant_id: id)
   end
 end

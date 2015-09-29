@@ -8,7 +8,7 @@
 
     attr_accessor :role 
     after_create :set_role
-
+    after_create :set_member_id
     has_many :grounds, :dependent => :destroy
     has_many :bookings, :dependent => :destroy
     
@@ -81,6 +81,10 @@
       self.add_role role
     end
 
+    def set_member_id
+      id = generate_unique_id
+      self.update(member_id: id)
+    end
     # def confirmation_required?
     #   true
     # end

@@ -35,7 +35,11 @@
 
 
     get 'profile' => 'home#profile'
-
+    get 'about' => 'home#about_us'
+    get 'service' => 'home#service'
+    get 'faq' => 'home#faq'
+    get 'contact' => 'home#contact'
+    get 'terms' => 'home#terms'
 
     mount Commontator::Engine => '/commontator'
     #get 'search' => 'grounds#search'

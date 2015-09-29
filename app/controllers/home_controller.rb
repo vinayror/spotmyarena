@@ -6,4 +6,20 @@ class HomeController < ApplicationController
   def profile
   	
   end
+
+  def about_us
+  	
+  end
+
+  def service
+  	
+  end
+
+  def faq
+  	
+  end
+
+  def contact
+  	
+  end
 end

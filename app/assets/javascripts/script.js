@@ -62,11 +62,11 @@ $(document).ready(function () {
 
     SelectTable();
 
-    GoogleMapHotel();
+    // GoogleMapHotel();
     
-    HotelLocationMap();
+    // HotelLocationMap();
 
-    GoogleMapContact();
+    // GoogleMapContact();
 
     ajaxContactForm();
 
@@ -944,63 +944,63 @@ $(document).ready(function () {
     }
 
     /*====== Google Maps Contact ======*/
-    function GoogleMapContact() {
+    // function GoogleMapContact() {
 
-        if ($('#contact-maps').length) {
-            var $map=$('#contact-maps'),
-                mapZoom = $map.data('map-zoom'),
-                lat = $map.data('map-latlng').split(',')[0],
-                lng = $map.data('map-latlng').split(',')[1],
-                mapContent = $map.data('map-content'),
-                myCenter=new google.maps.LatLng(lat,lng);
-            var mapProp = {
-              center:myCenter,
-              zoom:mapZoom,
-              scrollwheel:false,
-              mapTypeId:google.maps.MapTypeId.ROADMAP
-              };
+    //     if ($('#contact-maps').length) {
+    //         var $map=$('#contact-maps'),
+    //             mapZoom = $map.data('map-zoom'),
+    //             lat = $map.data('map-latlng').split(',')[0],
+    //             lng = $map.data('map-latlng').split(',')[1],
+    //             mapContent = $map.data('map-content'),
+    //             myCenter=new google.maps.LatLng(lat,lng);
+    //         var mapProp = {
+    //           center:myCenter,
+    //           zoom:mapZoom,
+    //           scrollwheel:false,
+    //           mapTypeId:google.maps.MapTypeId.ROADMAP
+    //           };
 
-            var map=new google.maps.Map(document.getElementById("contact-maps"),mapProp);
+    //         var map=new google.maps.Map(document.getElementById("contact-maps"),mapProp);
 
-            var marker=new google.maps.Marker({
-              position:myCenter
-            });
+    //         var marker=new google.maps.Marker({
+    //           position:myCenter
+    //         });
 
-            marker.setMap(map);
+    //         marker.setMap(map);
 
-            var infowindow = new google.maps.InfoWindow({
-                content:mapContent,
-                maxWidth: 200
-            });
+    //         var infowindow = new google.maps.InfoWindow({
+    //             content:mapContent,
+    //             maxWidth: 200
+    //         });
 
-            google.maps.event.addListener(marker, 'click', function() {
-                infowindow.open(map,marker);
-            });
+    //         google.maps.event.addListener(marker, 'click', function() {
+    //             infowindow.open(map,marker);
+    //         });
 
 
-        }
-    }
+    //     }
+    // }
 
     /*====== Hotel Location Map ======*/
-    function HotelLocationMap() {
+    // function HotelLocationMap() {
 
-        if ($('#hotel-detail-map').length) {
-            var $map=$('#hotel-detail-map'),
-                lat = $map.data('latlng').split(',')[0],
-                lng = $map.data('latlng').split(',')[1],
-                myCenter=new google.maps.LatLng(lat,lng);
-            var mapProp = {
-              center:myCenter,
-              zoom:15,
-              scrollwheel:false,
-              mapTypeId:google.maps.MapTypeId.ROADMAP
-              };
+    //     if ($('#hotel-detail-map').length) {
+    //         var $map=$('#hotel-detail-map'),
+    //             lat = $map.data('latlng').split(',')[0],
+    //             lng = $map.data('latlng').split(',')[1],
+    //             myCenter=new google.maps.LatLng(lat,lng);
+    //         var mapProp = {
+    //           center:myCenter,
+    //           zoom:15,
+    //           scrollwheel:false,
+    //           mapTypeId:google.maps.MapTypeId.ROADMAP
+    //           };
 
-            var map=new google.maps.Map(document.getElementById("hotel-detail-map"), mapProp);
+    //         var map=new google.maps.Map(document.getElementById("hotel-detail-map"), mapProp);
 
 
-        }
-    }
+    //     }
+    // }
 
     /*==============================
         Ajax contact form
