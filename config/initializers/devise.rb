@@ -18,8 +18,8 @@ Devise.setup do |config|
   
   config.omniauth :google_oauth2, "718604841377-b577j78thfsbur146ijgg9clb8cnu2vu.apps.googleusercontent.com", "2Ee4i-MfA3tfiaMTycWvUWLk", { access_type: "offline", approval_prompt: "" }
   # Configure the class responsible to send e-mails.
-  config.mailer = 'UserDeviseMailer'
-  config.mailer_sender = "vnysharma@mail.com"
+  config.mailer = Devise::Mailer
+  config.mailer_sender = "vnysharma11@gmail.com"
   # ==> ORM configuration
   # Load and configure the ORM. Supports :active_record (default) and
   # :mongoid (bson_ext recommended) by default. Other ORMs may be

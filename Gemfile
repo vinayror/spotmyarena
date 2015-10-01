@@ -12,6 +12,8 @@ gem "cocoon"
 gem 'kaminari'
 gem 'paperclip'
 gem 'carrierwave'
+gem "fog"
+gem "mini_magick"
 gem 'aws-sdk'
 gem 'omniauth'
 gem 'omniauth-facebook'

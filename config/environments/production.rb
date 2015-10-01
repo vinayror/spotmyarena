@@ -89,26 +89,21 @@ Rails.application.configure do
   config.active_record.dump_schema_after_migration = false
 
 
+  
+  config.action_mailer.default :charset => "utf-8"
+  
+
   config.action_mailer.default_url_options = { :host => 'spotmyarena.herokuapp.com' }
-  # ActionMailer Config
-  # Setup for production - deliveries, no errors raised
-  # config.action_mailer.delivery_method = :smtp
-  # config.action_mailer.perform_deliveries = true
-  # config.action_mailer.raise_delivery_errors = false
-  # config.action_mailer.default :charset => "utf-8"
+
+  ActionMailer::Base.smtp_settings = {
+                    :address        => "smtp.gmail.com",
+                    :port           => 587,
+                    :authentication => :plain,
+                    :user_name      => "vnysharma11@gmail.com",
+                    :password       => "balajikikripahai"
+  }
+
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.perform_deliveries = true
   config.action_mailer.raise_delivery_errors = true
-  config.action_mailer.smtp_settings = {
-    :enable_starttls_auto => true,
-    :address => "smtp.gmail.com",
-    :port => "587",
-    :domain => "gmail.com",
-    :authentication => :plain,
-    :user_name => "vnysharma22@gmail.com",
-    :password => "balajikikripahai22"
-    
-  }
-  config.action_mailer.default :charset => "utf-8"
-  
 end

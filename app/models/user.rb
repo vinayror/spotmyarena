@@ -1,7 +1,7 @@
   class User < ActiveRecord::Base
+    include ApplicationHelper
     rolify
-    #enum roles: [:member, :ground_owner, :admin]
-    
+   
     acts_as_commontator
     
     ratyrate_rater
@@ -16,7 +16,7 @@
 
     # Include default devise modules. Others available are:
     # :confirmable, :lockable, :timeoutable and :omniauthable
-    devise :database_authenticatable, :registerable, :recoverable, :rememberable, :trackable, :validatable, :omniauthable#, :confirmable
+    devise :database_authenticatable, :registerable, :recoverable, :rememberable, :trackable, :validatable, :omniauthable, :confirmable
 
     def self.find_for_facebook_oauth(auth, signed_in_resource=nil)
       user = User.where(:provider => auth.provider, :uid => auth.uid).first
@@ -85,11 +85,11 @@
       id = generate_unique_id
       self.update(member_id: id)
     end
-    # def confirmation_required?
-    #   true
-    # end
+    def confirmation_required?
+      true
+    end
 
-    # def send_confirmation_notification?
-    #   true
-    # end
+    def send_confirmation_notification?
+      true
+    end
   end
