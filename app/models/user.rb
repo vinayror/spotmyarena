@@ -37,8 +37,9 @@
             email:auth.info.email,
             password:Devise.friendly_token[0,20]
           )
+
           user.add_role 'member'
-          #user.skip_confirmation!
+          user.skip_confirmation!
           user.save
           user
         end    
@@ -63,9 +64,9 @@
             password: Devise.friendly_token[0,20],
             confirmed_at: Time.now,
 
-          )
+          
           user.add_role 'member'
-          #user.skip_confirmation!
+          user.skip_confirmation!
           user.save
           user
         end
