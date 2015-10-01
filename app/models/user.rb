@@ -64,7 +64,7 @@
             password: Devise.friendly_token[0,20],
             confirmed_at: Time.now,
 
-          
+          )
           user.add_role 'member'
           user.skip_confirmation!
           user.save
