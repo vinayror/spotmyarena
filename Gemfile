@@ -16,14 +16,14 @@ gem "fog"
 gem "mini_magick"
 gem 'aws-sdk'
 gem 'omniauth'
-gem 'omniauth-facebook'
+gem 'omniauth-facebook', '~> 2.0.1'
 gem 'omniauth-google-oauth2' 
 gem 'rails_admin', '~> 0.7.0'
 gem 'cancancan'
 gem 'bootstrap-datepicker-rails'
 gem 'multi-dates-picker-rails'
 gem "select2-rails"
-
+gem 'aws-ses'
 gem 'icheck-rails'
 gem 'rails-simple-search'
 gem 'commontator'

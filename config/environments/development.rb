@@ -80,12 +80,16 @@ config.action_mailer.default_url_options = { :host => "localhost:3000" }
 
 # config.action_mailer.default_url_options = { :host => 'localhost:3000' }
 config.action_mailer.delivery_method = :smtp
-config.action_mailer.smtp_settings = {:address => "localhost", :port => 1025}
-ActionMailer::Base.smtp_settings = {
-                    :address        => "smtp.gmail.com",
-                    :port           => 587,
-                    :authentication => :plain,
-                    :user_name      => "vnysharma11@gmail.com",
-                    :password       => "balajikikripahai"
-}
+#config.action_mailer.smtp_settings = {:address => "localhost", :port => 1025}
+ config.action_mailer.smtp_settings = {
+    :address => 'email-smtp.us-west-2.amazonaws.com',
+    :authentication => :login,
+    :user_name => 'AKIAI5DP2RB76ASW33DA',
+    :password => 'AlwE1mkD6UQZ0ortRZvaxpOgbW6/pd0941WVFph/GB47',
+    :enable_starttls_auto => true,
+    :port => 587
+  }
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.perform_deliveries = true
+  config.action_mailer.raise_delivery_errors = true
 end
