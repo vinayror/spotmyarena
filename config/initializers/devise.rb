@@ -20,7 +20,7 @@ Devise.setup do |config|
   config.omniauth :google_oauth2, "718604841377-b577j78thfsbur146ijgg9clb8cnu2vu.apps.googleusercontent.com", "2Ee4i-MfA3tfiaMTycWvUWLk", { access_type: "offline", approval_prompt: "" }
   # Configure the class responsible to send e-mails.
   config.mailer = Devise::Mailer
-  config.mailer_sender = "vnysharma11@gmail.com"
+  config.mailer_sender = "spotmyarena2015@gmail.com"
   # ==> ORM configuration
   # Load and configure the ORM. Supports :active_record (default) and
   # :mongoid (bson_ext recommended) by default. Other ORMs may be
@@ -111,7 +111,7 @@ Devise.setup do |config|
   # able to access the website for two days without confirming their account,
   # access will be blocked just in the third day. Default is 0.days, meaning
   # the user cannot access the website without confirming their account.
-  config.allow_unconfirmed_access_for = 5.minutes
+  config.allow_unconfirmed_access_for = 10.seconds
 
   # A period that the user is allowed to confirm their account before their
   # token becomes invalid. For example, if set to 3.days, the user can confirm
