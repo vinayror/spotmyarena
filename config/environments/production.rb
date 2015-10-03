@@ -95,7 +95,7 @@ Rails.application.configure do
 
   config.action_mailer.default_url_options = { :host => 'spotmyarena.herokuapp.com' }
 
-  cconfig.action_mailer.smtp_settings = {
+  config.action_mailer.smtp_settings = {
   :authentication => :plain,
   :address => "smtp.mailgun.org",
   :port => 587,
