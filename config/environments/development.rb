@@ -14,7 +14,7 @@ Rails.application.configure do
   config.action_controller.perform_caching = false
 
   # Don't care if the mailer can't send.
-  config.action_mailer.raise_delivery_errors = false
+  config.action_mailer.raise_delivery_errors = true
 
   # Print deprecation notices to the Rails logger.
   config.active_support.deprecation = :log
@@ -63,7 +63,6 @@ Rails.application.configure do
   # }
 
 config.action_mailer.perform_deliveries = true # Set it to false to disable the email in dev mode
-config.action_mailer.raise_delivery_errors = true
 config.action_mailer.delivery_method = :smtp
 config.action_mailer.default_url_options = { :host => "localhost:3000" }
 
@@ -78,18 +77,16 @@ config.action_mailer.default_url_options = { :host => "localhost:3000" }
 # }
 
 
-# config.action_mailer.default_url_options = { :host => 'localhost:3000' }
-config.action_mailer.delivery_method = :smtp
-#config.action_mailer.smtp_settings = {:address => "localhost", :port => 1025}
- config.action_mailer.smtp_settings = {
-    :address => 'email-smtp.us-west-2.amazonaws.com',
-    :authentication => :login,
-    :user_name => 'AKIAI5DP2RB76ASW33DA',
-    :password => 'AlwE1mkD6UQZ0ortRZvaxpOgbW6/pd0941WVFph/GB47',
-    :enable_starttls_auto => true,
-    :port => 587
-  }
-  config.action_mailer.delivery_method = :smtp
-  config.action_mailer.perform_deliveries = true
-  config.action_mailer.raise_delivery_errors = true
+config.action_mailer.default_url_options = {host:'localhost', port: '3000'}
+config.action_mailer.smtp_settings = {:address => "localhost", :port => 1025}
+
+config.action_mailer.smtp_settings = {
+  :authentication => :plain,
+  :address => "smtp.mailgun.org",
+  :port => 587,
+  :domain => "sandboxad15e445d842498f9d7ea417d6b36a66.mailgun.org",
+  :user_name => "postmaster@sandboxad15e445d842498f9d7ea417d6b36a66.mailgun.org",
+  :password => "f6910fef3273fdc34e183c32cc34f18f"
+}
+
 end

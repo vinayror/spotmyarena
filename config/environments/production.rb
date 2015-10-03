@@ -95,14 +95,15 @@ Rails.application.configure do
 
   config.action_mailer.default_url_options = { :host => 'spotmyarena.herokuapp.com' }
 
-  config.action_mailer.smtp_settings = {
-    :address => 'email-smtp.us-west-2.amazonaws.com',
-    :authentication => :login,
-    :user_name => 'AKIAI5DP2RB76ASW33DA',
-    :password => 'AlwE1mkD6UQZ0ortRZvaxpOgbW6/pd0941WVFph/GB47',
-    :enable_starttls_auto => true,
-    :port => 587
+  cconfig.action_mailer.smtp_settings = {
+  :authentication => :plain,
+  :address => "smtp.mailgun.org",
+  :port => 587,
+  :domain => "sandboxad15e445d842498f9d7ea417d6b36a66.mailgun.org",
+  :user_name => "postmaster@sandboxad15e445d842498f9d7ea417d6b36a66.mailgun.org",
+  :password => "f6910fef3273fdc34e183c32cc34f18f"
   }
+
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.perform_deliveries = true
   config.action_mailer.raise_delivery_errors = true
