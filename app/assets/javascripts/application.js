@@ -13,8 +13,8 @@
 //= require jquery
 //= require jquery_ujs
 //= require bootstrap-datepicker
-//= require jquery-ui.multidatespicker
 
 //= require cocoon
-//= require select2
 //= require_tree .
+//= require jquery-ui.multidatespicker
+//= require select2
