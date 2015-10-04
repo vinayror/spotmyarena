@@ -430,13 +430,13 @@ body.menu-active {
 }
 
 .awe-btn.awe-search {
-  background-color: #59c45b;
+  //background-color: #59c45b;
   color: #fff;
   border-color: #4db74f;
   padding-right: 40px;
   padding-left: 20px;
   background-position: right 10px center;
-  background: image_url("icon-search.png");
+  background: #59c45b image_url("icon-search.png") no-repeat;
 }
 
 .awe-btn.arrow-left {
