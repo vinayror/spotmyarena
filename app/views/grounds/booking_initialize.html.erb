@@ -32,54 +32,67 @@
             </div>
             <hr>
             <div class="col-md-8 col-xs-12">
+            <%=form_for @booking , url: 'https://test.payu.in/_payment' , :method=> :post do |f| %>
               <form>
+                <%= f.hidden_field :key, value: Booking::PAYU[0], name: "key" %>
+                <%= f.hidden_field :surl ,value: Booking::PAYU[2], name: "surl" %>
+                <%= f.hidden_field :furl, value: Booking::PAYU[3], name: "furl" %>
                 <div class="col-md-6">
                   <div class="form-group">
-                    <label class="sr-only" for="your_name">Your Name</label>
-                    <input type="text" class="form-control" id="your_name" placeholder="Your Name">
+                    <label class="sr-only" for="your_name">Transaction id</label>
+                    <%= f.text_field :txnid, value: @transaction_id , name: "txnid" , class: "form-control"%>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label class="sr-only" for="your_name">Total amount</label>
+                    <%= f.text_field :amount, value: @Total_price, name: "amount" , class: "form-control"%>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label class="sr-only" for="your_name">Ground name</label>
+                    <%= f.text_field :productinfo, value: @ground, name: "productinfo" , class: "form-control"%>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label class="sr-only" for="your_name">Your first name</label>
+                    <%= f.text_field :firstname, value: current_user.first_name, name: "firstname" , class: "form-control"%>
                   </div>
                 </div>
                 <div class="col-md-6">
                   <div class="form-group">
                     <label class="sr-only" for="your_name">Your Email</label>
-                    <input type="email" class="form-control" id="your_email" placeholder="Your Email">
+                    <%= f.text_field :email,value: current_user.email,  name: "email" , class: "form-control"%>
                   </div>
                 </div>
                 <div class="col-md-6">
                   <div class="form-group">
                     <label class="sr-only" for="your_phone">Your Phone</label>
-                    <input type="tel" class="form-control" id="your_phone" placeholder="Your Phone">
+                    <%= f.text_field :phone ,value: current_user.mobile, name: "phone" , class: "form-control"%>
                   </div>
                 </div>
-                <div class="col-md-6">
-                  <div class="form-group">
-                    <label class="sr-only" for="your_name">Age</label>
-                    <input type="number" class="form-control" id="your_age" placeholder="Age">
-                  </div>
-                </div>
-                <div class="col-md-12">
-                  <input required type="radio" id="pp-radio-sex-1" name="user_sex" value="male" checked="checked">
-                  <label for="pp-radio-sex-1"><span></span>Male</label>
-                  <input style="margin-left: 3em;" required type="radio" id="pp-radio-sex-2" name="user_sex" value="female">
-                  <label for="pp-radio-sex-2"><span></span>Female</label>
-                </div>
+                <%= f.hidden_field :salt, value: Booking::PAYU[1], name: "salt" %>
+                <%= f.hidden_field :hash, value: @hash, name: "hash" %>
                 <div class="col-md-12">
                   <h2>Payment Method</h2>
                   <input required="" type="radio" id="pp-radio-payment-1" name="payment_method" value="PAYU" checked="checked">
                   <label for="pp-radio-payment-1"><span></span>PayU</label>
-                  <h3><span>(Payment with payumoney comming soon)</span></h3>                 
+                                   
                 </div>
                 <br><hr>
                 <div class="col-md-12">
-                  <!-- <button type="submit" class="btn btn-primary">Go to payment</button> -->
+                  <button type="submit" class="btn btn-primary">Go to payment</button>
                 </div>
                 <hr>
               </form>
+            <% end %>
             </div>
             <div class="col-md-4 col-md-12">
               <h2>Order Summary</h2><hr>
               <div class="order-info">
-                <h3 class="text-center" style="color: blue;"><%= @booked_event.first.ground_details.name%></h3><hr>
+                <h3 class="text-center" style="color: blue;"><%= @ground%></h3><hr>
                 <p style="margin-bottom:5px !important;"><strong>Selected Slots</strong>:
                 <% @booked_event.each do |b|%>
                   <!-- <span id="slots_sum"></span></p> -->

@@ -6,7 +6,6 @@ class BookingsController < ApplicationController
 
   def index
     @bookings = Booking.all #current_user.bookings if current_user.present? #&& current_user.has_role? "ground_owner"
-
   end
 
   def show
@@ -69,7 +68,14 @@ class BookingsController < ApplicationController
     end
   end
 
-  
+  def payment_success
+    binding.pry
+
+  end
+
+  def payment_fail
+    
+  end
 
   private
     # Use callbacks to share common setup or constraints between actions.

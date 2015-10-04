@@ -29,7 +29,7 @@ class Ground < ActiveRecord::Base
   def self.search(category, city, area, date)
     
     if category.present? || city.present? || area.present? || date.present?
-      self.joins(:booking_dates).where('category LIKE ? AND city LIKE ? AND area LIKE ? AND booking_dates.date_of_booking = ?', "%#{category}%", "%#{city}%", "%#{area}%","%#{date}%")
+      self.joins(:booking_dates).where('city LIKE ? AND category LIKE ? AND area LIKE ? AND booking_dates.date_of_booking = ?', "%#{city}%", "%#{category}%", "%#{area}%","%#{date}%")
       #self.joins(:booking_dates).where('grounds.category = ? OR city = ? OR area = ? OR booking_dates.date_of_booking = ?', category, city, area, date)
       #self.joins(:booking_dates).where('grounds.category = ? AND city = ? AND area = ? AND booking_dates.date_of_booking = ?', category, city, area, date)
     else
@@ -126,4 +126,17 @@ class Ground < ActiveRecord::Base
     id = generate_unique_id
     self.update(merchant_id: id)
   end
+
+  def slots
+    self.booking_dates.collect{|c|  c.booking_times.map{|e| e if e.booked}}.flatten.compact
+  end
+
+  protected
+
+  def self.payu(user, transaction_id, amount, ground)
+    Digest::SHA2.new(512).hexdigest("#{Booking::PAYU[0]}|#{transaction_id}|#{amount}|#{ground}|#{user.first_name}|#{user.email}|||||||||||#{Booking::PAYU[1]}")
+  end
 end
+
+
+# <%= f.hidden_field :hash, value: @post.hash("#{Post::PAYU[:key]}|#{Post::PAYU[:txnid]}|#{Post::PAYU[:amount]}|#{Post::PAYU[:productinfo]}|#{Post::PAYU[:firstname]}|#{Post::PAYU[:email]}|||||||||||#{Post::PAYU[:salt]}"), name: "hash" %>

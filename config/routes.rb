@@ -1,4 +1,10 @@
   Rails.application.routes.draw do
+  get 'cancel_bookings/index'
+
+  get 'cancel_bookings/new'
+
+  get 'cancel_bookings/create'
+
     post '/rate' => 'rater#create', :as => 'rate'
     mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
     root to: 'home#index'
@@ -15,33 +21,35 @@
 
     devise_scope :user do
       get "logout" => "users/sessions#destroy"
-    end
+  end
 
-    resources :grounds do
+  resources :grounds do
       collection do
         get 'search'
         post 'booking_initialize'
-      end
-      member do
+        get 'my_booked_grounds'
+    end
+    member do
         get 'ground_details'
-      end
     end
+end
 
-    resources :bookings do
-        collection do
-
-        end
+resources :bookings do
+    collection do
+        post 'payment_success'
+        post 'payment_fail'
     end
+end
 
 
-    get 'profile' => 'home#profile'
-    get 'about' => 'home#about_us'
-    get 'service' => 'home#service'
-    get 'faq' => 'home#faq'
-    get 'contact' => 'home#contact'
-    get 'terms' => 'home#terms'
+get 'profile' => 'home#profile'
+get 'about' => 'home#about_us'
+get 'service' => 'home#service'
+get 'faq' => 'home#faq'
+get 'contact' => 'home#contact'
+get 'terms' => 'home#terms'
 
-    mount Commontator::Engine => '/commontator'
+mount Commontator::Engine => '/commontator'
     #get 'search' => 'grounds#search'
     # The priority is based upon order of creation: first created -> highest priority.
     # See how all your routes lay out with "rake routes".
@@ -97,4 +105,4 @@
     #     # (app/controllers/admin/products_controller.rb)
     #     resources :products
     #   end
-  end
+end
