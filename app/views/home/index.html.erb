@@ -7,17 +7,16 @@
     <div class="banner-cn">
       <!-- Logo -->
       <div class="logo-banner text-center">
-        <%= link_to root_path do %>
-        <%= image_tag "logo-banner.png", class: "" %>
-        <% end %>
+        <%= link_to image_tag ('logo-banner.png'),root_path %>
       </div>
       <!-- Logo -->
       <!-- Category Singer -->
       <div class="category-singer clearfix">
         <div class="cate-singer-icon float-left">
           <h2>GROUND</h2>
-          <img src="assets/icon-cruise.png" alt="">
-        </div> 
+          <%= image_tag 'icon-cruise.png' %>
+          <!--<img src="assets/icon-cruise.png" alt="">-->
+        </div>
         <p>Bridging the gap between<span>U</span>and<span>Sport</span></p>
       </div>
       <!-- End Category Singer -->

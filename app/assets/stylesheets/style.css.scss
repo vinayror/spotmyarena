@@ -241,7 +241,8 @@ section {
   background: image_url('bg-1.jpg');
 }
 
-.bg-2 {
+.bg-2 {mm
+
   background-image: url("/assets/bg-2.jpg");
 }
 
@@ -435,14 +436,14 @@ body.menu-active {
   padding-right: 40px;
   padding-left: 20px;
   background-position: right 10px center;
-  background-image: url("/assets/icon-search.png");
+  background: image_url("icon-search.png");
 }
 
 .awe-btn.arrow-left {
   padding-right: 20px;
   padding-left: 60px;
   background-position: left 20px center;
-  background-image: url("/assets/icon-arrow-left-blue.png");
+  background: image_url("icon-arrow-left-blue.png");
 }
 
 .awe-btn.arrow-left:hover {
@@ -1587,7 +1588,7 @@ blockquote:before {
 }
 
 .form-search .form-field.field-date .field-input {
-  background: url("/assets/icon-calendar.png") no-repeat right center;
+  background: image_url("icon-calendar.png") no-repeat right center;
   padding-right: 20px;
 }
 
