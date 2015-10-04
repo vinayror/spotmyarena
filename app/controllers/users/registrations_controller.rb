@@ -4,9 +4,23 @@ class Users::RegistrationsController < Devise::RegistrationsController
   before_filter :configure_permitted_parameters
   
 
+   def new
+      super
+    end
+
+ 
   def create
-    super
+    @user = User.new sign_up_params
+    binding.pry
+    if @user.save
+      flash[:notice] = "You have signed up successfully. If enabled, a confirmation was sent to your e-mail."
+      redirect_to root_url
+    else
+      flash[:notice] = "invalid email address"
+      render :action => :new
+    end
   end
+
 
   protected
   def after_update_path_for resource

@@ -1,4 +1,5 @@
   class GroundsController < ApplicationController
+    include ApplicationHelper
     before_action :authenticate_user! , except: [:search]
     load_resource only: [:show, :create ,:update, :destroy, :edit]
     PER_PAGE = 5
@@ -93,12 +94,32 @@
           slot = BookingTime.find_by(id: i.to_i)
           @booked_event << slot
         end
+        @booking = Booking.new
+        @transaction_id = transaction_id
+        @ground = Ground.find(params[:ground]).name
         @Total_price = @booked_event.map{|t| t.booking_date.weekend_day? ? t.booking_date.ground.end_price : t.booking_date.ground.day_price}.inject(:+)
+        @hash = Ground.payu(current_user, @transaction_id, @Total_price, @ground)
         @booked_event
       else
         @ground = Ground.find(params[:ground])
         redirect_to ground_details_ground_path(@ground), notice: "please select slots"
       end
+    end
+
+
+
+
+
+
+
+
+
+
+
+    
+    #user section
+    def my_booked_grounds
+      @grounds = current_user.grounds.map{|e| e if e.booking_dates.map{|e| e.booking_times.map{|e| e.booked}}}
     end
 
     private
