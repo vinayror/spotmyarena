@@ -15,6 +15,7 @@
 //= require bootstrap-datepicker
 
 //= require cocoon
-//= require_tree .
 //= require jquery-ui.multidatespicker
 //= require select2
+//= require turbolinks
+//= require_tree .
