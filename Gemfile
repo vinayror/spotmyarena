@@ -5,7 +5,9 @@ source 'https://rubygems.org'
 gem 'rails', '4.2.0'
 # Use sqlite3 as the database for Active Record
 
-gem 'pg'
+# gem 'pg'
+# Use mysql as the database for Active Record
+gem 'mysql2'
 gem 'devise'
 gem "rolify"
 gem "cocoon"
@@ -61,7 +63,7 @@ group :development, :test do
   gem 'pry'
   # Access an IRB console on exception pages or by using <%= console %> in views
   gem 'web-console', '~> 2.0'
-
+  gem 'mina'
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
 end
