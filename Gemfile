@@ -62,7 +62,6 @@ gem 'unicorn'
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'
-  gem 'pry'
   # Access an IRB console on exception pages or by using <%= console %> in views
   gem 'web-console', '~> 2.0'
   gem 'mina'
@@ -73,3 +72,4 @@ end
 gem 'rails_12factor', group: :production
 
 gem "font-awesome-rails"
+gem 'pry'
