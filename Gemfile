@@ -7,7 +7,7 @@ gem 'rails', '4.2.0'
 
 # gem 'pg'
 # Use mysql as the database for Active Record
-gem 'mysql2'
+gem 'mysql2', "~>0.3.19"
 gem 'devise'
 gem "rolify"
 gem "cocoon"
