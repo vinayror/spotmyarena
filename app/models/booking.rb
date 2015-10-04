@@ -5,7 +5,16 @@ class Booking < ActiveRecord::Base
     root_path(self)
   end
 
-  PAYU = ["gtKFFx", "eCwWELxi","http://localhost:3000/bookings/payment_success", "#{Rails.application.routes.url_helpers.root_path}bookings/payment_fail","payu_paisa"]
+  PAYU_PARAMS = {
+      key: 'gtKFFx',
+      salt: 'eCwWELxi',
+      surl: 'http://localhost:3000/bookings/payment_success',
+      furl: "#{Rails.application.routes.url_helpers.root_path}bookings/payment_fail",
+      bankcode: 'payuw',
+      pg: 'wallet'
+  }
+  # PAYU = ["gtKFFx", "eCwWELxi","http://localhost:3000/bookings/payment_success",
+  #         "#{Rails.application.routes.url_helpers.root_path}bookings/payment_fail","payu_paisa"]
   belongs_to :user
   has_many :Booking_times
 end
