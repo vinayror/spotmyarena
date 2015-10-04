@@ -12,8 +12,8 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require jquery-ui.multidatespicker
 //= require bootstrap-datepicker
+//= require jquery-ui.multidatespicker
 
 //= require cocoon
 //= require select2
