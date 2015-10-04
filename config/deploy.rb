@@ -18,7 +18,7 @@ set :deploy_to, "/home/#{user}/#{application}"
 set :github_username, set_git_user_name
 set :github_password, set_git_password
 
-set :repository, "https://#{github_username}:#{github_password}@github.com/vinayror/spotmyarena.git"
+set :repository, "https://#{github_username}:#{github_password}git@github.com:ramlaxmanyadav/spotmyarena.git"
 set :branch, set_branch
 
 set :ruby_version, "#{File.readlines(File.join(__dir__, '..', '.ruby-version')).first.strip}"
