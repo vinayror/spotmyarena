@@ -15,10 +15,10 @@ set :deploy_to, "/home/#{user}/#{application}"
 
 
 # Source Code Details
-set :github_username, set_git_user_name
-set :github_password, set_git_password
+set :github_username, 'ramlaxmanyadav'#set_git_user_name
+set :github_password, 'lucky_4922'#set_git_password
 
-set :repository, "https://#{github_username}:#{github_password}git@github.com:ramlaxmanyadav/spotmyarena.git"
+set :repository, "https://github.com/ramlaxmanyadav/spotmyarena.git"
 set :branch, set_branch
 
 set :ruby_version, "#{File.readlines(File.join(__dir__, '..', '.ruby-version')).first.strip}"
