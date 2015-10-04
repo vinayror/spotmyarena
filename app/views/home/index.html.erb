@@ -7,7 +7,9 @@
     <div class="banner-cn">
       <!-- Logo -->
       <div class="logo-banner text-center">
-        <%= link_to image_tag ('logo-banner.png'),root_path %>
+        <%= link_to root_path do %>
+            <%= image_tag('logo-banner.png') %>
+        <% end %>
       </div>
       <!-- Logo -->
       <!-- Category Singer -->
