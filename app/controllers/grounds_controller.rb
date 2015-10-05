@@ -1,6 +1,7 @@
   class GroundsController < ApplicationController
     include ApplicationHelper
     before_action :authenticate_user! , except: [:search]
+    before_action :update_slotes, only: :booking_initialize
     load_resource only: [:show, :create ,:update, :destroy, :edit]
     PER_PAGE = 5
     def search
@@ -115,14 +116,6 @@
       end
     end
 
-
-
-
-
-
-
-
-    
     #user section
     def my_booked_grounds
       @grounds = current_user.grounds.map{|e| e if e.booking_dates.map{|e| e.booking_times.map{|e| e.booked}}}
@@ -139,4 +132,24 @@
         params.require(:ground).permit(:start_date, :end_date, :name, :city, :area, :pincode, :address, :status, :category, :weekend_price, :weekday_price, :court, :phone, :attention_message , booking_dates_attributes: [:id, :date_of_booking, :status, :ground_id, :_destroy, booking_times_attributes: [:id, :time_of_booking, :status, :booking_date_id, :timeslot_id, :_destroy]], ground_attachments_attributes: [:id, :ground_id, :photo, :_destroy])
       end
 
+      def update_slotes
+         unless params[:slot_ids].split("{:value=>\"\"}").reject(&:empty?).blank?
+          ids =  params[:slot_ids].split(',').reject(&:empty?)
+          @booked_event = []
+          ids.each do |i|
+            slot = BookingTime.find_by(id: i.to_i)
+            @booked_event << slot
+          end
+          @ground = Ground.find(params[:ground])
+          @booked_event 
+          @booked_event.each do |b|
+            slot = BookingTime.find(b)
+            price = slot.booking_date.weekend_day? ? slot.booking_date.ground.end_price : slot.booking_date.ground.day_price
+            slot.update(person_id: current_user.id, booked: true, slot_price: price)
+          end
+        else
+          @ground = Ground.find(params[:ground])
+          redirect_to ground_details_ground_path(@ground), notice: "please select slots"
+        end
+      end
   end

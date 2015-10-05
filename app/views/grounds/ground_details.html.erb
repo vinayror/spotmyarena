@@ -165,7 +165,7 @@
                                         <% @test=0 %>                                  
                                         <% d.booking_times.includes(:booking_date).each do |t| %>
                                           <% if e == t.slot%>
-                                            <% if t.status == true %>
+                                            <% if t.status == true && t.booked == false %>
                                               <td>                                             
                                                 <%= check_box_tag(t.id, value = "", checked = false, data: { "a" => t.booking_date.weekend_day? ? t.booking_date.ground.end_price : t.booking_date.ground.day_price, "timeslot" => t.slot, "id"=> t.id}, class: "ts") %>
                                               </td>

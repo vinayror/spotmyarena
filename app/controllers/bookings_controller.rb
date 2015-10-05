@@ -5,7 +5,7 @@ class BookingsController < ApplicationController
 
 
   def index
-    @bookings = Booking.all #current_user.bookings if current_user.present? #&& current_user.has_role? "ground_owner"
+    @bookings = BookingTime.where(person_id: current_user.id)
   end
 
   def show
@@ -65,6 +65,18 @@ class BookingsController < ApplicationController
         format.html { redirect_to grounds_url, notice: 'Booking was successfully destroyed.' }
         format.json { head :no_content }
       end
+    end
+  end
+
+  def request_for_cancel
+    slot_id = params[:slot_id].to_i
+    slot = BookingTime.find(params[:slot_id].to_i)
+    slot.update(cancelation_status: "requested for cancelation")
+    ground_id = slot.ground_details.id
+    CancelBooking.create(user_id: current_user.id, ground_id: ground_id, booking_time_id: slot_id, description: params[:reason])
+    respond_to do |format|
+      format.html { redirect_to bookings_path, notice: 'you are requested successfully.' }
+      format.json { head :no_content }
     end
   end
 

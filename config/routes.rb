@@ -39,6 +39,7 @@ resources :bookings do
     collection do
         post 'payment_success'
         post 'payment_fail'
+        put 'request_for_cancel'
     end
 end
 
