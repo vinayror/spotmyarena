@@ -12,6 +12,7 @@
     has_many :grounds, :dependent => :destroy
     has_many :bookings, :dependent => :destroy
     has_many :cancel_bookings
+    has_many :transactions
     mount_uploader :avatar, AvatarUploader
 
     # Include default devise modules. Others available are:

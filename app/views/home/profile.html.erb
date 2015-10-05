@@ -1,39 +1,26 @@
 <section class="sub-banner">
-  <!--Background-->
   <div class="bg-parallax bg-1"></div>
-  <!--End Background-->
-  <!-- Logo -->
   <div class="logo-banner text-center">
-   
     <%= link_to root_path do %>
     <%= image_tag "logo-banner.png", class: "" %>
     <% end %>
   </div>
-  <!-- Logo -->
 </section>
-<!--End Banner-->
-
-<!-- Main -->
 <div class="main">
   <div class="container">
     <div class="main-cn element-page bg-white clearfix">
-      <!--Breakcrumb-->
       <section class="breakcrumb-sc">
         <ul class="breadcrumb arrow">
           <li><a href="index.html"><i class="fa fa-home"></i></a></li>
           <li>My Profile</li>
         </ul>
       </section>
-      <!--End Breakcrumb-->
-      
       <section class="user-profile">
         <div class="row">
           <%= render :partial => 'grounds/side_bar' %>
           <div class="col-md-9">
             <h2 class="user-profile__title">Settings</h2>
-
             <div class="my-profile">
-
               <div class="row">
                 <div class="col-md-6">
                   <h4 class="my-profile__title">Personal Information</h4> 
@@ -45,29 +32,24 @@
                     <li><span>Email</span><%= current_user.email %></li>
                     <li><span>Phone number</span>+91<%= current_user.mobile %></li>
                     <li><span>Age</span><%= current_user.age %></li>
-
-                    
                   </ul>   
                 </div>
 
                 <div class="col-md-6">
                   <h4 class="my-profile__title">Location</h4> 
                   <ul>
-                    <li><span>City</span><%= current_user.city %></li>
-                    <li><span>Address</span><%= current_user.address %></li>
-                    
+                  <li><span>City</span><%= current_user.city.present? ? current_user.city : "Not available" %></li>
+                    <li><span>Address</span><%= current_user.address.present? ? current_user.address : "Not available"%></li>
                   </ul>   
                 </div>
               </div>
-              
               <p>
                 Sign up now for our regular promotional emails packed with special offers and exclusive deals. You can personalise the offers you receive from us by selecting your favorite cities
-              </p>
-
-              <div class="check-box">
+              </p><br>
+              <!-- <div class="check-box">
                 <input type="checkbox" id="my-profile__checkbox">
                 <label for="my-profile__checkbox">Yes, I would like to receive Special Offers &amp; Promotions from Agoda</label>
-              </div>
+              </div> -->
               <%= link_to "Edit profile", edit_user_registration_path , class: "awe-btn awe-btn-1 awe-btn-medium" %>
             </div>
           </div>
@@ -76,4 +58,3 @@
     </div>
   </div>
 </div>
-        <!-- End Main -->

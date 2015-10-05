@@ -4,9 +4,9 @@ class Users::RegistrationsController < Devise::RegistrationsController
   before_filter :configure_permitted_parameters
   
 
-   def new
-      super
-    end
+  def new
+    super
+  end
 
  
   def create

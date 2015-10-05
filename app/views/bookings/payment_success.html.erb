@@ -32,46 +32,31 @@
               <div class="row">
                 <div class="col-md-12">
                   <div class="hotel-list-cn clearfix">
-                    <%# if @cancel_bookings.present? %>
-                    <%# @cancel_bookings.each do |cancel_booking| %>
                     <div class="hotel-list-item">
-                      <figure class="hotel-img float-left">
-                        <a href="#" title="">
-                          
-                        </figure>
-                        <div class="hotel-text">
-                          <div class="hotel-name">
-                           
-                          </div>
-                          <hr>
-                          <div class="">
-                            
-                          </div>
-                          <hr>
-                          <div class="hotel-star-address">
-                            <address class="hotel-address">
-                              
-                            </address>
-                          </div>
-                          <hr>
-                          <p>
-                            
-                          </p>
-                          <!-- <hr class="hr"> -->
-                          <div class="">
-                            <span class="price old-price"></span>
-                            <span class="price special-price"><h4></h4></span>
-                          </div>
-                        </div>
-                        <hr>
+                      <div>
+                      Status : <%= @status%>
                       </div>
-                      <%# end %>
-
-                      <%# else %>
-                      <hr>
-                        currenly you don't have any cancellation..!!!
-                      <hr>
-                      <%# end %>
+                      <br>
+                      <div>
+                      Transaction id : <%= @transaction_id%>
+                      </div>
+                      <br>
+                      <div>
+                      Amount : <%= @amount%>
+                      </div>
+                      <br>
+                      <div>
+                      Net amount debit : <%= @net_amount_debit%>
+                      </div>
+                      <br>
+                      <div>
+                      Bank ref num : <%= @bank_ref_num%>
+                      </div>
+                      <br>
+                      <div>
+                      Email : <%= @email%>                        
+                      </div>
+                      <br>
                     </div>
                     <%= link_to 'go back', root_path, :class => 'awe-btn awe-btn-1 awe-btn-medium' %>
                   </div> 

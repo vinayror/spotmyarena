@@ -6,7 +6,7 @@
   get 'cancel_bookings/create'
 
     post '/rate' => 'rater#create', :as => 'rate'
-    mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
+    # mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
     root to: 'home#index'
 
     devise_for :users, path: "", controllers: {registrations: "users/registrations", sessions: "users/sessions", confirmations: "users/confirmations", omniauth_callbacks: 'omniauth_callbacks'}, path_names: { sign_in: 'login', password: 'forgot', confirmation: 'confirm', unlock: 'unblock', sign_up: 'register', sign_out: 'signout', edit: 'dashboard'}

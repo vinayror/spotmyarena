@@ -1,0 +1,8 @@
+working_directory \"<%= File.join(deploy_to, current_path) %>\"
+pid \"<%= File.join(deploy_to, shared_path, 'tmp', 'pids', 'unicorn.pid') %>\"
+stderr_path \"<%= File.join(deploy_to, current_path, 'log', 'unicorn.stderr.log') %>\"
+stdout_path \"<%= File.join(deploy_to, current_path, 'log', 'unicorn.stdout.log') %>\"
+
+listen \"/tmp/unicorn.<%= application %>.sock\"
+worker_processes <%= unicorn_workers %>
+timeout 30
