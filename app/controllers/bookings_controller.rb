@@ -69,7 +69,6 @@ class BookingsController < ApplicationController
   end
 
   def payment_success
-    binding.pry
 
   end
 

@@ -28,6 +28,7 @@
         get 'search'
         post 'booking_initialize'
         get 'my_booked_grounds'
+        post 'publish_ground'
     end
     member do
         get 'ground_details'
@@ -48,6 +49,10 @@ get 'service' => 'home#service'
 get 'faq' => 'home#faq'
 get 'contact' => 'home#contact'
 get 'terms' => 'home#terms'
+
+#admin
+get 'newly_added_ground' => 'home#newly_added_ground'
+get 'cancelation_request' => 'home#cancelation_request'
 
 mount Commontator::Engine => '/commontator'
     #get 'search' => 'grounds#search'

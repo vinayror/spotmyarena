@@ -1,0 +1,85 @@
+ <section class="sub-banner">
+  <!--Background-->
+  <div class="bg-parallax bg-1"></div>
+  <!--End Background-->
+  <!-- Logo -->
+  <div class="logo-banner text-center">
+    <%= link_to root_path do %>
+    <%= image_tag "logo-banner.png", class: "" %>
+    <% end %>
+  </div>
+  <!-- Logo -->
+</section>
+<!--End Banner-->
+<div class="main">
+  <div class="container">
+    <div class="main-cn element-page bg-white clearfix">
+      <!--Breakcrumb-->
+      <section class="breakcrumb-sc">
+        <ul class="breadcrumb arrow">
+          <li>Payment status</li>
+        </ul>
+      </section>
+      <!--End Breakcrumb-->
+
+      <section class="user-profile">
+        <div class="row">
+          <%= render :partial => 'grounds/side_bar' %>
+          <div class="col-md-9">
+            <h2 class="user-profile__title">payment faliler</h2>
+            <hr>
+            <div class="user-form">
+              <div class="row">
+                <div class="col-md-12">
+                  <div class="hotel-list-cn clearfix">
+                    <%# if @cancel_bookings.present? %>
+                    <%# @cancel_bookings.each do |cancel_booking| %>
+                    <div class="hotel-list-item">
+                      <figure class="hotel-img float-left">
+                        <a href="#" title="">
+                          
+                        </figure>
+                        <div class="hotel-text">
+                          <div class="hotel-name">
+                           
+                          </div>
+                          <hr>
+                          <div class="">
+                            
+                          </div>
+                          <hr>
+                          <div class="hotel-star-address">
+                            <address class="hotel-address">
+                              
+                            </address>
+                          </div>
+                          <hr>
+                          <p>
+                            
+                          </p>
+                          <!-- <hr class="hr"> -->
+                          <div class="">
+                            <span class="price old-price"></span>
+                            <span class="price special-price"><h4></h4></span>
+                          </div>
+                        </div>
+                        <hr>
+                      </div>
+                      <%# end %>
+
+                      <%# else %>
+                      <hr>
+                        currenly you don't have any cancellation..!!!
+                      <hr>
+                      <%# end %>
+                    </div>
+                    <%= link_to 'go back', root_path, :class => 'awe-btn awe-btn-1 awe-btn-medium' %>
+                  </div> 
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+      </div>
+    </div>
+  </div>

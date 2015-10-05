@@ -1,0 +1,93 @@
+ <section class="sub-banner">
+  <!--Background-->
+  <div class="bg-parallax bg-1"></div>
+  <!--End Background-->
+  <!-- Logo -->
+  <div class="logo-banner text-center">
+    <%= link_to root_path do %>
+    <%= image_tag "logo-banner.png", class: "" %>
+    <% end %>
+  </div>
+  <!-- Logo -->
+</section>
+<!--End Banner-->
+<div class="main">
+  <div class="container">
+    <div class="main-cn element-page bg-white clearfix">
+      <!--Breakcrumb-->
+      <section class="breakcrumb-sc">
+        <ul class="breadcrumb arrow">
+          <li><a href="index.html"><i class="fa fa-home"></i></a></li>
+          <li>My ground page</li>
+        </ul>
+      </section>
+      <!--End Breakcrumb-->
+
+      <section class="user-profile">
+        <div class="row">
+          <%= render :partial => 'grounds/side_bar' %>
+          <div class="col-md-9">
+            <h2 class="user-profile__title">My booked grounds</h2>
+            <hr>
+            <div class="user-form">
+              <div class="row">
+                <div class="col-md-12">
+                  <div class="hotel-list-cn clearfix">
+                    <% if @grounds.present? %>
+                    <% @grounds.each do |ground| %>
+                    <div class="hotel-list-item">
+                      <figure class="hotel-img float-left">
+                        <a href="#" title="">
+                          <%= link_to ground_path(ground) do %>
+                          <% if ground.ground_attachments.present? %>
+                          <%= image_tag ground.ground_attachments.last.photo_url, size: "200" %>
+                          <% else %>
+                          <%= image_tag 'logo-banner.png' %>
+                          <%end%>
+                          <% end %>
+                        </figure>
+                        <div class="hotel-text">
+                          <div class="hotel-name">
+                            <%= link_to ground_path(ground) do %>
+                            <%= ground.name %>
+                            <% end %>
+                          </div>
+                          <hr>
+                          <div class="">
+                            <a class= "btn btn-default btn-sm"><%= ground.category%></a>
+                            <%= link_to 'Click to edit info', edit_ground_path(ground), :class => 'btn btn-info pull-right'%>
+                          </div>
+                          <hr>
+                          <div class="hotel-star-address">
+                            <address class="hotel-address">
+                              <% ground.slots.each do |s| %>
+                                <%= s.slot %>
+                                <span><%= s.person %></span>
+                              <% end %>
+                            </address>
+                          </div>
+                          <hr>
+                          <p>
+                            <%= ground.attention_message %>
+                          </p>
+                          <!-- <hr class="hr"> -->
+                          <div class="">
+                            <span class="price old-price"></span>
+                            <span class="price special-price"><h4>Rs. <%= ground.weekend_price %>/<%= ground.weekday_price %><h6>(Weekend/Weekday)</h6></h4></span>
+                          </div>
+                        </div>
+                        <hr>
+                      </div>
+                      <% end %>
+                      <% end %>
+                    </div>
+                    <%= link_to 'go back', root_path, :class => 'awe-btn awe-btn-1 awe-btn-medium' %>
+                  </div> 
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+      </div>
+    </div>
+  </div>

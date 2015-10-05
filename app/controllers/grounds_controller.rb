@@ -107,7 +107,13 @@
     end
 
 
-
+    def publish_ground
+     ground = Ground.find(params[:id])
+     ground.update(publish: true)
+      respond_to do |format|
+        format.js { flash[:notice] = "published successfully"}
+      end
+    end
 
 
 

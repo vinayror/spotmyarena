@@ -11,7 +11,7 @@
     after_create :set_member_id
     has_many :grounds, :dependent => :destroy
     has_many :bookings, :dependent => :destroy
-    
+    has_many :cancel_bookings
     mount_uploader :avatar, AvatarUploader
 
     # Include default devise modules. Others available are:

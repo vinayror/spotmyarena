@@ -156,10 +156,10 @@
                                       <td nowrap>
                                         <%= d.date_of_booking if d.status == true %> 
                                       </td>
-                                      <% Timeslot.all.each do |e| %>
+                                      <% Ground::TIME_SLOT.each do |e| %>
                                         <% @test=0 %>                                  
                                         <% d.booking_times.each do |t| %>
-                                          <% if e.slot == t.slot%>
+                                          <% if e == t.slot%>
                                             <% if t.status == true %>
                                               <td>
                                                 <%= check_box_tag(t.id, value = "", checked = false, data: { "price" => t.booking_date.weekend_day? ? t.booking_date.ground.end_price : t.booking_date.ground.day_price}, class: "ts") %>

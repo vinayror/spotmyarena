@@ -156,15 +156,15 @@
                                 <%=hidden_field_tag "slot_ids", value: ""%>
                                 
 
-                                  <% @ground.booking_dates.each do |d| %>
+                                  <% @ground.booking_dates.includes(:ground).each do |d| %>
                                     <tr>
                                       <td nowrap>
                                         <%= d.date_of_booking if d.status == true %> 
                                       </td>
-                                      <% Timeslot.all.each do |e| %>
+                                      <% Ground::TIME_SLOT.each do |e| %>
                                         <% @test=0 %>                                  
-                                        <% d.booking_times.each do |t| %>
-                                          <% if e.slot == t.slot%>
+                                        <% d.booking_times.includes(:booking_date).each do |t| %>
+                                          <% if e == t.slot%>
                                             <% if t.status == true %>
                                               <td>                                             
                                                 <%= check_box_tag(t.id, value = "", checked = false, data: { "a" => t.booking_date.weekend_day? ? t.booking_date.ground.end_price : t.booking_date.ground.day_price, "timeslot" => t.slot, "id"=> t.id}, class: "ts") %>

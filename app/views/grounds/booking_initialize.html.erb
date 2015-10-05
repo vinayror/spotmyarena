@@ -39,37 +39,37 @@
                 <%= f.hidden_field :furl, value: Booking::PAYU[3], name: "furl" %>
                 <div class="col-md-6">
                   <div class="form-group">
-                    <label class="sr-only" for="your_name">Transaction id</label>
+                    <label>Transaction id</label>
                     <%= f.text_field :txnid, value: @transaction_id , name: "txnid" , class: "form-control"%>
                   </div>
                 </div>
                 <div class="col-md-6">
                   <div class="form-group">
-                    <label class="sr-only" for="your_name">Total amount</label>
+                    <label>Total amount</label>
                     <%= f.text_field :amount, value: @Total_price, name: "amount" , class: "form-control"%>
                   </div>
                 </div>
                 <div class="col-md-6">
                   <div class="form-group">
-                    <label class="sr-only" for="your_name">Ground name</label>
+                    <label>Ground name</label>
                     <%= f.text_field :productinfo, value: @ground, name: "productinfo" , class: "form-control"%>
                   </div>
                 </div>
                 <div class="col-md-6">
                   <div class="form-group">
-                    <label class="sr-only" for="your_name">Your first name</label>
+                    <label>Your first name</label>
                     <%= f.text_field :firstname, value: current_user.first_name, name: "firstname" , class: "form-control"%>
                   </div>
                 </div>
                 <div class="col-md-6">
                   <div class="form-group">
-                    <label class="sr-only" for="your_name">Your Email</label>
+                    <label>Your Email</label>
                     <%= f.text_field :email,value: current_user.email,  name: "email" , class: "form-control"%>
                   </div>
                 </div>
                 <div class="col-md-6">
                   <div class="form-group">
-                    <label class="sr-only" for="your_phone">Your Phone</label>
+                    <label>Your Phone</label>
                     <%= f.text_field :phone ,value: current_user.mobile, name: "phone" , class: "form-control"%>
                   </div>
                 </div>

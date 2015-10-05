@@ -1,5 +1,7 @@
 class Ground < ActiveRecord::Base
   include ApplicationHelper
+
+  TIME_SLOT = ["12:00 AM","01:00 AM", "02:00 AM", "03:00 AM", "04:00 AM", "05:00 AM", "06:00 AM", "07:00 AM", "08:00 AM", "09:00 AM", "10:00 AM", "11:00 AM", "12:00 PM", "01:00 PM", "02:00 PM", "03:00 PM", "04:00 PM", "05:00 PM", "06:00 PM", "07:00 PM", "08:00 PM", "09:00 PM", "10:00 PM", "11:00 PM"]
   CATEGORY = ["Tabel Tennis", "BadMinton", "Cricket Nets",  "Snooker", "Tennis"]
   CITY =['Delhi', 'Channei']
   AREA =['Connaught Place', 'Chanakyapuri', 'Delhi Cantonment', 'Vasant Vihar', 'North Delhi', 'Narela' ,'Model Town', 'Narela', 'Alipur', 'North West Delhi', 'Kanjhawala', 'Rohini', 'Kanjhawala', 'Saraswati Vihar', 'West Delhi', 'Rajouri Garden', 'Patel Nagar', 'Punjabi Bagh', 'South West Delhi', 'Dwarka', 'Najafgarh', 'Kapashera', 'South Delhi', 'Saket', 'Hauz Khas', 'Mehrauli', 'South East Delhi', 'Defence Colony', 'Lajpat Nagar', 'Kalkaji', 'Sarita Vihar', 'Central Delhi', 'Daryaganj', 'Karol Bagh', 'Kotwali', 'Civil Lines', 'North East Delhi', 'Seelampur', 'Yamuna Vihar', 'Karawal Nagar', 'Shahdara',  'Seemapuri', 'Vivek Vihar', 'East Delhi', 'Preet Vihar', 'Gandhi Nagar', 'Mayur Vihar']
@@ -28,12 +30,14 @@ class Ground < ActiveRecord::Base
   attr_accessor :add_booking_dates, :add_closing_dates, :closing_times, :special_closing_date, :special_closing_times, :slot_ids
   def self.search(category, city, area, date)
     
-    if category.present? || city.present? || area.present? || date.present?
-      self.joins(:booking_dates).where('city LIKE ? AND category LIKE ? AND area LIKE ? AND booking_dates.date_of_booking = ?', "%#{city}%", "%#{category}%", "%#{area}%","%#{date}%")
-      #self.joins(:booking_dates).where('grounds.category = ? OR city = ? OR area = ? OR booking_dates.date_of_booking = ?', category, city, area, date)
-      #self.joins(:booking_dates).where('grounds.category = ? AND city = ? AND area = ? AND booking_dates.date_of_booking = ?', category, city, area, date)
+    if category.present? && city.present? && area.present? && date.present?
+      results = self.joins(:booking_dates).where('city LIKE ? AND category LIKE ? AND area LIKE ? AND booking_dates.date_of_booking = ?', "%#{city}%", "%#{category}%", "%#{area}%","%#{date}%")
+      results.where("publish = ?", true).order("created_at DESC")
+      if results.blank?
+        Ground.where("publish = ?", true).order("created_at DESC")
+      end
     else
-      all
+      Ground.where("publish = ?", true).order("created_at DESC")
     end
   end
 
@@ -68,6 +72,8 @@ class Ground < ActiveRecord::Base
           d.destroy if d.date_of_booking == cd
         end
       end
+    else
+      return false
     end
     if add_booking_dates.present?
       add_booking_dates.each do |bd|
@@ -76,6 +82,8 @@ class Ground < ActiveRecord::Base
           BookingTime.create(slot: t, status: true, booking_date_id: add_date.id)
         end
       end
+    else
+      return false
     end
 
     if closing_times.present?
@@ -86,6 +94,8 @@ class Ground < ActiveRecord::Base
           end
         end
       end
+    else
+      return false
     end    
   end
   
@@ -95,11 +105,17 @@ class Ground < ActiveRecord::Base
     current_booking_dates = self.booking_dates
     select_date = current_booking_dates.where(date_of_booking: special_closing_date).first
     if special_closing_date.present?
-      special_closing_times.each do |sc|
-        select_date.booking_times.each do |ct|
-          ct.destroy if ct.slot == sc && ct.booked == false
+      special_closing_times.each do |sc|       
+        if !select_date.nil?
+          select_date.booking_times.each do |ct|
+            ct.destroy if ct.slot == sc && ct.booked == false
+          end
+        else
+          return false
         end
       end
+    else
+      return false
     end
   end
 

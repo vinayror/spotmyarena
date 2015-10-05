@@ -11,46 +11,61 @@
     </p>
   </div>
   <ul class="user-profile__navigation">
+
+    <% if current_user.has_role? :admin %>
+      <li class="current">
+        <%= link_to newly_added_ground_path do %>
+        newly added grounds<%= image_tag('icon-cart.png') %>
+        <% end %>
+      </li>
+      <li class="current">
+        <%= link_to cancelation_request_path do %>
+        Cancelation requetes<%= image_tag('icon-cart.png') %>
+        <% end %>
+      </li>
+    <% end %>
     <% if current_user.has_role? :ground_owner %>
     <li class="current">
       <%= link_to grounds_path do %>
       My grounds<%= image_tag('icon-cart.png') %>
       <% end %>
     </li>
-    <li >
+    <li class="current">
       <%= link_to new_ground_path do %>
       new ground entry<%= image_tag('icon-hotel.png') %>
       <% end %>
     </li>
-    <li >
+    <li class="current">
       <%= link_to my_booked_grounds_grounds_path do %>
       My booked ground<%= image_tag('icon-service-12.png') %>
       <% end %>
     </li>
-    <% else %>
-    <li>
+    <% elsif current_user.has_role? :member %>
+    <li class="current">
       <%= link_to bookings_path do %>
       My bookings<%= image_tag('icon-cart.png') %>
       <% end %>
     </li>
-    <li>
-      <%= link_to bookings_path do %>
-      My cancel bookings<%= image_tag('icon-cart.png') %>
+    <li class="current">
+      <%= link_to cancel_bookings_index_path do %>
+      My canceled bookings<%= image_tag('icon-cart.png') %>
       <% end %>
     </li>
+    <% else %>
+    
     <% end %>  
-    <li >
+    <li class="current">
       <%= link_to profile_path do %>
       My profile <%= image_tag('icon-user.png') %>
       <% end %>
     </li>
-    <li>
+    <li class="current">
       <%= link_to edit_user_registration_path do %>
       Setting <%= image_tag('icon-setting.png') %>
       <% end %>
     </li>
 
-    <li>
+    <li class="current">
       <%= link_to destroy_user_session_path, method: :delete do %>
       logout <%= image_tag('icon-back.png') %>
       <% end %>

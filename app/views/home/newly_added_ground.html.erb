@@ -1,0 +1,78 @@
+
+<section class="sub-banner">
+  <!--Background-->
+  <div class="bg-parallax bg-1"></div>
+  <!--End Background-->
+  <!-- Logo -->
+  <div class="logo-banner text-center">
+    <%= link_to root_path do %>
+    <%= image_tag "logo-banner.png", class: "" %>
+    <% end %>
+  </div>
+  <!-- Logo -->
+</section>
+<!--End Banner-->
+<div class="main">
+  <div class="container">
+    <div class="main-cn element-page bg-white clearfix">
+      <!--Breakcrumb-->
+      <section class="breakcrumb-sc">
+        <ul class="breadcrumb arrow">
+          <li>My canceled booking</li>
+        </ul>
+      </section>
+      <!--End Breakcrumb-->
+
+      <section class="user-profile">
+        <div class="row">
+          <%= render :partial => 'grounds/side_bar' %>
+          <div class="col-md-9">
+            <h2 class="user-profile__title">My canceled booking</h2>
+            <hr>
+            <div class="user-form">
+              <div class="row">
+                <div class="col-md-12">
+                  <div class="hotel-list-cn clearfix">
+                    <% if @added_grounds.present? %>
+                    <% @added_grounds.each do |ground| %>
+                      <div>
+                        
+                          <div class="hotel-name">
+                            <h3><%= ground.name%><h3>
+                          </div>
+                          <div>
+                            Ground type: <%= ground.category %>
+                          </div>
+                          <div class="">
+                            Owner name: <%= ground.user.name %>
+                          </div>
+                          <div class="">
+                            Owner contact: <%= ground.user.mobile %>
+                          </div>
+                          <div class="">
+                            Address: <%= ground.address %>
+                          </div>
+                          <br>
+                          <div class="">
+                            <%= link_to "Click to publish", publish_ground_grounds_path(id: ground.id), method: :post, remote: true, class: "btn btn-success publish_#{ground.id}"%>
+                          </div>
+                        <hr>
+                      </div>
+                      <% end %>
+
+                      <% else %>
+                      <hr>
+                        this week ground owner's can't added any ground!!!
+                      <hr>
+                      <% end %>
+                    </div>
+                    <%= link_to 'go back', root_path, :class => 'awe-btn awe-btn-1 awe-btn-medium' %>
+                  </div> 
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+      </div>
+    </div>
+  </div>
