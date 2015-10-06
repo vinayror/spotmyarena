@@ -113,6 +113,16 @@
   <% if alert %>
       <p class="alert alert-danger"><%= alert %></p>
   <% end %>
+  <% if !current_page?(root_path)%>
+    <section class="sub-banner">
+      <div class="bg-parallax bg-1"></div>
+      <div class="logo-banner text-center">
+        <%= link_to root_path do %>
+        <%= image_tag "logo-banner.png", class: "" %>
+        <% end %>
+      </div>
+    </section>
+  <% end %>
   <%= yield %>
   <footer>
     <div class="container">
