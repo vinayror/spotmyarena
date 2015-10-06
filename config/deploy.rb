@@ -35,7 +35,7 @@ set :cert_key_path, "#{deploy_to}/current/ssl-certs/#{rails_env}/YOUR_KEY_NAME"
 
 # Manually create these paths in shared/ (eg: shared/config/database.yml) in your server.
 # They will be linked in the 'deploy:link_shared_paths' step.
-set :shared_paths, ['config/database.yml','config/secrets.yml', 'log', 'config/unicorn.rb']
+set :shared_paths, ['config/database.yml','config/secrets.yml','config/payu_configrations.yml', 'log', 'config/unicorn.rb']
 
 
 # Put any custom mkdir's in here for when `mina setup` is ran.
