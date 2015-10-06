@@ -15,8 +15,13 @@ Devise.setup do |config|
   # with default "from" parameter.
   #config.mailer_sender = 'please-change-me-at-config-initializers-devise@example.com'
   #config.omniauth :facebook, "1144085172288188", "5db1fb7a8c01609ceb740471a621fbc9" , scope: 'email', info_fields: 'email, first_name, last_name',  :strategy_class => OmniAuth::Strategies::Facebook,  :display => 'popup'
-  config.omniauth :facebook, "393860877479674", "0c1cae1bfe4e8acf15f6f89e9110040a" , scope: 'email', info_fields: 'email, first_name, last_name',  :strategy_class => OmniAuth::Strategies::Facebook,  :display => 'popup'
-  
+
+  #For development
+  config.omniauth :facebook, "1495406120756327", "9fba5482927b4d092fff90612f67ef3b" , scope: 'email', info_fields: 'email, first_name, last_name',  :strategy_class => OmniAuth::Strategies::Facebook,  :display => 'popup'
+
+  # For production
+  config.omniauth :facebook, "502433656600472", "5cd60f2705312a932f4127a6755bcc50" , scope: 'email', info_fields: 'email, first_name, last_name',  :strategy_class => OmniAuth::Strategies::Facebook,  :display => 'popup'
+
   config.omniauth :google_oauth2, "718604841377-b577j78thfsbur146ijgg9clb8cnu2vu.apps.googleusercontent.com", "2Ee4i-MfA3tfiaMTycWvUWLk", { access_type: "offline", approval_prompt: "" }
   # Configure the class responsible to send e-mails.
   config.mailer = Devise::Mailer

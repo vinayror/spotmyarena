@@ -1,14 +1,14 @@
 defaults: &defaults
-  adapter: postgresql
-  encoding: unicode
-  pool: 20
-  username: postgres
-  password: postgres
-  host: localhost
-  port: 5432
+  adapter: mysql2
+  encoding: utf8
+  pool: 25
+  reaping_frequency: 20
+  username: root
+  password: ram
+  socket: /var/run/mysqld/mysqld.sock
 
 development:
-  database: myappone_development
+  database: spotmyarena_development
   <<: *defaults
 
 test:
@@ -16,5 +16,5 @@ test:
   <<: *defaults
 
 production:
-  database: myappone_production
+  database: spotmyarena_production
   <<: *defaults
