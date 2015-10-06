@@ -22,7 +22,7 @@ Devise.setup do |config|
   # For production
   config.omniauth :facebook, "502433656600472", "5cd60f2705312a932f4127a6755bcc50" , scope: 'email', info_fields: 'email, first_name, last_name',  :strategy_class => OmniAuth::Strategies::Facebook,  :display => 'popup'
 
-  config.omniauth :google_oauth2, "718604841377-b577j78thfsbur146ijgg9clb8cnu2vu.apps.googleusercontent.com", "2Ee4i-MfA3tfiaMTycWvUWLk", { access_type: "offline", approval_prompt: "" }
+  config.omniauth :google_oauth2, "770559929031-arl7unnsod0s04c562gf96hq66cihaoo.apps.googleusercontent.com ", "UaQUnqmEyN7GFRQY0JLto6g6", { access_type: "offline", approval_prompt: "" }
   # Configure the class responsible to send e-mails.
   config.mailer = Devise::Mailer
   config.mailer_sender = "spotmyarena2015@gmail.com"
