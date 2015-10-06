@@ -5,9 +5,16 @@ development:
   pg: 'wallet'
   url: 'https://test.payu.in/_payment'
 
+#production:
+#  key: 'aBPVhs'
+#  salt: 'QBzBag7A'
+#  bankcode: 'payuw'
+#  pg: 'wallet'
+#  url: 'https://secure.payu.in/_payment'
+
 production:
-  key: 'aBPVhs'
-  salt: 'QBzBag7A'
+  key: 'gtKFFx'
+  salt: 'eCwWELxi'
   bankcode: 'payuw'
   pg: 'wallet'
-  url: 'https://secure.payu.in/_payment'
+  url: 'https://test.payu.in/_payment'
