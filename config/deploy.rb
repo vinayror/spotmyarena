@@ -13,12 +13,7 @@ set :application, 'spotmyarena'
 set :user, set_user
 set :deploy_to, "/home/#{user}/#{application}"
 
-
-# Source Code Details
-set :github_username, 'ramlaxmanyadav'#set_git_user_name
-set :github_password, 'lucky_4922'#set_git_password
-
-set :repository, "https://github.com/ramlaxmanyadav/spotmyarena.git"
+set :repository, "https://spotmyarena2015:spotmyarena@bitbucket.org/spotmyarena2015/spotmyarena.git"
 set :branch, set_branch
 
 set :ruby_version, "#{File.readlines(File.join(__dir__, '..', '.ruby-version')).first.strip}"
