@@ -23,6 +23,11 @@
         Cancelation requetes<%= image_tag('icon-cart.png') %>
         <% end %>
       </li>
+       <li class="current">
+        <%= link_to transaction_history_path do %>
+        Transaction history<%= image_tag('icon-cart.png') %>
+        <% end %>
+      </li>
     <% end %>
     <% if current_user.has_role? :ground_owner %>
     <li class="current">

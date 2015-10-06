@@ -30,4 +30,8 @@ class HomeController < ApplicationController
   def cancelation_request
     @cancelation_requestes = CancelBooking.where("created_at >= ?", 1.week.ago.utc).order("created_at DESC")
   end
+
+  def transaction_history
+    @transaction_history = Transaction.where("created_at >= ?", 1.week.ago.utc).order("created_at DESC")
+  end
 end

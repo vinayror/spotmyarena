@@ -88,7 +88,7 @@ class BookingsController < ApplicationController
     @bank_ref_num = params[:bank_ref_num]
     @email = params[:email]
     Transaction.create(user_id: current_user.id, status: @status, transaction_id: @transaction_id, amount_debit: @net_amount_debit, bank_ref_num: @bank_ref_num)
-    UserMailer.transaction_success(current_user, @transaction_id, @amount)
+    UserMailer.transaction_success(current_user, @transaction_id, @amount).deliver
   end
 
   def payment_fail
