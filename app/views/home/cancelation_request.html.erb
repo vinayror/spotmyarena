@@ -22,37 +22,70 @@
                     <% if @cancelation_requestes.count > 0 %>
                         <% @cancelation_requestes.each do |cancel_booking| %>
                             <div class="hotel-list-item">
-                              <figure class="hotel-img float-left">
-                                <a href="#" title=""/>
-                              </figure>
-                              <div class="hotel-text">
-                                <div class="hotel-name">
-
-                                </div>
-                                <hr>
-                                <div class="">
-
-                                </div>
-                                <hr>
-                                <div class="hotel-star-address">
-                                  <address class="hotel-address">
-
-                                  </address>
-                                </div>
-                                <hr>
-                                <p>
-
-                                </p>
-                                <!-- <hr class="hr"> -->
-                                <div class="">
-                                  <span class="price old-price"></span>
-                                  <span class="price special-price"><h4></h4></span>
-                                </div>
+                              <div id="request">
+                                <h4>user:  <%= cancel_booking.requestd_uer%></h4>
+                              </div>
+                             
+                              <div>
+                                <h4>ground: <%= cancel_booking.ground_name.name%></h4>
+                              </div>
+                              <div>
+                                <h4>address: <%= cancel_booking.ground_name.address%></h4>
+                              </div>
+                              <div>
+                                <h4>slot: <%= cancel_booking.booking_time%> <span> (<%= cancel_booking.booking_date%>)</span></h4>
+                              </div>
+                              
+                              <div>
+                                <h4>reason: <%= cancel_booking.description %></h4>
                               </div>
                               <hr>
+                              <% if cancel_booking.approved? %>
+                                Status: &nbsp<p>request approved</p>
+                              <% elsif cancel_booking.discard? %>
+                                Status: &nbsp<p>request discard</p>
+                                Reason: <p><%= cancel_booking.response_message%></p>
+                              <% else%>
+                              <%= link_to "approved", cancel_bookings_request_approved_path(cancel_booking_id: cancel_booking.id, ground: cancel_booking.ground_name.name, booking_date: cancel_booking.booking_date, slot: cancel_booking.booking_time ), method: :put, remote: true, class: "btn btn-success"%>&nbsp
+                              <button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#cancel_request_<%= cancel_booking.id%>">Click discard request</button>
+                              <% end %>
+                              <hr>
+
+                              <div class="modal fade" id="cancel_request_<%= cancel_booking.id%>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+                                <div class="modal-dialog" role="document">
+                                  <div class="modal-content">
+                                    <div class="modal-header">
+                                      <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                      <h4 class="modal-title" id="myModalLabel">reject requet from <%= cancel_booking.requestd_uer %></h4>
+                                    </div>
+                                    <div class="modal-body">
+                                    <div class="user-form">
+                                      <%= form_tag(cancel_bookings_request_discard_path, :method=>'put', :remot => true) do %>
+                                        <%= hidden_field_tag :cancel_booking_id, cancel_booking.id%>
+                                        <%= hidden_field_tag :slot, cancel_booking.booking_time%>
+                                        <%= hidden_field_tag :booking_date, cancel_booking.booking_date%>
+                                        <%= hidden_field_tag :ground, cancel_booking.ground_name.name%>
+                                        <div class="field-input">
+                                          <label>Reason for rejection</label>
+                                          <%= text_area_tag "reason", '', class: "form-control"%>
+                                        </div>
+                                        <br>
+                                        <%= submit_tag "click to submit", class: 'btn btn-primary' %>
+                                      <%end%>
+                                    </div>
+                                    </div>
+                                    <div class="modal-footer">
+                                      <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                      
+                                      <!-- <button type="submit" class="btn btn-primary">Save changes</button> -->
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+
+
                             </div>
                         <% end %>
-
                     <% else %>
                         <hr>
                         currenly you don't have any cancellation..!!!
@@ -69,3 +102,11 @@
     </div>
   </div>
 </div>
+<style type="text/css">
+#request{  
+  background: palegreen none repeat scroll 0 0;
+  height: 25px;
+  text-align: center;
+  width: 100%;
+}
+</style>

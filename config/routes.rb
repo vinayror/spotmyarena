@@ -1,10 +1,5 @@
   Rails.application.routes.draw do
-  get 'cancel_bookings/index'
-
-  get 'cancel_bookings/new'
-
-  get 'cancel_bookings/create'
-
+  
     post '/rate' => 'rater#create', :as => 'rate'
     # mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
     root to: 'home#index'
@@ -54,6 +49,12 @@ get 'terms' => 'home#terms'
 #admin
 get 'newly_added_ground' => 'home#newly_added_ground'
 get 'cancelation_request' => 'home#cancelation_request'
+get 'transaction_history' => 'home#transaction_history'
+get 'cancel_bookings/index'
+get 'cancel_bookings/new'
+
+put 'cancel_bookings/request_approved'
+put 'cancel_bookings/request_discard'
 
 mount Commontator::Engine => '/commontator'
     #get 'search' => 'grounds#search'
