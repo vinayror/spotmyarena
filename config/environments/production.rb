@@ -11,7 +11,7 @@ Rails.application.configure do
   config.eager_load = true
 
   # Full error reports are disabled and caching is turned on.
-  config.consider_all_requests_local       = false
+  config.consider_all_requests_local = false
   config.action_controller.perform_caching = true
 
   # Enable Rack::Cache to put a simple HTTP cache in front of your application
@@ -31,7 +31,7 @@ Rails.application.configure do
   # Do not fallback to assets pipeline if a precompiled asset is missed.
   #config.assets.compile = false
   config.serve_static_files = false
-  
+
   # Compress JavaScripts and CSS
   config.assets.compress = true
 
@@ -88,20 +88,21 @@ Rails.application.configure do
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
 
+  config.assets.precompile += %w( assets/stylesheets/square)
 
-  
+
   config.action_mailer.default :charset => "utf-8"
-  
 
-  config.action_mailer.default_url_options = { :host => '188.166.250.248' }
+
+  config.action_mailer.default_url_options = {:host => '188.166.250.248'}
 
   config.action_mailer.smtp_settings = {
-  :authentication => :plain,
-  :address => "smtp.mailgun.org",
-  :port => 587,
-  :domain => "sandboxad15e445d842498f9d7ea417d6b36a66.mailgun.org",
-  :user_name => "postmaster@sandboxad15e445d842498f9d7ea417d6b36a66.mailgun.org",
-  :password => "f6910fef3273fdc34e183c32cc34f18f"
+      :authentication => :plain,
+      :address => "smtp.mailgun.org",
+      :port => 587,
+      :domain => "sandboxad15e445d842498f9d7ea417d6b36a66.mailgun.org",
+      :user_name => "postmaster@sandboxad15e445d842498f9d7ea417d6b36a66.mailgun.org",
+      :password => "f6910fef3273fdc34e183c32cc34f18f"
   }
 
   config.action_mailer.delivery_method = :smtp
