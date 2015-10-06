@@ -18,64 +18,65 @@
         </div>
         <hr>
         <div class="col-md-8 col-xs-12">
-          <%= form_for @booking, url: 'https://test.payu.in/_payment', :method => :post do |f| %>
-          <form>
-            <%= f.hidden_field :key, value: Booking::PAYU_PARAMS[:key], name: "key" %>
-            <%= f.hidden_field :surl, value: Booking::PAYU_PARAMS[:surl], name: "surl" %>
-            <%= f.hidden_field :furl, value: Booking::PAYU_PARAMS[:furl], name: "furl" %>
-            <%= f.hidden_field :bankcode, value: Booking::PAYU_PARAMS[:bankcode], name: "bankcode" %>
-            <%= f.hidden_field :pg, value: Booking::PAYU_PARAMS[:pg], name: "pg" %>
-            <%= f.hidden_field :salt, value: Booking::PAYU_PARAMS[:salt], name: "salt" %>
-            <%= f.hidden_field :hash, value: @hash, name: "hash" %>
-            <div class="col-md-6">
-              <div class="form-group">
-                <label class="sr-only" for="your_name">Transaction id</label>
-                <%= f.text_field :txnid, value: @transaction_id, name: "txnid", class: "form-control" %>
-              </div>
-            </div>
-            <div class="col-md-6">
-              <div class="form-group">
-                <label class="sr-only" for="your_name">Total amount</label>
-                <%= f.text_field :amount, value: @Total_price, name: "amount", class: "form-control" %>
-              </div>
-            </div>
-            <div class="col-md-6">
-              <div class="form-group">
-                <label class="sr-only" for="your_name">Ground name</label>
-                <%= f.text_field :productinfo, value: @ground, name: "productinfo", class: "form-control" %>
-              </div>
-            </div>
-            <div class="col-md-6">
-              <div class="form-group">
-                <label class="sr-only" for="your_name">Your first name</label>
-                <%= f.text_field :firstname, value: current_user.first_name, name: "firstname", class: "form-control" %>
-              </div>
-            </div>
-            <div class="col-md-6">
-              <div class="form-group">
-                <label class="sr-only" for="your_name">Your Email</label>
-                <%= f.text_field :email, value: current_user.email, name: "email", class: "form-control" %>
-              </div>
-            </div>
-            <div class="col-md-6">
-              <div class="form-group">
-                <label class="sr-only" for="your_phone">Your Phone</label>
-                <%= f.text_field :phone, value: current_user.mobile, name: "phone", class: "form-control" %>
-              </div>
-            </div>
-            <div class="col-md-12">
-              <h2>Payment Method</h2>
-              <input required="" type="radio" id="pp-radio-payment-1" name="payment_method" value="PAYU" checked="checked">
-              <label for="pp-radio-payment-1"><span></span>PayU</label>
 
-            </div>
-            <br>
-            <hr>
-            <div class="col-md-12">
-              <button type="submit" class="btn btn-primary payu">Go to payment</button>
-            </div>
-            <hr>
-          </form>
+          <%= form_for @booking, url: PAYU_CONFIG['url'], :method => :post do |f| %>
+              <form>
+                <%= f.hidden_field :key, value: PAYU_CONFIG['key'], name: "key" %>
+                <%= f.hidden_field :salt, value: PAYU_CONFIG['salt'], name: "salt" %>
+                <%= f.hidden_field :bankcode, value: PAYU_CONFIG['bankcode'], name: "bankcode" %>
+                <%= f.hidden_field :pg, value: PAYU_CONFIG['pg'], name: "pg" %>
+                <%= f.hidden_field :surl, value: payment_success_bookings_url, name: "surl" %>
+                <%= f.hidden_field :furl, value: payment_fail_bookings_url, name: "furl" %>
+                <%= f.hidden_field :hash, value: @hash, name: "hash" %>
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label class="sr-only" for="your_name">Transaction id</label>
+                    <%= f.text_field :txnid, value: @transaction_id, name: "txnid", class: "form-control" %>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label class="sr-only" for="your_name">Total amount</label>
+                    <%= f.text_field :amount, value: @Total_price, name: "amount", class: "form-control" %>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label class="sr-only" for="your_name">Ground name</label>
+                    <%= f.text_field :productinfo, value: @ground, name: "productinfo", class: "form-control" %>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label class="sr-only" for="your_name">Your first name</label>
+                    <%= f.text_field :firstname, value: current_user.first_name, name: "firstname", class: "form-control" %>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label class="sr-only" for="your_name">Your Email</label>
+                    <%= f.text_field :email, value: current_user.email, name: "email", class: "form-control" %>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label class="sr-only" for="your_phone">Your Phone</label>
+                    <%= f.text_field :phone, value: current_user.mobile, name: "phone", class: "form-control" %>
+                  </div>
+                </div>
+                <div class="col-md-12">
+                  <h2>Payment Method</h2>
+                  <input required="" type="radio" id="pp-radio-payment-1" name="payment_method" value="PAYU" checked="checked">
+                  <label for="pp-radio-payment-1"><span></span>PayU</label>
+
+                </div>
+                <br>
+                <hr>
+                <div class="col-md-12">
+                  <button type="submit" class="btn btn-primary payu">Go to payment</button>
+                </div>
+                <hr>
+              </form>
           <% end %>
         </div>
         <div class="col-md-4 col-md-12">
@@ -86,56 +87,56 @@
             <hr>
             <p style="margin-bottom:5px !important;"><strong>Selected Slots</strong>:
               <% @booked_event.each do |b| %>
-              <!-- <span id="slots_sum"></span></p> -->
-              <div class="slot_button"><%= b.slot %>
-                <h6>(<%= b.booking_date.date_of_booking.strftime("%d %b %Y") %>)</h6></div>
-                <% end %>
-                <!-- <h6 style="color:#696f78 !important;"><center>(Wooden Court)</center></h6> -->
-                <hr>
-                <table>
-                  <tbody>
-                    <tr>
-                      <td><h5><strong>Total:</strong></h5></td>
-                      <td class="btn-info btn">Rs. <%= @Total_price %></td>
-                    </tr>
-                    <hr>
-                    <tr class="st_os">
-                      <td>(Service Charge)</td>
-                      <td class="price_os"> + Rs.0</td>
-                    </tr>
-                  </tbody>
-                </table>
-              </div>
-            </div>
-            <div class="col-md-12">
-              <div class="divider"></div>
-
-            </div>
-          </p>
+                  <!-- <span id="slots_sum"></span></p> -->
+                <div class="slot_button"><%= b.slot %>
+                  <h6>(<%= b.booking_date.date_of_booking.strftime("%d %b %Y") %>)</h6></div>
+            <% end %>
+            <!-- <h6 style="color:#696f78 !important;"><center>(Wooden Court)</center></h6> -->
+            <hr>
+            <table>
+              <tbody>
+              <tr>
+                <td><h5><strong>Total:</strong></h5></td>
+                <td class="btn-info btn">Rs. <%= @Total_price %></td>
+              </tr>
+              <hr>
+              <tr class="st_os">
+                <td>(Service Charge)</td>
+                <td class="price_os"> + Rs.0</td>
+              </tr>
+              </tbody>
+            </table>
+          </div>
         </div>
+        <div class="col-md-12">
+          <div class="divider"></div>
+
+        </div>
+        </p>
       </section>
     </div>
   </div>
 </div>
+</div>
 <!-- End Main -->
 
 <style type="text/css">
-  .slot_button {
-    -moz-user-select: none;
-    background: palegreen none repeat scroll 0 0;
-    border: 1px solid transparent;
-    border-radius: 4px;
-    color: gray !important;
-    cursor: pointer;
-    display: inline-block;
-    font-size: 14px;
-    font-weight: 400;
-    line-height: 1.42857;
-    margin: 2px;
-    padding: 0 3px;
-    text-align: center;
-    text-decoration: none !important;
-    vertical-align: middle;
-    white-space: nowrap;
-  }
+    .slot_button {
+        -moz-user-select: none;
+        background: palegreen none repeat scroll 0 0;
+        border: 1px solid transparent;
+        border-radius: 4px;
+        color: gray !important;
+        cursor: pointer;
+        display: inline-block;
+        font-size: 14px;
+        font-weight: 400;
+        line-height: 1.42857;
+        margin: 2px;
+        padding: 0 3px;
+        text-align: center;
+        text-decoration: none !important;
+        vertical-align: middle;
+        white-space: nowrap;
+    }
 </style>

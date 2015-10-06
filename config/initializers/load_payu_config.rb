@@ -1,0 +1,1 @@
+PAYU_CONFIG = YAML.load_file(File.join(Rails.root, 'config', 'payu_configrations.yml'))[Rails.env]
