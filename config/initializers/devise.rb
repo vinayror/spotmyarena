@@ -25,7 +25,7 @@ Devise.setup do |config|
   # config.omniauth :google_oauth2, "770559929031-arl7unnsod0s04c562gf96hq66cihaoo.apps.googleusercontent.com ", "UaQUnqmEyN7GFRQY0JLto6g6", { access_type: "offline", approval_prompt: "" }
 
   #for production
-  config.omniauth :google_oauth2, "770559929031-6oha0nhu330rn3b8m8an6ofhuv172rir.apps.googleusercontent.com", " mJM0DtqTtza8I-JwFeh7aIq2", { access_type: "offline", approval_prompt: "" }
+  config.omniauth :google_oauth2, "770559929031-6oha0nhu330rn3b8m8an6ofhuv172rir.apps.googleusercontent.com", "mJM0DtqTtza8I-JwFeh7aIq2", { access_type: "offline", approval_prompt: "" }
   # Configure the class responsible to send e-mails.
   config.mailer = Devise::Mailer
   config.mailer_sender = "spotmyarena2015@gmail.com"
