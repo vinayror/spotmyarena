@@ -19,54 +19,53 @@
               <div class="row">
                 <div class="col-md-12">
                   <div class="hotel-list-cn clearfix">
-                    <% if @cancel_bookings.present? %>
-                    <% @cancel_bookings.each do |cancel_booking| %>
-                    <div class="hotel-list-item">
-                      <figure class="hotel-img float-left">
-                        <a href="#" title="">
-                          
-                        </figure>
-                        <div class="hotel-text">
-                          <div class="hotel-name">
-                           
-                          </div>
-                          <hr>
-                          <div class="">
-                            
-                          </div>
-                          <hr>
-                          <div class="hotel-star-address">
-                            <address class="hotel-address">
-                              
-                            </address>
-                          </div>
-                          <hr>
-                          <p>
-                            
-                          </p>
-                          <!-- <hr class="hr"> -->
-                          <div class="">
-                            <span class="price old-price"></span>
-                            <span class="price special-price"><h4></h4></span>
-                          </div>
-                        </div>
-                        <hr>
-                      </div>
-                      <% end %>
+                    <% if @cancelation_requestes.count > 0 %>
+                        <% @cancelation_requestes.each do |cancel_booking| %>
+                            <div class="hotel-list-item">
+                              <figure class="hotel-img float-left">
+                                <a href="#" title=""/>
+                              </figure>
+                              <div class="hotel-text">
+                                <div class="hotel-name">
 
-                      <% else %>
-                      <hr>
-                      currenly you don't have any cancellation..!!!
-                      <hr>
-                      <% end %>
-                    </div>
-                    <%= link_to 'go back', root_path, :class => 'awe-btn awe-btn-1 awe-btn-medium' %>
-                  </div> 
+                                </div>
+                                <hr>
+                                <div class="">
+
+                                </div>
+                                <hr>
+                                <div class="hotel-star-address">
+                                  <address class="hotel-address">
+
+                                  </address>
+                                </div>
+                                <hr>
+                                <p>
+
+                                </p>
+                                <!-- <hr class="hr"> -->
+                                <div class="">
+                                  <span class="price old-price"></span>
+                                  <span class="price special-price"><h4></h4></span>
+                                </div>
+                              </div>
+                              <hr>
+                            </div>
+                        <% end %>
+
+                    <% else %>
+                        <hr>
+                        currenly you don't have any cancellation..!!!
+                        <hr>
+                    <% end %>
+                  </div>
+                  <%= link_to 'go back', root_path, :class => 'awe-btn awe-btn-1 awe-btn-medium' %>
                 </div>
               </div>
             </div>
           </div>
-        </section>
-      </div>
+        </div>
+      </section>
     </div>
   </div>
+</div>
