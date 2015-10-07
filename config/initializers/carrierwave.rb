@@ -6,7 +6,7 @@ CarrierWave.configure do |config|
       :region  => 'us-west-2'
   }
   config.cache_dir = "#{Rails.root}/tmp/uploads" 
-  config.fog_directory  = 'spotmyarena/uploads'
+  config.fog_directory  = 'spotmyarena'
 end
 
 # Access Key ID: AKIAIL4RQV2D4DZQDPUA

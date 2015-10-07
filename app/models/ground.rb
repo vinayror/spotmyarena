@@ -29,7 +29,6 @@ class Ground < ActiveRecord::Base
   attr_accessor :add_booking_dates, :add_closing_dates, :closing_times, :special_closing_date, :special_closing_times, :slot_ids
 
   def self.search(category, city, area, date)
-    return Ground.all
     if category.present? && city.present? && area.present? && date.present?
       results = self.joins(:booking_dates).where('city LIKE ? AND category LIKE ? AND area LIKE ? AND booking_dates.date_of_booking = ?', "%#{city}%", "%#{category}%", "%#{area}%","%#{date}%")
       results.where("publish = ?", true).order("created_at DESC")

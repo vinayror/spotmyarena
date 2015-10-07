@@ -91,7 +91,7 @@ Rails.application.configure do
   config.action_mailer.default :charset => "utf-8"
 
 
-  config.action_mailer.default_url_options = {:host => '188.166.250.248'}
+  config.action_mailer.default_url_options = {:host => 'http://spotmyarena.com'}
 
   config.action_mailer.smtp_settings = {
       :authentication => :plain,
