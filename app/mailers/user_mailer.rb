@@ -29,4 +29,12 @@ class UserMailer < ActionMailer::Base
     mail(:to => @user.email,
          :subject => "cancelation request approved!!!!")
   end
+
+  def contact_mail(name, email, message)
+    @name = name
+    @email = email
+    @message = message
+    mail(:to => 'vinay@yopmail.com',
+         :subject => "Thank you for contact us!!!!")
+  end
 end

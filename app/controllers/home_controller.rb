@@ -23,6 +23,17 @@ class HomeController < ApplicationController
   	
   end
 
+  def contact_mail
+    name = params[:name]
+    email = params[:email]
+    message = params[:message]
+    UserMailer.contact_mail(name, email, message).deliver
+    respond_to do |format|
+      format.html { redirect_to root_path, notice: 'successfully contacted to spotmyarena.' }
+      format.json { head :no_content }
+    end
+  end
+
   def newly_added_ground
     @added_grounds = Ground.where("created_at >= ? AND publish = ?", 1.week.ago.utc, false).order("created_at DESC")
   end

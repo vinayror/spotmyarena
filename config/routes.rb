@@ -45,6 +45,7 @@ get 'service' => 'home#service'
 get 'faq' => 'home#faq'
 get 'contact' => 'home#contact'
 get 'terms' => 'home#terms'
+get 'contact_mail' => 'home#contact_mail'
 
 #admin
 get 'newly_added_ground' => 'home#newly_added_ground'

@@ -71,11 +71,9 @@ $(document).ready(function () {
     ajaxContactForm();
 
     PopupRoom();
-    jQuery(window).load(function() {
-        $('#preloader').hide(1000);
-    });
+   
     $(window).load(function (event) {
-        
+        $('#preloader').fadeOut(1000);
         MenuResponsive();
         HeaderScroll();
         BannerSlide();
