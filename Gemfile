@@ -22,7 +22,6 @@ gem 'aws-sdk'
 gem 'omniauth'
 gem 'omniauth-facebook', '~> 2.0.1'
 gem 'omniauth-google-oauth2' 
-gem 'rails_admin', '~> 0.7.0'
 gem 'cancancan'
 gem 'bootstrap-datepicker-rails'
 gem 'multi-dates-picker-rails'
@@ -73,3 +72,6 @@ gem 'rails_12factor', group: :production
 
 gem "font-awesome-rails"
 gem 'pry'
+gem 'activeadmin', github: 'gregbell/active_admin'
+
+

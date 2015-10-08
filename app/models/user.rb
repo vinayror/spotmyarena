@@ -6,7 +6,7 @@
     
     ratyrate_rater
 
-    attr_accessor :role 
+    # attr_accessor :role
     after_create :set_role
     after_create :set_member_id
     has_many :grounds, :dependent => :destroy
