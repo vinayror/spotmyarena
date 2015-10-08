@@ -7,7 +7,6 @@ class ApplicationController < ActionController::Base
 
   protect_from_forgery with: :exception
   skip_before_filter :verify_authenticity_token
-  before_filter :is_admin?
   #before_action :authenticate_user!
   rescue_from CanCan::AccessDenied do |exception|
     redirect_to '/', :alert => exception.message
@@ -23,9 +22,7 @@ class ApplicationController < ActionController::Base
   # def after_sign_in_path_for(resource) 
   #   edit_user_registration_path
   # end
-  def is_admin?
-    redirect_to admin_root_path if (current_admin_user)
-  end
+
 
   def configure_permitted_parameters
     devise_parameter_sanitizer.for(:sign_in) { |u| u.permit(:username, :password) }

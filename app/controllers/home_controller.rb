@@ -1,5 +1,7 @@
 class HomeController < ApplicationController
   before_action :authenticate_user! , only: [:profile]
+  before_filter :is_admin?
+
   def index
   end
 
@@ -44,5 +46,9 @@ class HomeController < ApplicationController
 
   def transaction_history
     @transaction_history = Transaction.where("created_at >= ?", 1.week.ago.utc).order("created_at DESC")
+  end
+
+  def is_admin?
+    redirect_to admin_root_path if (current_admin_user)
   end
 end
