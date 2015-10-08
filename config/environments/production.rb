@@ -89,10 +89,8 @@ Rails.application.configure do
   config.active_record.dump_schema_after_migration = false
 
   config.action_mailer.default :charset => "utf-8"
-  config.assets.precompile += %w(rails_admin/rails_admin.css rails_admin/rails_admin.js)
 
-
-  config.action_mailer.default_url_options = {:host => 'http://spotmyarena.com'}
+  config.action_mailer.default_url_options = {:host => '188.166.250.248'}
 
   config.action_mailer.smtp_settings = {
       :authentication => :plain,
