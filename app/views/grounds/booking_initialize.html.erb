@@ -17,10 +17,11 @@
           </div>
         </div>
         <hr>
+       
         <div class="col-md-8 col-xs-12">
 
           <%= form_for @booking, url: PAYU_CONFIG['url'], :method => :post do |f| %>
-              <form>
+              <form id="payu_form">
                 <%= f.hidden_field :key, value: PAYU_CONFIG['key'], name: "key" %>
                 <%= f.hidden_field :salt, value: PAYU_CONFIG['salt'], name: "salt" %>
                 <%= f.hidden_field :bankcode, value: PAYU_CONFIG['bankcode'], name: "bankcode" %>
@@ -30,37 +31,37 @@
                 <%= f.hidden_field :hash, value: @hash, name: "hash" %>
                 <div class="col-md-6">
                   <div class="form-group">
-                    <label class="sr-only" for="your_name">Transaction id</label>
+                    <label>Transaction id</label>
                     <%= f.text_field :txnid, value: @transaction_id, name: "txnid", class: "form-control" %>
                   </div>
                 </div>
                 <div class="col-md-6">
                   <div class="form-group">
-                    <label class="sr-only" for="your_name">Total amount</label>
+                    <label>Total amount</label>
                     <%= f.text_field :amount, value: @Total_price, name: "amount", class: "form-control" %>
                   </div>
                 </div>
                 <div class="col-md-6">
                   <div class="form-group">
-                    <label class="sr-only" for="your_name">Ground name</label>
+                    <label>Ground name</label>
                     <%= f.text_field :productinfo, value: @ground, name: "productinfo", class: "form-control" %>
                   </div>
                 </div>
                 <div class="col-md-6">
                   <div class="form-group">
-                    <label class="sr-only" for="your_name">Your first name</label>
+                    <label>Your first name</label>
                     <%= f.text_field :firstname, value: current_user.first_name, name: "firstname", class: "form-control" %>
                   </div>
                 </div>
                 <div class="col-md-6">
                   <div class="form-group">
-                    <label class="sr-only" for="your_name">Your Email</label>
+                    <label>Your Email</label>
                     <%= f.text_field :email, value: current_user.email, name: "email", class: "form-control" %>
                   </div>
                 </div>
                 <div class="col-md-6">
                   <div class="form-group">
-                    <label class="sr-only" for="your_phone">Your Phone</label>
+                    <label>Your Phone</label>
                     <%= f.text_field :phone, value: current_user.mobile, name: "phone", class: "form-control" %>
                   </div>
                 </div>
@@ -79,6 +80,7 @@
               </form>
           <% end %>
         </div>
+        
         <div class="col-md-4 col-md-12">
           <h2>Order Summary</h2>
           <hr>
@@ -138,5 +140,9 @@
         text-decoration: none !important;
         vertical-align: middle;
         white-space: nowrap;
+    }
+    .form-group{
+      pointer-events: none;
+      cursor: default;
     }
 </style>

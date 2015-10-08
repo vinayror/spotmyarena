@@ -1,6 +1,6 @@
   class GroundsController < ApplicationController
     include ApplicationHelper
-    before_action :authenticate_user! , except: [:search]
+    before_action :authenticate_user! , except: [:search, :ground_details]
     before_action :update_slotes, only: :booking_initialize
     load_resource only: [:show, :create ,:update, :destroy, :edit]
     PER_PAGE = 5

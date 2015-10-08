@@ -30,10 +30,6 @@ class BookingsController < ApplicationController
 
     respond_to do |format|
       if @booking.save
-
-        # params[:ground_attachments]['photo'].each do |p|
-        #   @booking_attachment = @booking.ground_attachments.create!(:photo => p)
-        # end
         format.html { redirect_to @booking, notice: 'Booking created.' }
         format.json { render :show, status: :created, location: @booking }
       else

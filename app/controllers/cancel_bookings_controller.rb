@@ -21,15 +21,15 @@ class CancelBookingsController < ApplicationController
   end
 
   def request_discard
- 	cancel_booking = CancelBooking.find(params[:cancel_booking_id])
- 	reason = params[:reason]
-  	slot = params[:slot]
-  	booking_date = params[:booking_date]
-  	ground = params[:ground]
- 	cancel_booking.update(response_message: reason, discard: true)
- 	user = User.find(cancel_booking.user_id)
- 	UserMailer.discard_reciept(user, reason, slot, booking_date, ground).deliver
- 	respond_to do |format|
+   	cancel_booking = CancelBooking.find(params[:cancel_booking_id])
+   	reason = params[:reason]
+    	slot = params[:slot]
+    	booking_date = params[:booking_date]
+    	ground = params[:ground]
+   	cancel_booking.update(response_message: reason, discard: true)
+   	user = User.find(cancel_booking.user_id)
+   	UserMailer.discard_reciept(user, reason, slot, booking_date, ground).deliver
+   	respond_to do |format|
       format.html { redirect_to cancelation_request_path, notice: 'discard successfully.' }
       format.json { head :no_content }
     end
