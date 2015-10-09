@@ -5,6 +5,7 @@
     load_resource only: [:show, :create ,:update, :destroy, :edit]
     PER_PAGE = 5
     def search
+      return @grounds = Ground.all
     	category = params[:category]
     	city = params[:city]
     	area = params[:area]

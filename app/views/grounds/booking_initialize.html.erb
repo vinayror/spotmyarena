@@ -17,7 +17,7 @@
           </div>
         </div>
         <hr>
-       
+
         <div class="col-md-8 col-xs-12">
 
           <%= form_for @booking, url: PAYU_CONFIG['url'], :method => :post do |f| %>
@@ -80,7 +80,7 @@
               </form>
           <% end %>
         </div>
-        
+
         <div class="col-md-4 col-md-12">
           <h2>Order Summary</h2>
           <hr>
@@ -141,8 +141,9 @@
         vertical-align: middle;
         white-space: nowrap;
     }
-    .form-group{
-      pointer-events: none;
-      cursor: default;
+
+    .form-group {
+        pointer-events: none;
+        cursor: default;
     }
 </style>

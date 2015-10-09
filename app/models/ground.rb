@@ -149,7 +149,7 @@ class Ground < ActiveRecord::Base
   protected
 
   def self.payu(user, transaction_id, amount, ground)
-    Digest::SHA2.new(512).hexdigest("#{Booking::PAYU_PARAMS[:key]}|#{transaction_id}|#{amount}|#{ground}|#{user.first_name}|#{user.email}|||||||||||#{Booking::PAYU_PARAMS[:salt]}")
+    Digest::SHA2.new(512).hexdigest("#{PAYU_CONFIG['key']}|#{transaction_id}|#{amount}|#{ground}|#{user.first_name}|#{user.email}|#{PAYU_CONFIG['salt']}")
   end
 end
 
